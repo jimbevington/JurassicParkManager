@@ -3,8 +3,9 @@ import com.codeclan.jurassicpark.db.models.Herbivore;
 import com.codeclan.jurassicpark.db.models.Paddock;
 import com.codeclan.jurassicpark.db.models.SpeciesType;
 import org.junit.Before;
+import org.junit.Test;
 
-public class TestDBDinosaur {
+public class TestDinosaur {
 
     private Paddock paddock;
     private Carnivore carnivore;
@@ -13,13 +14,17 @@ public class TestDBDinosaur {
     @Before
     public void setUp() throws Exception {
         paddock = new Paddock();
-        carnivore = new Carnivore(SpeciesType.VELOCIRAPTOR, "Gerald", 5, 100, 90, paddock);
+        carnivore = new Carnivore(SpeciesType.VELOCIRAPTOR, "Gerald", 5, 90, paddock);
     }
 
-//    test starts off secure
-
-//    test starts off not hungry
-
 //    can get Fed
+
+    @Test
+    public void canGetFed() {
+        carnivore.set
+    }
+
+
+//    can test for other tings
 
 }
