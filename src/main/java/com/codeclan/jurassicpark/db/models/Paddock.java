@@ -18,7 +18,6 @@ public class Paddock {
         this.name = name;
         this.capacity = capacity;
         this.open = true;
-        this.dinosaurs = new HashSet<Dinosaur>();
     }
 
     public int getId() {
@@ -61,11 +60,4 @@ public class Paddock {
         this.dinosaurs = dinosaurs;
     }
 
-    public void addDino(Dinosaur dinosaur){
-        this.dinosaurs.add(dinosaur);
-    }
-
-    public void removeDino(Dinosaur dinosaur){
-        this.dinosaurs.remove(dinosaur);
-    }
 }
