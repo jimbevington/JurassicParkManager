@@ -10,6 +10,5 @@ public class Seeds {
         DBHelper.deleteAll(Herbivore.class);
 
 
-
     }
 }
