@@ -16,7 +16,7 @@ public class TestDinosaur {
     @Before
     public void setUp() throws Exception {
         paddock = new Paddock("Green Gully", 10);
-        carnivore = new Carnivore(SpeciesType.VELOCIRAPTOR, "Gerald", 5, 90);
+        carnivore = new Carnivore(SpeciesType.VELOCIRAPTOR, "Gerald", 5, 90, paddock);
     }
 
 //    can get Fed
