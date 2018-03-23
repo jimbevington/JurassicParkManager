@@ -1,5 +1,11 @@
 package com.codeclan.jurassicpark.db.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="carnivores")
 public class Carnivore extends Dinosaur {
 
     private int hunger;
@@ -12,6 +18,7 @@ public class Carnivore extends Dinosaur {
         this.hunger = 0;
     }
 
+    @Column(name="hunger")
     public int getHunger() {
         return hunger;
     }
