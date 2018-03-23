@@ -8,6 +8,7 @@ public abstract class Dinosaur {
     private int age;
     private int danger;
     private Paddock paddock;
+    private int health;
     private boolean secure;
 
     public Dinosaur() {
@@ -19,6 +20,7 @@ public abstract class Dinosaur {
         this.age = age;
         this.danger = danger;
         this.paddock = paddock;
+        this.health = 100;
         this.secure = true;     // initialises as secure
     }
 

@@ -12,6 +12,7 @@ public class TestDBDinosaur {
 
     @Before
     public void setUp() throws Exception {
+        paddock = new Paddock();
         carnivore = new Carnivore(SpeciesType.VELOCIRAPTOR, "Gerald", 5, 100, 90, paddock);
     }
 
