@@ -58,4 +58,15 @@ public class DBHelper {
             session.close();
         }
     }
+
+//    getAll
+
+//    find
+
+//    getPaddockDinosaurs
+
+//    getList
+//    getUnique
+
+
 }
