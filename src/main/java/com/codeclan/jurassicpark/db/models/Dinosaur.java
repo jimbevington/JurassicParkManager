@@ -14,11 +14,12 @@ public abstract class Dinosaur {
     public Dinosaur() {
     }
 
-    public Dinosaur(SpeciesType species, String name, int age, int danger) {
+    public Dinosaur(SpeciesType species, String name, int age, int danger, Paddock paddock) {
         this.species = species;
         this.name = name;
         this.age = age;
         this.danger = danger;
+        this.paddock = paddock;
         this.health = 100;
         this.secure = true;     // initialises as secure
     }
