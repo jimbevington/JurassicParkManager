@@ -1,5 +1,9 @@
 package com.codeclan.jurassicpark.db.models;
 
+import javax.persistence.*;
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Dinosaur {
 
     private int id;
@@ -24,6 +28,9 @@ public abstract class Dinosaur {
         this.secure = true;     // initialises as secure
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     public int getId() {
         return id;
     }
@@ -32,6 +39,7 @@ public abstract class Dinosaur {
         this.id = id;
     }
 
+    @Column(name="species")
     public SpeciesType getSpecies() {
         return species;
     }
@@ -40,6 +48,7 @@ public abstract class Dinosaur {
         this.species = species;
     }
 
+    @Column(name="name")
     public String getName() {
         return name;
     }
@@ -48,6 +57,7 @@ public abstract class Dinosaur {
         this.name = name;
     }
 
+    @Column(name="age")
     public int getAge() {
         return age;
     }
@@ -56,6 +66,7 @@ public abstract class Dinosaur {
         this.age = age;
     }
 
+    @Column(name="danger")
     public int getDanger() {
         return danger;
     }
@@ -64,6 +75,8 @@ public abstract class Dinosaur {
         this.danger = danger;
     }
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="paddock_id", nullable = false)
     public Paddock getPaddock() {
         return paddock;
     }
@@ -72,6 +85,7 @@ public abstract class Dinosaur {
         this.paddock = paddock;
     }
 
+    @Column(name="secure")
     public boolean isSecure() {
         return secure;
     }
