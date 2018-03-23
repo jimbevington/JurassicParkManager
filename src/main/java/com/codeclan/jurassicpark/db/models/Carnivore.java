@@ -7,8 +7,8 @@ public class Carnivore extends Dinosaur {
     public Carnivore() {
     }
 
-    public Carnivore(SpeciesType species, String name, int age, int danger, Paddock paddock) {
-        super(species, name, age, danger, paddock);
+    public Carnivore(SpeciesType species, String name, int age, int danger) {
+        super(species, name, age, danger);
         this.hunger = 0;
     }
 
