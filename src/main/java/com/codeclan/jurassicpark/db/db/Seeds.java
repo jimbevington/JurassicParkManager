@@ -2,11 +2,12 @@ package com.codeclan.jurassicpark.db.db;
 
 import com.codeclan.jurassicpark.db.models.Carnivore;
 import com.codeclan.jurassicpark.db.models.Herbivore;
+import com.codeclan.jurassicpark.db.models.Paddock;
 import com.codeclan.jurassicpark.db.models.SpeciesType;
 
 public class Seeds {
 
-    public static void seedData{
+    public static void seedData(){
         DBHelper.deleteAll(Carnivore.class);
         DBHelper.deleteAll(Herbivore.class);
 
