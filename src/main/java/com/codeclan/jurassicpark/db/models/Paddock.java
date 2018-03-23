@@ -1,5 +1,6 @@
 package com.codeclan.jurassicpark.db.models;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Paddock {
@@ -17,6 +18,7 @@ public class Paddock {
         this.name = name;
         this.capacity = capacity;
         this.open = true;
+        this.dinosaurs = new HashSet<Dinosaur>();
     }
 
     public int getId() {

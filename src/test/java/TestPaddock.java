@@ -16,14 +16,19 @@ public class TestPaddock {
     @Before
     public void setUp() throws Exception {
         paddock1 = new Paddock("The Aviary", 25);
-        paddock2 = new Paddock("Dinosaur Dungeon", 6);
         herbivore1 = new Herbivore(SpeciesType.TRICERATOPS, "Herbie", 12, 70);
-        herbivore2 = new Herbivore(SpeciesType.BRACHIOSAURUS, "Bruce", 15, 50);
     }
 
     @Test
     public void canAddDinosaurs() {
         paddock1.addDino(herbivore1);
         assertEquals(1, paddock1.getDinosaurs().size());
+    }
+
+    @Test
+    public void canRemoveDinosaurs() {
+        paddock1.addDino(herbivore1);
+        paddock1.removeDino(herbivore1);
+        assertEquals(0, paddock1.getDinosaurs().size());
     }
 }
