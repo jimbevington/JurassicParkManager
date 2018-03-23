@@ -5,6 +5,8 @@ import com.codeclan.jurassicpark.db.models.SpeciesType;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 public class TestDinosaur {
 
     private Paddock paddock;
@@ -21,7 +23,9 @@ public class TestDinosaur {
 
     @Test
     public void canGetFed() {
-        carnivore.set
+        carnivore.setHunger(0);
+        carnivore.getFed();
+        assertEquals(0, carnivore.getHunger());
     }
 
 
