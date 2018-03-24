@@ -2,6 +2,7 @@ package com.codeclan.jurassicpark.db.db;
 
 import com.codeclan.jurassicpark.db.models.Dinosaur;
 import com.codeclan.jurassicpark.db.models.Herbivore;
+import com.codeclan.jurassicpark.db.models.Paddock;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -81,10 +82,14 @@ public class DBHelper {
     }
 
 //    getPaddockDinosaurs
-//    public static List<Dinosaur> getPaddocksDinosaurs(int paddockId){
-//        session = HibernateUtil.getSessionFactory().openSession();
-//        List<Dinosaur> results = null;
-//    }
+    public static List<Dinosaur> getPaddocksDinosaurs(Paddock paddock){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Dinosaur> results = null;
+        Criteria criteria = session.createCriteria(Dinosaur.class);
+        criteria.add(Restrictions.eq("paddock", paddock));
+        results = getList(criteria);
+        return results;
+    }
 
 //    getList
     public static <T> List<T> getList(Criteria criteria){
