@@ -1,20 +1,97 @@
 package com.codeclan.jurassicpark.db.models;
 
+import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
+
+@Entity
+@Table(name="parks")
 public class Park {
 
-    private Paddock paddock;
-    private Carnivore carnivore;
-    private Herbivore herbivore;
+    private int id;
+    private String name;
+    private List<Paddock> paddocks;
 
     public Park() {
     }
-//+ Paddocks
-//+ Dinosaurs
-//+ method: openPark
-//+ method: closePark
-//+ method: lockdownPaddock
-//+ method: lockdownPark
-//+ method: moveDino
-//+ method: feedDino
-//+ method: parkStatus
+
+    public Park(String name) {
+        this.name = name;
+        this.paddocks = paddocks;
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Column(name = "name")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @OneToMany
+    public List<Paddock> getPaddocks() {
+        return paddocks;
+    }
+
+    public void setPaddocks(List<Paddock> paddocks) {
+        this.paddocks = paddocks;
+    }
+
+//  public void openPark(){
+//      for(Paddock paddock : paddocks){
+//          paddock.setVisitors(int);
+//      }
+//  }
+
+//    public void closePark(){
+//        for(Paddock paddock : paddocks){
+//            paddock.setVisitors(0);
+//        }
+//    }
+
+//    public void lockdownPaddock(int paddocknum){
+//         for(Paddock paddock : paddocks){
+//             if(paddock.getId() == paddocknum){
+//                 paddock.setVisitors(0);
+//             }
+//         }
+//    }
+
+//  public void lockdownPark(){
+//        for(Paddock paddock : paddocks){
+//            if(paddock.getVisitors().size() > 0){
+//                paddock.setVisitors(0);
+//            }
+//        }
+//  }
+
+//  public void moveDino(){}
+
+  public void feedDino(int paddockId, int dinoId){
+        for(Paddock paddock : paddocks){
+            if(paddock.getId() == paddockId){
+                Set<Dinosaur> dinos = paddock.getDinosaurs();
+                for(Carnivore carnivore : dinos){
+                    if(carnivore.getId() == dinoId){
+                        carnivore.getFed();
+                    }
+                }
+            }
+        }
+  }
+
+//  public void parkStatus(){}
+
 }
