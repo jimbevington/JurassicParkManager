@@ -1,8 +1,11 @@
 package com.codeclan.jurassicpark.db.models;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
+@Table(name="paddocks")
 public class Paddock {
 
     private int id;
@@ -22,6 +25,9 @@ public class Paddock {
         this.open = true;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     public int getId() {
         return id;
     }
@@ -30,6 +36,7 @@ public class Paddock {
         this.id = id;
     }
 
+    @Column(name="name")
     public String getName() {
         return name;
     }
@@ -38,6 +45,7 @@ public class Paddock {
         this.name = name;
     }
 
+    @Column(name="capacity")
     public int getCapacity() {
         return capacity;
     }
@@ -46,7 +54,8 @@ public class Paddock {
         this.capacity = capacity;
     }
 
-
+    @ManyToOne
+    @JoinColumn(name="park_id", nullable = false)
     public Park getPark() {
         return park;
     }
@@ -55,6 +64,7 @@ public class Paddock {
         this.park = park;
     }
 
+    @Column(name="open")
     public boolean isOpen() {
         return open;
     }
@@ -63,6 +73,7 @@ public class Paddock {
         this.open = open;
     }
 
+    @OneToMany(mappedBy = "paddock")
     public Set<Dinosaur> getDinosaurs() {
         return dinosaurs;
     }
