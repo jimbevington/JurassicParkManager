@@ -33,4 +33,8 @@ public class Carnivore extends Dinosaur {
     }
 
 //    we need a way for the Carnivore to get Hungry
+    public int increaseHunger(){
+        this.hunger += 1;
+        return this.hunger;
+    }
 }
