@@ -83,6 +83,20 @@ public class DBHelper {
     }
 
 //    getUnique
+    public static <T> T getUnique(Criteria criteria){
+        T result = null;
+        try {
+            transaction = session.beginTransaction();
+            result = (T)criteria.uniqueResult();
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return result;
+    }
 
 
 }
