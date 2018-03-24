@@ -51,9 +51,11 @@ public class Runner {
         Carnivore foundCarnivore = DBHelper.find(Carnivore.class, carnivore3.getId());
 //        test can use generic Dinosaur class
         Dinosaur foundDinosaur = DBHelper.find(Dinosaur.class, carnivore1.getId());
-        Paddock foundPaddock = DBHelper.find(Paddock.class, paddock2.getId());
+        Paddock foundPaddock2 = DBHelper.find(Paddock.class, paddock2.getId());
+        Paddock foundPaddock4 = DBHelper.find(Paddock.class, paddock4.getId());
 
-
+        List<Dinosaur> paddock2Dinos = DBHelper.getPaddocksDinosaurs(foundPaddock2);
+        List<Dinosaur> paddock4Dinos = DBHelper.getPaddocksDinosaurs(foundPaddock4);
     }
 
 }
