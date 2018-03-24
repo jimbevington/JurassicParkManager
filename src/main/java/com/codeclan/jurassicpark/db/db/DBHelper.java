@@ -1,5 +1,7 @@
 package com.codeclan.jurassicpark.db.db;
 
+import com.codeclan.jurassicpark.db.models.Dinosaur;
+import com.codeclan.jurassicpark.db.models.Herbivore;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -79,6 +81,10 @@ public class DBHelper {
     }
 
 //    getPaddockDinosaurs
+//    public static List<Dinosaur> getPaddocksDinosaurs(int paddockId){
+//        session = HibernateUtil.getSessionFactory().openSession();
+//        List<Dinosaur> results = null;
+//    }
 
 //    getList
     public static <T> List<T> getList(Criteria criteria){

@@ -39,10 +39,20 @@ public class Runner {
         Herbivore herbivore4 = new Herbivore(SpeciesType.TRICERATOPS, "Thomas", 42, 80, paddock4);
         DBHelper.saveOrUpdate(herbivore4);
 
+//        test can get List of Objects
         List<Herbivore> foundHerbivores = DBHelper.getAll(Herbivore.class);
         List<Carnivore> foundCarnivores = DBHelper.getAll(Carnivore.class);
+//        test can get all Dinosaurs
         List<Dinosaur> foundDinosaurs = DBHelper.getAll(Dinosaur.class);
         List<Paddock> foundPaddocks = DBHelper.getAll(Paddock.class);
+
+//        test can get Individual Objects
+        Herbivore foundHerbivore = DBHelper.find(Herbivore.class, herbivore2.getId());
+        Carnivore foundCarnivore = DBHelper.find(Carnivore.class, carnivore3.getId());
+//        test can use generic Dinosaur class
+        Dinosaur foundDinosaur = DBHelper.find(Dinosaur.class, carnivore1.getId());
+        Paddock foundPaddock = DBHelper.find(Paddock.class, paddock2.getId());
+
 
     }
 
