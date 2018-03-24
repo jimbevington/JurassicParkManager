@@ -1,7 +1,4 @@
-import com.codeclan.jurassicpark.db.models.Carnivore;
-import com.codeclan.jurassicpark.db.models.Herbivore;
-import com.codeclan.jurassicpark.db.models.Paddock;
-import com.codeclan.jurassicpark.db.models.SpeciesType;
+import com.codeclan.jurassicpark.db.models.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,6 +6,7 @@ import static org.junit.Assert.assertEquals;
 
 public class TestDinosaur {
 
+    private Park park;
     private Paddock paddock;
     private Paddock paddock1;
     private Carnivore carnivore;
@@ -16,8 +14,9 @@ public class TestDinosaur {
 
     @Before
     public void setUp() throws Exception {
-        paddock = new Paddock("Green Gully", 10);
-        paddock1 = new Paddock("Arid Desert", 20);
+        park = new Park("Jurassic Park");
+        paddock = new Paddock("Green Gully", 10, park);
+        paddock1 = new Paddock("Arid Desert", 20, park);
         carnivore = new Carnivore(SpeciesType.VELOCIRAPTOR, "Gerald", 5, 90, paddock);
         herbivore = new Herbivore(SpeciesType.TRICERATOPS, "Horatio", 8, 80, paddock1);
     }
