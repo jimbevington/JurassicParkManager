@@ -8,15 +8,17 @@ public class Paddock {
     private int id;
     private String name;
     private int capacity;
+    private Park park;
     private boolean open;
     private Set<Dinosaur> dinosaurs;
 
     public Paddock() {
     }
 
-    public Paddock(String name, int capacity) {
+    public Paddock(String name, int capacity, Park park) {
         this.name = name;
         this.capacity = capacity;
+        this.park = park;
         this.open = true;
     }
 
@@ -42,6 +44,15 @@ public class Paddock {
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
+    }
+
+
+    public Park getPark() {
+        return park;
+    }
+
+    public void setPark(Park park) {
+        this.park = park;
     }
 
     public boolean isOpen() {
