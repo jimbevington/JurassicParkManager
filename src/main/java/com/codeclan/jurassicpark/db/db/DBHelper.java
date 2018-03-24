@@ -10,6 +10,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DBHelper {
@@ -96,8 +97,9 @@ public class DBHelper {
 
 //    if both conditions true, add Paddock to list of available
     public static List<Paddock> getAvailablePaddocks(Dinosaur dinosaur){
-        List<Paddock> availablePaddocks = null;
+        List<Paddock> availablePaddocks = new ArrayList<>();
         List<Paddock> allPaddocks = getAll(Paddock.class);
+//        should remove dinosaurs current paddock from here
 
         boolean spaceInPaddock;
         boolean dinoCond;
@@ -109,7 +111,7 @@ public class DBHelper {
 
             Dinosaur firstDino = null;
 //            set this if paddock not empty
-            if (dinoCount == 0){
+            if (dinoCount != 0){
               firstDino = getPaddocksDinosaurs(paddock).get(0); // might cause issue
             }
 
