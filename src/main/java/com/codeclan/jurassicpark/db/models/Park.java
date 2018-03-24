@@ -1,6 +1,7 @@
 package com.codeclan.jurassicpark.db.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -18,7 +19,7 @@ public class Park {
 
     public Park(String name) {
         this.name = name;
-        this.paddocks = paddocks;
+        List<Paddock> paddocks = new ArrayList<>();
     }
 
     @Id
@@ -48,6 +49,10 @@ public class Park {
 
     public void setPaddocks(List<Paddock> paddocks) {
         this.paddocks = paddocks;
+    }
+
+    public void addPaddock(Paddock paddock){
+        paddocks.add(paddock);
     }
 
 //  public void openPark(){
@@ -99,18 +104,18 @@ public class Park {
       }
     }
 
-  public void feedDino(int paddockId, int dinoId){
-        for(Paddock paddock : paddocks){
-            if(paddock.getId() == paddockId){
-                Set<Dinosaur> dinos = paddock.getDinosaurs();
-                for(Dinosaur dinosaur : dinos){
-                    if(dinosaur.getClass() == Carnivore.class && Carnivore carnivore.getId() == dinoId){
-                        carnivore.getFed();
-                    }
-                }
-            }
-        }
-    }
+//  public void feedDino(int paddockId, int dinoId){
+//        for(Paddock paddock : paddocks){
+//            if(paddock.getId() == paddockId){
+//                Set<Dinosaur> dinos = paddock.getDinosaurs();
+//                for(Dinosaur dinosaur : dinos){
+//                    if(dinosaur.getClass() == Carnivore.class && dinosaur.getId() == dinoId){
+//                        dinosaur.getFed();
+//                    }
+//                }
+//            }
+//        }
+//    }
 
 
   }

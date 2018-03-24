@@ -1,5 +1,8 @@
 import com.codeclan.jurassicpark.db.models.*;
 import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class TestPark {
 
@@ -21,9 +24,16 @@ public class TestPark {
         herbivore1 = new Herbivore(SpeciesType.BRACHIOSAURUS, "Betty", 20, 50, paddock1);
         herbivore2 = new Herbivore(SpeciesType.TRICERATOPS, "Robin", 20, 50, paddock1);
         park = new Park("Jurassic park");
-        paddock1.getDinosaurs().add(carnivore1);
-        paddock2.getDinosaurs().add(carnivore2);
-        park.getPaddocks().add(paddock1);
-        park.getPaddocks().add(paddock2);
+        park.addPaddock(paddock1);
+        park.addPaddock(paddock2);
+    }
+
+    @Test
+    public void testParkHasPaddocks() {
+        assertEquals(2, park.getPaddocks().size());
+    }
+
+    @Test
+    public void testCanMoveDino() {
     }
 }
