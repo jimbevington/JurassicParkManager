@@ -3,6 +3,8 @@ package com.codeclan.jurassicpark.db;
 import com.codeclan.jurassicpark.db.db.DBHelper;
 import com.codeclan.jurassicpark.db.models.*;
 
+import java.util.List;
+
 public class Runner {
 
     public static void main(String[] args) {
@@ -37,6 +39,10 @@ public class Runner {
         Herbivore herbivore4 = new Herbivore(SpeciesType.TRICERATOPS, "Thomas", 42, 80, paddock4);
         DBHelper.saveOrUpdate(herbivore4);
 
+        List<Herbivore> foundHerbivores = DBHelper.getAll(Herbivore.class);
+        List<Carnivore> foundCarnivores = DBHelper.getAll(Carnivore.class);
+        List<Dinosaur> foundDinosaurs = DBHelper.getAll(Dinosaur.class);
+        List<Paddock> foundPaddocks = DBHelper.getAll(Paddock.class);
 
     }
 
