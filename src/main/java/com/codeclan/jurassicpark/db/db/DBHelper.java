@@ -68,8 +68,15 @@ public class DBHelper {
         return results;
     }
 
-
 //    find
+    public static <T> T find(Class classType, int id){
+        session = HibernateUtil.getSessionFactory().openSession();
+        T result = null;
+        Criteria criteria = session.createCriteria(classType);
+        criteria.add(Restrictions.idEq(id));
+        result = getUnique(criteria);
+        return result;
+    }
 
 //    getPaddockDinosaurs
 
