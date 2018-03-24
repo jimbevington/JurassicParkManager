@@ -81,7 +81,7 @@ public class Park {
       for(Paddock paddock : paddocks) {
         if(paddock.getId() == paddockId){
             Set<Dinosaur> occupants;
-            if(occupants.isEmpty()){
+            if(occupants.size() = 0){
                 occupants.add(dino);
             }else{
                 for(Dinosaur dinosaur : occupants){
@@ -106,10 +106,12 @@ public class Park {
                     if(dinosaur.getClass() == Carnivore.class && Carnivore carnivore.getId() == dinoId){
                         carnivore.getFed();
                     }
-                    }
                 }
             }
         }
+    }
+
+
   }
 
 //  public void parkStatus(){}
