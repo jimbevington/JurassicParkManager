@@ -60,6 +60,13 @@ public class DBHelper {
     }
 
 //    getAll
+    public static <T> List<T> getAll(Class classType){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<T> results = null;
+        Criteria criteria = session.createCriteria(classType);
+        results = getList(criteria);
+        return results;
+    }
 
 
 //    find
