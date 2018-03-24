@@ -37,4 +37,9 @@ public class TestDinosaur {
     public void testCanReturnSpecies() {
         assertEquals("velociraptor", carnivore.getSpecies().toString().toLowerCase());
     }
+
+    @Test
+    public void testCanIncreaseHunger() {
+        assertEquals(1, carnivore.increaseHunger());
+    }
 }
