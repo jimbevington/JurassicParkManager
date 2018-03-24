@@ -1,6 +1,7 @@
 package com.codeclan.jurassicpark.db.models;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -80,8 +81,8 @@ public class Park {
   public void moveDino(int paddockId, Dinosaur dino){
       for(Paddock paddock : paddocks) {
         if(paddock.getId() == paddockId){
-            Set<Dinosaur> occupants;
-            if(occupants.size() = 0){
+            Set<Dinosaur> occupants = new HashSet<Dinosaur>();
+            if(occupants.size() == 0){
                 occupants.add(dino);
             }else{
                 for(Dinosaur dinosaur : occupants){
