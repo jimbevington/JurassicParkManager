@@ -77,15 +77,35 @@ public class Park {
 //        }
 //  }
 
-//  public void moveDino(){}
+  public void moveDino(int paddockId, Dinosaur dino){
+      for(Paddock paddock : paddocks) {
+        if(paddock.getId() == paddockId){
+            Set<Dinosaur> occupants;
+            if(occupants.isEmpty()){
+                occupants.add(dino);
+            }else{
+                for(Dinosaur dinosaur : occupants){
+                    if(dinosaur.getClass() == Herbivore.class && dino.getClass() == Herbivore.class){
+                        occupants.add(dino);
+                    }else{
+                        if(dinosaur.getClass() == Carnivore.class && dino.getSpecies() == dinosaur.getSpecies()){
+                            occupants.add(dino);
+                        }
+                    }
+                }
+            }
+        }
+      }
+    }
 
   public void feedDino(int paddockId, int dinoId){
         for(Paddock paddock : paddocks){
             if(paddock.getId() == paddockId){
                 Set<Dinosaur> dinos = paddock.getDinosaurs();
-                for(Carnivore carnivore : dinos){
-                    if(carnivore.getId() == dinoId){
+                for(Dinosaur dinosaur : dinos){
+                    if(dinosaur.getClass() == Carnivore.class && Carnivore carnivore.getId() == dinoId){
                         carnivore.getFed();
+                    }
                     }
                 }
             }
@@ -94,4 +114,3 @@ public class Park {
 
 //  public void parkStatus(){}
 
-}
