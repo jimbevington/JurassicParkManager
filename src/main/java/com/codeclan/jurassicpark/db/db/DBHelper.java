@@ -61,11 +61,27 @@ public class DBHelper {
 
 //    getAll
 
+
 //    find
 
 //    getPaddockDinosaurs
 
 //    getList
+    public static <T> List<T> getList(Criteria criteria){
+        List<T> results = null;
+        try {
+            transaction = session.beginTransaction();
+            results = criteria.list();
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return results;
+    }
+
 //    getUnique
 
 
