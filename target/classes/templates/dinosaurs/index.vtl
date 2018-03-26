@@ -19,7 +19,11 @@
         <td>$dinosaur.getAge()</td>
         <td>$dinosaur.getDanger()</td>
         <td>$dinosaur.getPaddock().getName()</td>
-        <td>christie</td>
+        <td>#if(${dinosaur.class.simpleName} == "Carnivore")
+        $dinosaur.getHunger()
+            #else
+            null
+        #end</td>
         <td>christie</td>
     </tr>
     #end
