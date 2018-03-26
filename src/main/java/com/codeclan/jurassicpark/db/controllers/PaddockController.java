@@ -108,6 +108,21 @@ public class PaddockController {
 
         }, new VelocityTemplateEngine());
 
+        post("/paddocks/:id/add-dino", (req, res) -> {
+
+            Integer paddockId = Integer.parseInt(req.params(":id"));
+            Paddock paddock = DBHelper.find(Paddock.class, paddockId);
+
+            int dinoId = Integer.parseInt(req.queryParams("dinoId"));
+            Dinosaur dinosaur = DBHelper.find(Dinosaur.class, dinoId);
+
+            dinosaur.setPaddock(paddock);
+            DBHelper.saveOrUpdate(dinosaur);
+
+            res.redirect("/paddocks/" + paddockId.toString());
+            return null;
+
+        }, new VelocityTemplateEngine());
     }
 
 
