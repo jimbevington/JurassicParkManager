@@ -44,50 +44,32 @@ public class DinosaurController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-//        get("/dinosaurs/:id/move", (req, res)->{
-//            String stringId = req.params(":id");
-//            Integer intId = Integer.parseInt(stringId);
-//            Dinosaur tobemoved = DBHelper.find(Dinosaur.class, intId);
-//            List<Paddock> paddocks = DBDinosaur.getAvailablePaddocks(tobemoved);
-//            Map<String, Object> model = new HashMap<>();
-//            model.put("tobemoved", tobemoved);
-//            model.put("template", "templates/dinosaurs/move.vtl");
-//            return new ModelAndView(model, "templates/layout.vtl");
-//        });
-
-        get("/dinosaurs/:id/move", (req, res) -> {
+        get("/dinosaurs/:id/move", (req, res)->{
             String stringId = req.params(":id");
             Integer intId = Integer.parseInt(stringId);
             Dinosaur tobemoved = DBHelper.find(Dinosaur.class, intId);
-            List<Paddock> availablepaddocks = DBDinosaur.getAvailablePaddocks(tobemoved);
+            List<Paddock> paddocks = DBDinosaur.getAvailablePaddocks(tobemoved);
             Map<String, Object> model = new HashMap<>();
-            model.put("availablepaddocks", availablepaddocks);
-            model.put("template", "templates/dinosaurs/move.vtl");
             model.put("dinosaur", tobemoved);
+            model.put("paddocks", paddocks);
+            model.put("template", "templates/dinosaurs/move.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-        post ("/dinosaurs", (req, res) -> {
-            String strId = req.params(":id");
-            Integer intId = Integer.parseInt(strId);
-            Dinosaur dinosaur = DBHelper.find(Dinosaur.class, intId);
-            int paddockId = Integer.parseInt(req.queryParams("paddock"));
+        post("/dinosaurs/:id", (req, res)->{
+            String stringId = req.params(":id");
+            Integer intId = Integer.parseInt(stringId);
+            Dinosaur tobemoved = DBHelper.find(Dinosaur.class, intId);
+            Integer paddockId = Integer.parseInt(req.queryParams("paddock"));
             Paddock paddock = DBHelper.find(Paddock.class, paddockId);
-//            SpeciesType species = req.queryParams("species");
-            String name = req.queryParams("name");
-            int age = Integer.parseInt(req.queryParams("age"));
-            int danger = Integer.parseInt(req.queryParams("danger"));
-
-//            dinosaur.setSpecies(species);
-            dinosaur.setName(name);
-            dinosaur.setPaddock(paddock);
-            dinosaur.setAge(age);
-            dinosaur.setDanger(danger);
-            DBHelper.saveOrUpdate(dinosaur);
+            tobemoved.setPaddock(paddock);
+            DBHelper.saveOrUpdate(tobemoved);
             res.redirect("/dinosaurs");
             return null;
-
         }, new VelocityTemplateEngine());
+
+
+
 
         post ("/dinosaurs/:id/remove", (req, res) -> {
             int intId = Integer.parseInt(req.params(":id"));

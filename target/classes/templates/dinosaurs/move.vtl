@@ -1,0 +1,15 @@
+<h1>MOVE DINO</h1>
+
+<form action="/dinosaurs/$dinosaur.getId()" method="post">
+
+    <label for="paddocks">Paddock To Move To:</label>
+    <select id="paddocks" name="paddock">
+        #foreach( $paddock in $paddocks )
+        <option value="$paddock.getId()"
+                selected="selected">
+            $paddock.getName()</option>
+        #end
+    </select>
+
+    <input type="submit" value="Move Dinosaur"/>
+</form>

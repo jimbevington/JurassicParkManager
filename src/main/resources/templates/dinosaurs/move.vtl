@@ -1,29 +1,15 @@
-<p class="pageHeader">Update Dinosaur</p>
+<h1>MOVE DINO</h1>
 
 <form action="/dinosaurs/$dinosaur.getId()" method="post">
-    <label for="species">:</label>
-    <input class="inputbox" type="text" name="species" required="true" value="$dinosaur.getSpecies().getSpecies()">
 
-    <label for="name">Name:</label>
-    <input class="inputbox" type="text" name="name" required="true" value="$dinosaur.getName()">
-
-    <label for="paddock">Paddock:</label>
-    <select id="paddock" name="paddock">
+    <label for="paddocks">Paddock To Move To:</label>
+    <select id="paddocks" name="paddock">
         #foreach( $paddock in $paddocks )
         <option value="$paddock.getId()"
-                #if ($paddock.getId() == $dinosaur.getpaddock().getId())
-                selected="selected"
-                #end>
+                selected="selected">
             $paddock.getName()</option>
         #end
     </select>
 
-    <label for="age">Age:</label>
-    <input type="number" name="age" required="true" class="inputbox" value="$dinosaur.getAge()">
-
-    <label for="danger">Danger level:</label>
-    <input type="number" name="danger" required="true" class="inputbox" value="$dinosaur.getDanger()">
-
-    <input type="submit" value="Save" class="button">
+    <input type="submit" value="Move Dinosaur"/>
 </form>
-<a href="/dinosaurs" class="button center">Cancel</a>
