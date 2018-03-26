@@ -20,10 +20,10 @@ public class LoginController {
 
         post("/login", (req, res) -> {
 
-            String username = req.queryParams("username");
+            String user = req.queryParams("user");
 
             //  start the session Server-Side, add username attribute
-            req.session().attribute("username", username);
+            req.session().attribute("user", user);
 
             res.redirect("/");
             return null;
@@ -38,6 +38,7 @@ public class LoginController {
 
         }, new VelocityTemplateEngine());
 
+
         get("/logout", (req, res) -> {
 
             req.session().removeAttribute("username");
@@ -50,13 +51,13 @@ public class LoginController {
 
     public static String getLoggedInUsername(Request req, Response res){
 
-        String username = req.session().attribute("username");
+        String user = req.session().attribute("user");
 
-        if (username == null || username.isEmpty()){
+        if (user == null || user.isEmpty()){
             res.redirect("/login");
         }
 
-        return username;
+        return user;
     }
 
 

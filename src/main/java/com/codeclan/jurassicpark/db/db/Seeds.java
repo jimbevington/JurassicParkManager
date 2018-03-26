@@ -1,5 +1,6 @@
 package com.codeclan.jurassicpark.db.db;
 
+
 import com.codeclan.jurassicpark.db.models.*;
 
 public class Seeds {
@@ -7,6 +8,8 @@ public class Seeds {
     public static void seedData(){
         DBHelper.deleteAll(Carnivore.class);
         DBHelper.deleteAll(Herbivore.class);
+        DBHelper.deleteAll(Paddock.class);
+        DBHelper.deleteAll(Park.class);
 
         Park park = new Park("Jurassic Park");
         DBHelper.saveOrUpdate(park);
