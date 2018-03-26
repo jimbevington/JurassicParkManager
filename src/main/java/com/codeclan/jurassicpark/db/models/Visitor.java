@@ -38,7 +38,7 @@ public class Visitor {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="paddock_id")
+    @JoinColumn(name="paddock")
     public Paddock getPaddock() {
         return paddock;
     }

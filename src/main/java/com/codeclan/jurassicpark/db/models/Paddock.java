@@ -16,7 +16,7 @@ public class Paddock {
     private Park park;
     private boolean open;
     private Set<Dinosaur> dinosaurs;
-    private List<Visitor> visitors;
+    private Set<Visitor> visitors;
 
     public Paddock() {
     }
@@ -26,7 +26,7 @@ public class Paddock {
         this.capacity = capacity;
         this.park = park;
         this.open = true;
-        this.visitors = new ArrayList<>();
+        this.visitors = new HashSet<>();
     }
 
     @Id
@@ -93,11 +93,11 @@ public class Paddock {
     }
 
     @OneToMany(mappedBy = "paddock", fetch = FetchType.EAGER)
-    public List<Visitor> getVisitors() {
+    public Set<Visitor> getVisitors() {
         return visitors;
     }
 
-    public void setVisitors(List<Visitor> visitors) {
+    public void setVisitors(Set<Visitor> visitors) {
         this.visitors = visitors;
     }
 

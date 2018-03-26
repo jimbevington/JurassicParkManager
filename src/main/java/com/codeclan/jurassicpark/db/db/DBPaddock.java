@@ -93,8 +93,11 @@ public class DBPaddock {
 
     }
 
-    public void addVisitorToPaddock(Visitor visitor, Paddock paddock){
+    public static void addVisitorToPaddock(Visitor visitor, Paddock paddock){
+//        Visitor visitor = DBHelper.find(Visitor.class, visitorId);
+//        Paddock paddock = DBHelper.find(Paddock.class, paddockId);
         paddock.addVisitor(visitor);
+        visitor.setPaddock(paddock);
         DBHelper.saveOrUpdate(visitor);
         DBHelper.saveOrUpdate(paddock);
     }
