@@ -1,10 +1,13 @@
 package com.codeclan.jurassicpark.db.controllers;
 
+import com.codeclan.jurassicpark.db.db.DBDinosaur;
 import com.codeclan.jurassicpark.db.db.DBHelper;
+import com.codeclan.jurassicpark.db.db.DBPaddock;
 import com.codeclan.jurassicpark.db.models.Paddock;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +29,6 @@ public class PaddockController {
 
             List<Paddock> paddocks = DBHelper.getAll(Paddock.class);
             model.put("paddocks", paddocks);
-
 
             return new ModelAndView(model, "templates/layout.vtl");
 
