@@ -1,6 +1,5 @@
-package com.codeclan.jurassicpark.db;
+package com.codeclan.jurassicpark.db.db;
 
-import com.codeclan.jurassicpark.db.db.DBHelper;
 import com.codeclan.jurassicpark.db.models.*;
 
 
