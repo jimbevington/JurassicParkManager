@@ -9,12 +9,12 @@
 
         #foreach($paddock in $paddocks)
 
-
         <tr>
             <td>$paddock.getId()</td>
             <td>$paddock.getName()</td>
-            <td>jim</td>
-            <td>jim</td>
+            <td>show Dino Count</td>
+            <td>show Paddock Secure</td>
+            <td class="button"><a href="/paddocks/$paddock.getId()">View</a></td>
         </tr>
         #end
 
