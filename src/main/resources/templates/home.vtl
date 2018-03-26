@@ -1,21 +1,35 @@
-<p>test home</p>
+<h1>Welcome to Jurassic Park!</h1>
 
-<!--<div class="container">-->
-    <!--<table>-->
-        <!--<tr>-->
-            <!--<th>ID</th>-->
-            <!--<th>Name</th>-->
-            <!--<th>Dinosaur Count</th>-->
-            <!--<th>Status</th>-->
-        <!--</tr>-->
+<h2>Paddock Status</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>DinoCount</th>
+        <th>Secure</th>
+    </tr>
 
-        <!--&lt;!&ndash;#foreach($paddock in $paddocks)&ndash;&gt;-->
-        <!--&lt;!&ndash;<tr>&ndash;&gt;-->
-            <!--&lt;!&ndash;<td>$paddock.getId()</td>&ndash;&gt;-->
-            <!--&lt;!&ndash;<td>$paddock.getName()</td>&ndash;&gt;-->
-            <!--&lt;!&ndash;&lt;!&ndash;<td>$paddock.getDinosaurs().size()</td>&ndash;&gt;&ndash;&gt;-->
-            <!--&lt;!&ndash;<td>isSecure</td>&ndash;&gt;-->
-        <!--&lt;!&ndash;</tr>&ndash;&gt;-->
-        <!--&lt;!&ndash;#end&ndash;&gt;-->
-    <!--</table>-->
-<!--</div>-->
+    #foreach($paddock in $paddocks)
+
+    <tr>
+        <td>$paddock.getId()</td>
+        <td><a class="button" href="/paddocks/$paddock.getId()">$paddock.getName()</a></td>
+        <td>show Dino Count</td>
+        <td>show Paddock Secure</td>
+    </tr>
+    #end
+
+</table>
+
+<table>
+    <tr><th>ALERTS</th></tr>
+    <tr>
+        <th>ID</th>
+        <th>Species</th>
+        <th>Name</th>
+        <th>Paddock #</th>
+        <th>Alert</th>
+    </tr>
+</table>
+
+<h3>Park Statistics</h3>

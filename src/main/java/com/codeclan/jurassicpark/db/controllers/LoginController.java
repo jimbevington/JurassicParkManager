@@ -18,23 +18,22 @@ public class LoginController {
 
     private void setupEndpoints() {
 
-        post("/login", (req, res) -> {
-
-            String user = req.queryParams("user");
-
-            //  start the session Server-Side, add username attribute
-            req.session().attribute("user", user);
-
-            res.redirect("/");
-            return null;
-
-        }, new VelocityTemplateEngine());
-
-
         get("/login", (req, res) -> {
 
             HashMap<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "templates/login.vtl");
+
+        }, new VelocityTemplateEngine());
+
+        post("/login", (req, res) -> {
+
+            String username = req.queryParams("username");
+
+            //  start the session Server-Side, add username attribute
+            req.session().attribute("username", username);
+
+            res.redirect("/");
+            return null;
 
         }, new VelocityTemplateEngine());
 
@@ -43,21 +42,21 @@ public class LoginController {
 
             req.session().removeAttribute("username");
             res.redirect("/");
-
             return null;
+
         }, new VelocityTemplateEngine());
 
     }
 
     public static String getLoggedInUsername(Request req, Response res){
 
-        String user = req.session().attribute("user");
+        String username = req.session().attribute("username");
 
-        if (user == null || user.isEmpty()){
+        if (username == null || username.isEmpty()){
             res.redirect("/login");
         }
 
-        return user;
+        return username;
     }
 
 
