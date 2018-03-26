@@ -4,6 +4,7 @@ import com.codeclan.jurassicpark.db.db.DBDinosaur;
 import com.codeclan.jurassicpark.db.db.DBHelper;
 import com.codeclan.jurassicpark.db.models.Carnivore;
 import com.codeclan.jurassicpark.db.models.Dinosaur;
+import com.codeclan.jurassicpark.db.models.Paddock;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -40,5 +41,16 @@ public class DinosaurController {
             model.put("template", "templates/dinosaurs/feed.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
+        get("/dinosaurs/:id/move", (req, res)->{
+            String stringId = req.params(":id");
+            Integer intId = Integer.parseInt(stringId);
+            Dinosaur tobemoved = DBHelper.find(Dinosaur.class, intId);
+            List<Paddock> paddocks = DBDinosaur.getAvailablePaddocks(tobemoved);
+            Map<String, Object> model = new HashMap<>();
+            model.put("tobemoved", tobemoved);
+            model.put("template", "templates/dinosaurs/move.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        });
     }
 }
