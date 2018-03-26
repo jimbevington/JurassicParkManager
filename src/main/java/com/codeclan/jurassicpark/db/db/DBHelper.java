@@ -143,6 +143,7 @@ public class DBHelper {
 
 //    getList
     public static <T> List<T> getList(Criteria criteria){
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);   // remove duplicates
         List<T> results = null;
         try {
             transaction = session.beginTransaction();
