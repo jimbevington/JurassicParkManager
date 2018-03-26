@@ -92,7 +92,37 @@ public class PaddockController {
         }, new VelocityTemplateEngine());
 
 //    add Dinosaurs
+        get("/paddocks/:id/add-dino", (req, res) -> {
 
+            Map<String, Object> model = new HashMap<>();
+            model.put("template", "templates/paddocks/add-dino.vtl");
+
+            int paddockId = Integer.parseInt(req.params(":id"));
+            Paddock paddock = DBHelper.find(Paddock.class, paddockId);
+            model.put("paddock", paddock);
+
+            List<Dinosaur> dinosaurs = DBPaddock.getAvailableDinosaurs(paddock);
+            model.put("dinosaurs", dinosaurs);
+
+            return new ModelAndView(model, "templates/layout.vtl");
+
+        }, new VelocityTemplateEngine());
+
+        post("/paddocks/:id/add-dino", (req, res) -> {
+
+            Integer paddockId = Integer.parseInt(req.params(":id"));
+            Paddock paddock = DBHelper.find(Paddock.class, paddockId);
+
+            int dinoId = Integer.parseInt(req.queryParams("dinoId"));
+            Dinosaur dinosaur = DBHelper.find(Dinosaur.class, dinoId);
+
+            dinosaur.setPaddock(paddock);
+            DBHelper.saveOrUpdate(dinosaur);
+
+            res.redirect("/paddocks/" + paddockId.toString());
+            return null;
+
+        }, new VelocityTemplateEngine());
     }
 
 
