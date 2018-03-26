@@ -24,6 +24,21 @@ public class PaddockController {
 
     private void setupEndpoints() {
 
+        //    update Paddock
+
+        get("/paddocks/:id/edit", (req, res) -> {
+
+            Map<String, Object> model = new HashMap<>();
+            model.put("template", "templates/paddocks/edit.vtl");
+
+            int paddockId = Integer.parseInt(req.params(":id"));
+            Paddock paddock = DBHelper.find(Paddock.class, paddockId);
+            model.put("paddock", paddock);
+
+            return new ModelAndView(model, "templates/layout.vtl");
+
+        }, new VelocityTemplateEngine());
+
         get("/paddocks", (req, res) -> {
 
             Map<String, Object> model = new HashMap<>();
@@ -54,7 +69,8 @@ public class PaddockController {
 
         }, new VelocityTemplateEngine());
 
-//    update Paddock
+
+
 //    add Dinosaurs
 
     }
