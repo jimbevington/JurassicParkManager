@@ -53,5 +53,14 @@ public class Seeds {
 
         Herbivore herbivore4 = new Herbivore(SpeciesType.TRICERATOPS, "Thomas", 42, 80, paddock4);
         DBHelper.saveOrUpdate(herbivore4);
+
+        Visitor visitor1 = new Visitor("Alan Grant");
+        DBHelper.saveOrUpdate(visitor1);
+        Visitor visitor2 = new Visitor("Ellie Satler");
+        DBHelper.saveOrUpdate(visitor2);
+        Visitor visitor3 = new Visitor("Ian Malcolm");
+        DBHelper.saveOrUpdate(visitor3);
+        Visitor visitor4 = new Visitor("Donald Gennaro");
+        DBHelper.saveOrUpdate(visitor4);
     }
 }
