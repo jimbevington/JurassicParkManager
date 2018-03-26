@@ -1,8 +1,10 @@
 package com.codeclan.jurassicpark.db.db;
 
+import com.codeclan.jurassicpark.db.models.Carnivore;
 import com.codeclan.jurassicpark.db.models.Dinosaur;
 import com.codeclan.jurassicpark.db.models.Herbivore;
 import com.codeclan.jurassicpark.db.models.Paddock;
+import org.apache.commons.lang.ArrayUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -95,6 +97,17 @@ public class DBDinosaur {
         }
 
         return result;
+    }
+
+    public static List<Dinosaur> listAll(){
+        List<Carnivore> carnivores = DBHelper.getAll(Carnivore.class);
+        List<Herbivore> herbivores = DBHelper.getAll(Herbivore.class);
+
+        List<Dinosaur> dinosaurs = new ArrayList<>();
+        dinosaurs.addAll(carnivores);
+        dinosaurs.addAll(herbivores);
+
+        return dinosaurs;
     }
 
 
