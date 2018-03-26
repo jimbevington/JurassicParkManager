@@ -18,7 +18,7 @@
     #foreach($dinosaur in $dinosaurs)
     <tr>
         <td>$dinosaur.getId()</td>
-        <td>$dinosaur.getSpecies()</td>
+        <td>$dinosaur.getSpecies().getSpecies()</td>
         <td>$dinosaur.getName()</td>
         <td>$dinosaur.getAge()</td>
         <td>$dinosaur.getDanger()</td>
