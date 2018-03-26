@@ -36,6 +36,11 @@
 
 </table>
 
+<h3>Visitors</h3>
+
+#if ($visitors.size() == 0)
+<h5 class="italic">No Visitors</h5>
+#else
 <table>
 
     <tr>
@@ -51,3 +56,4 @@
     #end
 
 </table>
+#end
