@@ -1,6 +1,8 @@
 package com.codeclan.jurassicpark.db.controllers;
 
 import com.codeclan.jurassicpark.db.db.DBDinosaur;
+import com.codeclan.jurassicpark.db.db.DBHelper;
+import com.codeclan.jurassicpark.db.models.Carnivore;
 import com.codeclan.jurassicpark.db.models.Dinosaur;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
@@ -27,10 +29,15 @@ public class DinosaurController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-        get("/dinosaurs/:id/feed", (req, res)->{
-            String stringID = (req.params(stringID)
-
-
+        get("/dinosaurs/:id/feed", (req, res) -> {
+            String stringId = req.params(":id");
+            Integer intId = Integer.parseInt(stringId);
+            Carnivore hungrydino = DBHelper.find(Carnivore.class, intId);
+            hungrydino.getFed();
+            Map<String, Object> model = new HashMap<>();
+            model.put("hungrydino", hungrydino);
+            model.put("template", "templates/dinosaurs/feed.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
     }
 }
