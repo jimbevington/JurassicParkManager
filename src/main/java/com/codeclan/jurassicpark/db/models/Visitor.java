@@ -46,4 +46,10 @@ public class Visitor {
     public void setPaddock(Paddock paddock) {
         this.paddock = paddock;
     }
+
+    @Override
+    public boolean equals(Object object){
+        Visitor visitor = (Visitor) object;
+        return this.id == visitor.getId();
+    }
 }

@@ -100,4 +100,12 @@ public class Paddock {
     public void setVisitors(List<Visitor> visitors) {
         this.visitors = visitors;
     }
+
+    public void addVisitor(Visitor visitor){
+        this.visitors.add(visitor);
+    }
+
+    public void removeVisitor(Visitor visitor){
+        this.visitors.remove(visitor);
+    }
 }
