@@ -99,6 +99,8 @@ public class PaddockController {
 
             int paddockId = Integer.parseInt(req.params(":id"));
             Paddock paddock = DBHelper.find(Paddock.class, paddockId);
+            model.put("paddock", paddock);
+
             List<Dinosaur> dinosaurs = DBPaddock.getAvailableDinosaurs(paddock);
             model.put("dinosaurs", dinosaurs);
 
