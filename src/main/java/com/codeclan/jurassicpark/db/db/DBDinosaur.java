@@ -1,13 +1,9 @@
 package com.codeclan.jurassicpark.db.db;
 
-import com.codeclan.jurassicpark.db.models.Carnivore;
-import com.codeclan.jurassicpark.db.models.Dinosaur;
-import com.codeclan.jurassicpark.db.models.Herbivore;
-import com.codeclan.jurassicpark.db.models.Paddock;
+import com.codeclan.jurassicpark.db.models.*;
 import org.apache.commons.lang.ArrayUtils;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class DBDinosaur {
 
@@ -110,5 +106,10 @@ public class DBDinosaur {
         return dinosaurs;
     }
 
+////    public static String species(Dinosaur dinosaur){
+////        Set<SpeciesType> speciesTypes = new HashSet<>();
+////
+////        }
+//    }
 
 }
