@@ -26,5 +26,11 @@ public class DinosaurController {
             model.put("template", "templates/dinosaurs/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
+        get("/dinosaurs/:id/feed", (req, res)->{
+            String stringID = (req.params(stringID)
+
+
+        }, new VelocityTemplateEngine());
     }
 }
