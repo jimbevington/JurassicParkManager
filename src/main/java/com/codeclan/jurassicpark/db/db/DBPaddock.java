@@ -1,9 +1,6 @@
 package com.codeclan.jurassicpark.db.db;
 
-import com.codeclan.jurassicpark.db.models.Carnivore;
-import com.codeclan.jurassicpark.db.models.Dinosaur;
-import com.codeclan.jurassicpark.db.models.Herbivore;
-import com.codeclan.jurassicpark.db.models.Paddock;
+import com.codeclan.jurassicpark.db.models.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,6 +91,12 @@ public class DBPaddock {
         List<Dinosaur> dinosaurs = DBHelper.getPaddocksDinosaurs(paddock);
         return dinosaurs.size() < paddock.getCapacity();
 
+    }
+
+    public void addVisitorToPaddock(Visitor visitor, Paddock paddock){
+        paddock.addVisitor(visitor);
+        DBHelper.saveOrUpdate(visitor);
+        DBHelper.saveOrUpdate(paddock);
     }
 
 }
