@@ -1,2 +1,28 @@
 <h2>View Paddock:</h2>
-<h1>$paddock.getId() - $paddock.getName()</h1>
+<h1>$paddock.getId(). $paddock.getName()</h1>
+
+<h3>Dinosaurs</h3>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Species</th>
+        <th>Name</th>
+        <th>Danger</th>
+        <th>Health</th>
+        <th>Hunger</th>
+        <th>Secure</th>
+    </tr>
+
+    #foreach ($dinosaur in $dinosaurs)
+    <tr>
+        <td>$dinosaur.getId()</td>
+        <td>$dinosaur.getSpeciesType()</td>
+        <td>$dinosaur.getName()</td>
+        <td>$dinosaur.getDanger()</td>
+        <td>$dinosaur.getHealth()</td>
+        <td></td>
+        <td>$dinosaur.getSecure()</td>
+    </tr>
+
+</table>

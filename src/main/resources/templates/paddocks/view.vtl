@@ -14,5 +14,15 @@
         <th>Secure</th>
     </tr>
 
+    #foreach ($dinosaur in $dinosaurs)
+    <tr>
+        <td>$dinosaur.getId()</td>
+        <td>$dinosaur.getSpeciesType()</td>
+        <td>$dinosaur.getName()</td>
+        <td>$dinosaur.getDanger()</td>
+        <td>$dinosaur.getHealth()</td>
+        <td></td>
+        <td>$dinosaur.getSecure()</td>
+    </tr>
 
 </table>

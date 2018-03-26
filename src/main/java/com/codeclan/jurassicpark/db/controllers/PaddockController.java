@@ -3,6 +3,7 @@ package com.codeclan.jurassicpark.db.controllers;
 import com.codeclan.jurassicpark.db.db.DBDinosaur;
 import com.codeclan.jurassicpark.db.db.DBHelper;
 import com.codeclan.jurassicpark.db.db.DBPaddock;
+import com.codeclan.jurassicpark.db.models.Dinosaur;
 import com.codeclan.jurassicpark.db.models.Paddock;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import spark.ModelAndView;
@@ -39,13 +40,15 @@ public class PaddockController {
         //    view Paddock with Details
         get("/paddocks/:id", (req, res) -> {
 
-            int paddockId = Integer.parseInt(req.params(":id"));
-            Paddock paddock = DBHelper.find(Paddock.class, paddockId);
-
             Map<String, Object> model = new HashMap<>();
             model.put("template", "templates/paddocks/view.vtl");
 
+            int paddockId = Integer.parseInt(req.params(":id"));
+            Paddock paddock = DBHelper.find(Paddock.class, paddockId);
             model.put("paddock", paddock);
+
+            List<Dinosaur> dinosaurs = DBHelper.getPaddocksDinosaurs(paddock);
+            model.put("dinosaurs", dinosaurs);
 
             return new ModelAndView(model, "templates/layout.vtl");
 
