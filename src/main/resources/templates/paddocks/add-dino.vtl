@@ -6,6 +6,9 @@
 
 <h3>Dinosaurs</h3>
 
+#if ($dinosaurs.size() == 0)
+<h5 class="italic">No Dinosaurs available for this Paddock</h5>
+#else
 <table>
     <tr>
         <th>ID</th>
@@ -28,5 +31,7 @@
         </td>
     </tr>
     #end
+
+#end
 
 </table>
