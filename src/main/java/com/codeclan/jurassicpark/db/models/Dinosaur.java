@@ -1,6 +1,10 @@
 package com.codeclan.jurassicpark.db.models;
 
+import com.codeclan.jurassicpark.db.db.DBHelper;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -93,4 +97,7 @@ public abstract class Dinosaur {
     public void setSecure(boolean secure) {
         this.secure = secure;
     }
+
+
+
 }
