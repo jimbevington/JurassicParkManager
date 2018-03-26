@@ -15,6 +15,38 @@ public class DBPaddock {
         return dinosaurs.size();
     }
 
+    public static String getDinoType(Paddock paddock){
+        List<Dinosaur> dinosaurs = DBHelper.getPaddocksDinosaurs(paddock);
+
+        String result = "empty";
+
+        if (!paddockEmpty(paddock)){
+
+            Dinosaur firstDino = dinosaurs.get(0);
+
+            if (firstDino instanceof Carnivore){
+                result = "carnivore";
+            } else {
+                result = "herbivore";
+            }
+
+        }
+
+        return result;
+    }
+
+    private static boolean paddockEmpty(Paddock paddock) {
+
+        List<Dinosaur> dinosaurs = DBHelper.getPaddocksDinosaurs(paddock);
+        boolean result = false;
+
+        if (dinosaurs.size() == 0){
+            result = true;
+        }
+
+        return result;
+    }
+
     public static List<Dinosaur> getAvailableDinosaurs(Paddock paddock){
 
 //        return me a list of Dinosaurs

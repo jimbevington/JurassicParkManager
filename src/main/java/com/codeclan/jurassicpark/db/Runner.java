@@ -86,7 +86,14 @@ public class Runner {
         List<Dinosaur> herbivoresAvailable = DBPaddock.getAvailableDinosaurs(foundPaddock4);
 //        should show Fluffy and Trevor T REX', not Fluffy
         List<Dinosaur> carnivoresAvailable = DBPaddock.getAvailableDinosaurs(nurseryPaddock);
+
+        String testPaddockDinoType__empty = DBPaddock.getDinoType(emptyPaddock);
+        String testPaddockDinoType__herbivore = DBPaddock.getDinoType(foundPaddock4);
+        String testPaddockDinoType__carnivore = DBPaddock.getDinoType(foundPaddock2);
+
     }
+
+
 
 }
 
