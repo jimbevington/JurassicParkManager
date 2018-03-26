@@ -107,15 +107,13 @@ public class Runner {
 //        String testPaddockDinoType__herbivore = DBPaddock.getPaddockDinoType(foundPaddock4);
 //        String testPaddockDinoType__carnivore = DBPaddock.getPaddockDinoType(foundPaddock2);
 
-//        NOT WORKING EITHER
+//        test ADD VISITOR TO PADDOCK
         DBPaddock.addVisitorToPaddock(visitor1, paddock2);
-        Set<Visitor> visitors = foundPaddock2.getVisitors();
-        Paddock visitorsPaddock = visitor1.getPaddock();
-
-        foundPaddocks = DBHelper.getAll(Paddock.class);
-
+        DBPaddock.addVisitorToPaddock(visitor2, paddock2);
         Paddock paddockWithVisitor = DBHelper.find(Paddock.class, foundPaddock2.getId());
         Visitor visitorWithPaddock = DBHelper.find(Visitor.class, visitor1.getId());
+
+        List<Visitor> paddock2Visitors = DBHelper.getPaddocksVisitors(paddock2);
 
     }
 
