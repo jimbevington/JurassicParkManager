@@ -15,7 +15,7 @@ public class DBPaddock {
         return dinosaurs.size();
     }
 
-    public static String getDinoType(Paddock paddock){
+    public static String getPaddockDinoType(Paddock paddock){
         List<Dinosaur> dinosaurs = DBHelper.getPaddocksDinosaurs(paddock);
 
         String result = "empty";
