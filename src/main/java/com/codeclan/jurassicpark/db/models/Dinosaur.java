@@ -79,7 +79,7 @@ public abstract class Dinosaur {
         this.danger = danger;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="paddock_id", nullable = false)
     public Paddock getPaddock() {
         return paddock;
