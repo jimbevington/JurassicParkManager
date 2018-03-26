@@ -16,6 +16,7 @@ public class DBPaddock {
     }
 
     public static List<Dinosaur> getAvailableDinosaurs(Paddock paddock){
+
 //        return me a list of Dinosaurs
         List<Dinosaur> availableDinosaurs = new ArrayList<>();
 
@@ -48,7 +49,6 @@ public class DBPaddock {
 
         return availableDinosaurs;
 
-//        get the Dinos in the paddock
 
     }
 

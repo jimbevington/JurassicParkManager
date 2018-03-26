@@ -98,6 +98,10 @@ public abstract class Dinosaur {
         this.secure = secure;
     }
 
-
+    @Override
+    public boolean equals(Object object){
+        Dinosaur dinosaur = (Dinosaur) object;
+        return this.id == dinosaur.getId();
+    }
 
 }
