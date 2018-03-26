@@ -29,6 +29,8 @@ public class Seeds {
 
         Carnivore carnivore1 = new Carnivore(SpeciesType.TREX, "Fluffy", 30, 70, paddock1);
         DBHelper.saveOrUpdate(carnivore1);
+        carnivore1.setHunger(6);
+        DBHelper.saveOrUpdate(carnivore1);
 
         Carnivore carnivore2 = new Carnivore(SpeciesType.VELOCIRAPTOR, "Blue", 4, 50, paddock2);
         DBHelper.saveOrUpdate(carnivore2);

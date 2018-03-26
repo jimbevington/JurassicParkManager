@@ -34,6 +34,7 @@ public class DinosaurController {
             Integer intId = Integer.parseInt(stringId);
             Carnivore hungrydino = DBHelper.find(Carnivore.class, intId);
             hungrydino.getFed();
+            DBHelper.saveOrUpdate(hungrydino);
             Map<String, Object> model = new HashMap<>();
             model.put("hungrydino", hungrydino);
             model.put("template", "templates/dinosaurs/feed.vtl");
