@@ -35,3 +35,19 @@
     #end
 
 </table>
+
+<table>
+
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+
+    #foreach($visitor in $visitors)
+    <tr>
+        <td>$visitor.getId()</td>
+        <td>$visitor.getName()</td>
+    </tr>
+    #end
+
+</table>

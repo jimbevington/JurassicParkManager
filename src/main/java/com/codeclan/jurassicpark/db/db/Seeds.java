@@ -62,5 +62,8 @@ public class Seeds {
         DBHelper.saveOrUpdate(visitor3);
         Visitor visitor4 = new Visitor("Donald Gennaro");
         DBHelper.saveOrUpdate(visitor4);
+
+        DBPaddock.addVisitorToPaddock(visitor1, paddock2);
+        DBPaddock.addVisitorToPaddock(visitor2, paddock2);
     }
 }

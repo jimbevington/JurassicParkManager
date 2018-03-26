@@ -6,6 +6,7 @@ import com.codeclan.jurassicpark.db.db.DBPaddock;
 import com.codeclan.jurassicpark.db.models.Dinosaur;
 import com.codeclan.jurassicpark.db.models.Paddock;
 import com.codeclan.jurassicpark.db.models.SpeciesType;
+import com.codeclan.jurassicpark.db.models.Visitor;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
@@ -54,6 +55,9 @@ public class PaddockController {
 
             List<Dinosaur> dinosaurs = DBHelper.getPaddocksDinosaurs(paddock);
             model.put("dinosaurs", dinosaurs);
+
+            List<Visitor> visitors = DBHelper.getPaddocksVisitors(paddock);
+            model.put("visitors", visitors);
 
             return new ModelAndView(model, "templates/layout.vtl");
 
