@@ -1,0 +1,19 @@
+    <h1>All Paddocks</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>DinoCount</th>
+            <th>Secure</th>
+        </tr>
+
+        #foreach($paddock in $paddocks)
+        <tr>
+            <td>$paddock.getId()</td>
+            <td>$paddock.getName()</td>
+            <td>$paddock.getDinosaurs().size()</td>
+            <td>jim</td>
+        </tr>
+        #end
+
+    </table>

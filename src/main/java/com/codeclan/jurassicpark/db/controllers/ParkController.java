@@ -3,8 +3,11 @@ package com.codeclan.jurassicpark.db.controllers;
 import com.codeclan.jurassicpark.db.db.DBHelper;
 import com.codeclan.jurassicpark.db.db.Seeds;
 import com.codeclan.jurassicpark.db.models.Paddock;
+import com.codeclan.jurassicpark.db.models.SpeciesType;
 import spark.ModelAndView;
+import spark.Spark;
 import spark.template.velocity.VelocityTemplateEngine;
+
 
 import java.util.HashMap;
 import java.util.List;
@@ -26,18 +29,19 @@ public class ParkController {
 
         get("/", (req, res) -> {
 
-            HashMap<String, Object> model = new HashMap<>();
+            Map<String, Object> model = new HashMap<>();
             model.put("template", "templates/home.vtl");
-
-//            String loggedInUser = LoginController.getLoggedInUsername(req, res);
-//            model.put("user", loggedInUser);
-
 
             return new ModelAndView(model, "templates/layout.vtl");
 
-
         }, new VelocityTemplateEngine());
+
+        Spark.exception(Exception.class, (exception, request, response) -> {
+            exception.printStackTrace();
+        });
     }
+
+
 
 
 //        login page
