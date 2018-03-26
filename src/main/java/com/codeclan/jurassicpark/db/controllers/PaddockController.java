@@ -5,6 +5,7 @@ import com.codeclan.jurassicpark.db.db.DBHelper;
 import com.codeclan.jurassicpark.db.db.DBPaddock;
 import com.codeclan.jurassicpark.db.models.Dinosaur;
 import com.codeclan.jurassicpark.db.models.Paddock;
+import com.codeclan.jurassicpark.db.models.SpeciesType;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 import static spark.Spark.get;
+import static spark.Spark.post;
 
 public class PaddockController {
 
@@ -68,6 +70,24 @@ public class PaddockController {
             model.put("paddock", paddock);
 
             return new ModelAndView(model, "templates/layout.vtl");
+
+        }, new VelocityTemplateEngine());
+
+        post("/paddocks/:id/edit", (req, res) -> {
+
+            Integer paddockId = Integer.parseInt(req.params(":id"));
+            Paddock paddock =  DBHelper.find(Paddock.class, paddockId);
+
+            String name = req.queryParams("name");
+            int capacity = Integer.parseInt(req.queryParams("capacity"));
+
+            paddock.setName(name);
+            paddock.setCapacity(capacity);
+
+            DBHelper.saveOrUpdate(paddock);
+
+            res.redirect("/paddocks/" + paddockId.toString());
+            return null;
 
         }, new VelocityTemplateEngine());
 
