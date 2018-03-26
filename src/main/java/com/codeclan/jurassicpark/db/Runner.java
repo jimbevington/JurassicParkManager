@@ -76,9 +76,16 @@ public class Runner {
         DBHelper.saveOrUpdate(newTrex);
         List<Paddock> paddocksAvailableForTrex = DBDinosaur.getAvailablePaddocks(newTrex);
 
-
+//        test get Dino Count
         int paddock1DinoCount = DBPaddock.getDinoCount(paddock1);
 
+//        test the getAvailableDinosaurs
+
+        List<Dinosaur> noDinosaursAvailable = DBPaddock.getAvailableDinosaurs(noCapacityPaddock);
+//        should show the dinos that are in paddock 3 currently
+        List<Dinosaur> herbivoresAvailable = DBPaddock.getAvailableDinosaurs(foundPaddock4);
+//        should show Fluffy and Trevor T REX', not Fluffy
+        List<Dinosaur> carnivoresAvailable = DBPaddock.getAvailableDinosaurs(nurseryPaddock);
     }
 
 }
