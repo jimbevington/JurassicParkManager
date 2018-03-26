@@ -1,25 +1,33 @@
 package com.codeclan.jurassicpark.db.models;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
+@Table(name="paddocks")
 public class Paddock {
 
     private int id;
     private String name;
     private int capacity;
+    private Park park;
     private boolean open;
     private Set<Dinosaur> dinosaurs;
 
     public Paddock() {
     }
 
-    public Paddock(String name, int capacity) {
+    public Paddock(String name, int capacity, Park park) {
         this.name = name;
         this.capacity = capacity;
+        this.park = park;
         this.open = true;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     public int getId() {
         return id;
     }
@@ -28,6 +36,7 @@ public class Paddock {
         this.id = id;
     }
 
+    @Column(name="name")
     public String getName() {
         return name;
     }
@@ -36,6 +45,7 @@ public class Paddock {
         this.name = name;
     }
 
+    @Column(name="capacity")
     public int getCapacity() {
         return capacity;
     }
@@ -44,6 +54,17 @@ public class Paddock {
         this.capacity = capacity;
     }
 
+    @ManyToOne
+    @JoinColumn(name="park_id", nullable = false)
+    public Park getPark() {
+        return park;
+    }
+
+    public void setPark(Park park) {
+        this.park = park;
+    }
+
+    @Column(name="open")
     public boolean isOpen() {
         return open;
     }
@@ -52,6 +73,7 @@ public class Paddock {
         this.open = open;
     }
 
+    @OneToMany(mappedBy = "paddock")
     public Set<Dinosaur> getDinosaurs() {
         return dinosaurs;
     }

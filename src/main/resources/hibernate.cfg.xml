@@ -16,8 +16,11 @@
         <property name="hbm2ddl.auto">create-drop</property>
         <property name="show_sql">true</property>
 
-        <mapping class = "models.Book"/>
-        <mapping class = "models.Borrower"/>
+        <mapping class = "com.codeclan.jurassicpark.db.models.Dinosaur"/>
+        <mapping class = "com.codeclan.jurassicpark.db.models.Carnivore"/>
+        <mapping class = "com.codeclan.jurassicpark.db.models.Herbivore"/>
+        <mapping class = "com.codeclan.jurassicpark.db.models.Park"/>
+        <mapping class = "com.codeclan.jurassicpark.db.models.Paddock"/>
 
     </session-factory>
 </hibernate-configuration>

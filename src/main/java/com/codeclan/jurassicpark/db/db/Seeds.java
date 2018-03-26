@@ -1,9 +1,6 @@
 package com.codeclan.jurassicpark.db.db;
 
-import com.codeclan.jurassicpark.db.models.Carnivore;
-import com.codeclan.jurassicpark.db.models.Herbivore;
-import com.codeclan.jurassicpark.db.models.Paddock;
-import com.codeclan.jurassicpark.db.models.SpeciesType;
+import com.codeclan.jurassicpark.db.models.*;
 
 public class Seeds {
 
@@ -11,16 +8,19 @@ public class Seeds {
         DBHelper.deleteAll(Carnivore.class);
         DBHelper.deleteAll(Herbivore.class);
 
-        Paddock paddock1 = new Paddock("Green Gully", 10);
+        Park park = new Park("Jurassic Park");
+        DBHelper.saveOrUpdate(park);
+
+        Paddock paddock1 = new Paddock("Green Gully", 10, park);
         DBHelper.saveOrUpdate(paddock1);
 
-        Paddock paddock2 = new Paddock("Arid Desert", 10);
+        Paddock paddock2 = new Paddock("Arid Desert", 10, park);
         DBHelper.saveOrUpdate(paddock2);
 
-        Paddock paddock3 = new Paddock("Misty Mountains", 10);
+        Paddock paddock3 = new Paddock("Misty Mountains", 10, park);
         DBHelper.saveOrUpdate(paddock3);
 
-        Paddock paddock4 = new Paddock("The Great Plains", 10);
+        Paddock paddock4 = new Paddock("The Great Plains", 10, park);
         DBHelper.saveOrUpdate(paddock4);
 
 

@@ -1,5 +1,10 @@
 package com.codeclan.jurassicpark.db.models;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="herbivores")
 public class Herbivore extends Dinosaur{
 
     public Herbivore() {

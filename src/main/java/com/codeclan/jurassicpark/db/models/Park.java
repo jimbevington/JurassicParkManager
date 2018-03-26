@@ -1,7 +1,6 @@
 package com.codeclan.jurassicpark.db.models;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -18,8 +17,7 @@ public class Park {
     }
 
     public Park(String name) {
-        this.name = name;
-        List<Paddock> paddocks = new ArrayList<>();
+        this.name = name;       // perhaps we could get rid of this even? Its always Jurassic Park
     }
 
     @Id
@@ -42,7 +40,7 @@ public class Park {
         this.name = name;
     }
 
-    @OneToMany
+    @OneToMany(mappedBy = "park", fetch = FetchType.LAZY)
     public List<Paddock> getPaddocks() {
         return paddocks;
     }
@@ -51,9 +49,6 @@ public class Park {
         this.paddocks = paddocks;
     }
 
-    public void addPaddock(Paddock paddock){
-        paddocks.add(paddock);
-    }
 
 //  public void openPark(){
 //      for(Paddock paddock : paddocks){
