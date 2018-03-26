@@ -1,5 +1,6 @@
 package com.codeclan.jurassicpark.db;
 
+import com.codeclan.jurassicpark.db.db.DBDinosaur;
 import com.codeclan.jurassicpark.db.db.DBHelper;
 import com.codeclan.jurassicpark.db.models.*;
 
@@ -64,13 +65,13 @@ public class Runner {
 //        paddock can't be shown if full
         Paddock noCapacityPaddock = new Paddock("No Space", 0, park);   // will never be shown as has no capacity
         DBHelper.saveOrUpdate(noCapacityPaddock);
-//        should return Paddock 3 and 4
-        List<Paddock> paddocksAvailableForHerbivores = DBHelper.getAvailablePaddocks(foundHerbivore);
+//        should return Paddock 3 and 4 and emptyPaddock
+        List<Paddock> paddocksAvailableForHerbivores = DBDinosaur.getAvailablePaddocks(foundHerbivore);
 //        should test Carnivores allowed only with other Carnivores
         Paddock nurseryPaddock = new Paddock("Nursery", 80, park);  // for testing trex
         Carnivore newTrex = new Carnivore(SpeciesType.TREX, "Reginald", 6, 90, nurseryPaddock);
         DBHelper.saveOrUpdate(newTrex);
-        List<Paddock> paddocksAvailableForTrex = DBHelper.getAvailablePaddocks(newTrex);
+        List<Paddock> paddocksAvailableForTrex = DBDinosaur.getAvailablePaddocks(newTrex);
 
 
     }
