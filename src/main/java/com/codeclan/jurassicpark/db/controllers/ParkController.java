@@ -32,6 +32,9 @@ public class ParkController {
             Map<String, Object> model = new HashMap<>();
             model.put("template", "templates/home.vtl");
 
+            List<Paddock> paddocks = DBHelper.getAll(Paddock.class);
+            model.put("paddocks", paddocks);
+
             return new ModelAndView(model, "templates/layout.vtl");
 
         }, new VelocityTemplateEngine());
