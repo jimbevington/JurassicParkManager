@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import static spark.Spark.get;
+import static spark.Spark.post;
 
 public class DinosaurController {
 
@@ -52,5 +53,17 @@ public class DinosaurController {
             model.put("template", "templates/dinosaurs/move.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         });
+
+        post("/dinosaurs/:id/move", (req, res)->{
+
+        }, new VelocityTemplateEngine());
+
+        post ("/dinosaurs/:id/remove", (req, res) -> {
+            int intId = Integer.parseInt(req.params(":id"));
+            Dinosaur dinosaurToDelete = DBHelper.find(Dinosaur.class, intId);
+            DBHelper.delete(dinosaurToDelete);
+            res.redirect("/dinosaurs");
+            return null;
+        }, new VelocityTemplateEngine());
     }
 }
