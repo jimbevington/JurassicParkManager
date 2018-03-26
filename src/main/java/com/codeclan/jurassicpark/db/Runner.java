@@ -58,17 +58,19 @@ public class Runner {
         List<Dinosaur> paddock2Dinos = DBHelper.getPaddocksDinosaurs(foundPaddock2);
         List<Dinosaur> paddock4Dinos = DBHelper.getPaddocksDinosaurs(foundPaddock4);
 
+
 //        testing getAvailablePaddocks
 //        empty paddocks shown for all
-        Paddock emptyPaddock = new Paddock("Empty", 10, park);   // will never be shown as has no capacity
+        Paddock emptyPaddock = new Paddock("Empty", 10, park);   // will always be shown
         DBHelper.saveOrUpdate(emptyPaddock);
 //        paddock can't be shown if full
         Paddock noCapacityPaddock = new Paddock("No Space", 0, park);   // will never be shown as has no capacity
         DBHelper.saveOrUpdate(noCapacityPaddock);
 //        should return Paddock 3 and 4 and emptyPaddock
-        List<Paddock> paddocksAvailableForHerbivores = DBDinosaur.getAvailablePaddocks(foundHerbivore);
+//        List<Paddock> paddocksAvailableForHerbivores = DBDinosaur.getAvailablePaddocks(foundHerbivore);
 //        should test Carnivores allowed only with other Carnivores
         Paddock nurseryPaddock = new Paddock("Nursery", 80, park);  // for testing trex
+        DBHelper.saveOrUpdate(nurseryPaddock);
         Carnivore newTrex = new Carnivore(SpeciesType.TREX, "Reginald", 6, 90, nurseryPaddock);
         DBHelper.saveOrUpdate(newTrex);
         List<Paddock> paddocksAvailableForTrex = DBDinosaur.getAvailablePaddocks(newTrex);

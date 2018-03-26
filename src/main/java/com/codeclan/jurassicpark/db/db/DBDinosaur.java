@@ -14,19 +14,32 @@ public class DBDinosaur {
     public static List<Paddock> getAvailablePaddocks(Dinosaur dinosaur){
 
         List<Paddock> allPaddocks = DBHelper.getAll(Paddock.class);
+
+        int currentPaddockId = dinosaur.getPaddock().getId();
+        Paddock currentPaddock = DBHelper.find(Paddock.class, currentPaddockId);
+        allPaddocks.remove(currentPaddock);
+
         List<Paddock> available = new ArrayList<>();
 
-        for (Paddock paddock : allPaddocks){
-            if (paddockEmpty(paddock)){
-                available.add(paddock);
-            } else if (carnivoreTest(paddock, dinosaur)){
-                available.add(paddock);
-            } else if(herbivoreTest(paddock, dinosaur)){
-                available.add(paddock);
+        for (Paddock paddock : allPaddocks) {
+            if (paddockHasSpace(paddock)) {
+                if (paddockEmpty(paddock)) {
+                    available.add(paddock);
+                } else if (carnivoreTest(paddock, dinosaur)) {
+                    available.add(paddock);
+                } else if (herbivoreTest(paddock, dinosaur)) {
+                    available.add(paddock);
+                }
             }
         }
 
         return available;
+    }
+
+    private static boolean paddockHasSpace(Paddock paddock) {
+        List<Dinosaur> dinosaurs = DBHelper.getPaddocksDinosaurs(paddock);
+        return dinosaurs.size() < paddock.getCapacity();
+
     }
 
     private static boolean carnivoreTest(Paddock paddock, Dinosaur dinosaur) {
@@ -57,7 +70,7 @@ public class DBDinosaur {
 
         boolean spaceInPaddock = dinosaurs.size() < paddock.getCapacity();
 
-        boolean herbivorePaddock = firstDino instanceof Herbivore;
+        boolean herbivorePaddock = dinosaur instanceof Herbivore && firstDino instanceof Herbivore;
 
         if (spaceInPaddock && herbivorePaddock){
             result = true;
@@ -70,7 +83,18 @@ public class DBDinosaur {
     private static boolean paddockEmpty(Paddock paddock) {
         List<Dinosaur> dinosaurs = DBHelper.getPaddocksDinosaurs(paddock);
 //        return True if no Dinosaurs
-        return dinosaurs.size() == 0;
+
+        boolean result = false;
+
+        boolean spaceInPaddock = dinosaurs.size() < paddock.getCapacity();
+
+        boolean noDinos = dinosaurs.size() == 0;
+
+        if (spaceInPaddock && noDinos){
+            result = true;
+        }
+
+        return result;
     }
 
 

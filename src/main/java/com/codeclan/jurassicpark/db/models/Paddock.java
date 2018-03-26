@@ -82,4 +82,10 @@ public class Paddock {
         this.dinosaurs = dinosaurs;
     }
 
+    @Override
+    public boolean equals(Object object){
+        Paddock paddock = (Paddock) object;
+        return this.id == paddock.getId();
+    }
+
 }
