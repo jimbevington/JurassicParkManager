@@ -14,15 +14,21 @@
         <th>Secure</th>
     </tr>
 
-    #foreach ($dinosaur in $dinosaurs)
+    #foreach($dinosaur in $dinosaurs)
     <tr>
         <td>$dinosaur.getId()</td>
-        <td>$dinosaur.getSpeciesType()</td>
+        <td>$dinosaur.getSpecies()</td>
         <td>$dinosaur.getName()</td>
+        <td>$dinosaur.getAge()</td>
         <td>$dinosaur.getDanger()</td>
-        <td>$dinosaur.getHealth()</td>
-        <td></td>
-        <td>$dinosaur.getSecure()</td>
+        <td>$dinosaur.getPaddock().getName()</td>
+        <td>#if(${dinosaur.class.simpleName} == "Carnivore")
+            $dinosaur.getHunger()
+            #else
+            n/a
+            #end</td>
+        <td>christie</td>
     </tr>
+    #end
 
 </table>
