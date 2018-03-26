@@ -1,10 +1,14 @@
 package com.codeclan.jurassicpark.db.controllers;
 
+import com.codeclan.jurassicpark.db.db.DBDinosaur;
 import com.codeclan.jurassicpark.db.db.DBHelper;
+import com.codeclan.jurassicpark.db.models.Carnivore;
 import com.codeclan.jurassicpark.db.models.Dinosaur;
+import com.codeclan.jurassicpark.db.models.Herbivore;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
+import java.net.CacheRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,15 +24,11 @@ public class DinosaurController {
     private void setupEndpoints() {
 
         get("/dinosaurs", (req, res) -> {
-
             Map<String, Object> model = new HashMap<>();
-            model.put("template", "templates/dinosaurs/index.vtl");
-
-            List<Dinosaur> dinosaurs = DBHelper.getAll(Dinosaur.class);
+            List<Dinosaur> dinosaurs = DBDinosaur.listAll(Dinosaur.class);
             model.put("dinosaurs", dinosaurs);
-
+            model.put("template", "templates/dinosaurs/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
-
         }, new VelocityTemplateEngine());
     }
 }
