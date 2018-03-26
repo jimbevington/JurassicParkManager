@@ -78,19 +78,19 @@ public class Park {
 //        }
 //  }
 
-  public void feedDino(int paddockId, int dinoId){
-        for(Paddock paddock : paddocks){
-            if(paddock.getId() == paddockId){
-                Set<Dinosaur> dinos = paddock.getDinosaurs();
-                for(Dinosaur dinosaur : dinos){
-                    if(dinosaur.getClass() == Carnivore.class && dinosaur.getId() == dinoId){
-                        Carnivore carnivore = (Carnivore) dinosaur;
-                        dinosaur.getFed();
-                    }
-                }
-            }
-        }
-    }
+//  public void feedDino(int paddockId, int dinoId){
+//        for(Paddock paddock : paddocks){
+//            if(paddock.getId() == paddockId){
+//                Set<Dinosaur> dinos = paddock.getDinosaurs();
+//                for(Dinosaur dinosaur : dinos){
+//                    if(dinosaur.getClass() == Carnivore.class && dinosaur.getId() == dinoId){
+//                        Carnivore carnivore = (Carnivore) dinosaur;
+//                        dinosaur.getFed();
+//                    }
+//                }
+//            }
+//        }
+//    }
 
 
   }
