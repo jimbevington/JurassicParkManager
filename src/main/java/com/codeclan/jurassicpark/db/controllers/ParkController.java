@@ -26,11 +26,17 @@ public class ParkController {
 
         PaddockController paddockController = new PaddockController();
         DinosaurController dinosaurController = new DinosaurController();
+        LoginController loginController = new LoginController();
 
         get("/", (req, res) -> {
 
             Map<String, Object> model = new HashMap<>();
+
+//            String loggedInUser = LoginController.getLoggedInUsername(req, res);
+//            model.put("user", loggedInUser);
+
             model.put("template", "templates/home.vtl");
+
 
             List<Paddock> paddocks = DBHelper.getAll(Paddock.class);
             model.put("paddocks", paddocks);
