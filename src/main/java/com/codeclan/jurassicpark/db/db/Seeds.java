@@ -1,7 +1,7 @@
 package com.codeclan.jurassicpark.db.db;
 
-
 import com.codeclan.jurassicpark.db.models.*;
+
 
 public class Seeds {
 

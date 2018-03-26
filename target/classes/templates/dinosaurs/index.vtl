@@ -1,0 +1,31 @@
+<h1>All Dinosaurs</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Species</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Danger Level</th>
+        <th>Paddock</th>
+        <th>Hunger</th>
+        <th>Secure</th>
+    </tr>
+
+    #foreach($dinosaur in $dinosaurs)
+    <tr>
+        <td>$dinosaur.getId()</td>
+        <td>$dinosaur.getSpecies()</td>
+        <td>$dinosaur.getName()</td>
+        <td>$dinosaur.getAge()</td>
+        <td>$dinosaur.getDanger()</td>
+        <td>$dinosaur.getPaddock().getName()</td>
+        <td>#if(${dinosaur.class.simpleName} == "Carnivore")
+        $dinosaur.getHunger()
+            #else
+            null
+        #end</td>
+        <td>christie</td>
+    </tr>
+    #end
+
+</table>

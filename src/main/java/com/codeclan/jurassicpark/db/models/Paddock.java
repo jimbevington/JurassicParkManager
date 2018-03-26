@@ -73,7 +73,7 @@ public class Paddock {
         this.open = open;
     }
 
-    @OneToMany(mappedBy = "paddock", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "paddock", fetch = FetchType.EAGER)
     public Set<Dinosaur> getDinosaurs() {
         return dinosaurs;
     }
