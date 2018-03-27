@@ -54,8 +54,12 @@ public class DBPaddock {
         List<Dinosaur> allDinosaurs = DBHelper.getAll(Dinosaur.class);
         List<Dinosaur> currentDinosaurs = DBHelper.getPaddocksDinosaurs(paddock);
 
-//      Skip over if the Paddock is empty
+//      Skip over if the Paddock is full
         if (paddockHasSpace(paddock)){
+
+            if (paddockEmpty(paddock)){
+                availableDinosaurs = allDinosaurs;
+            } else
 
 //            if the first Dino is a Herbivore, set availableDinosaurs to: all the Herbivores
             if (herbivoreTest(paddock)) {
