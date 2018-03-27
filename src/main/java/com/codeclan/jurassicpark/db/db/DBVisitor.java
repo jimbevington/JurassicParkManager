@@ -25,6 +25,7 @@ public class DBVisitor {
             }
         }
 
+        visitors.put("all", allVisitors);
         visitors.put("notInPark", notInPark);
         visitors.put("inPark", inPark);
 
