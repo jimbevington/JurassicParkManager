@@ -23,8 +23,11 @@ public class DinosaurController {
 
         get("/dinosaurs", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            List<Dinosaur> dinosaurs = DBDinosaur.listAll();
-            model.put("dinosaurs", dinosaurs);
+
+            HashMap<String, List<Dinosaur>> sortedDinos = DBDinosaur.sortDinosaurs();
+            model.put("inPark", sortedDinos.get("inPark"));
+            model.put("inNursery", sortedDinos.get("inNursery"));
+
             model.put("template", "templates/dinosaurs/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
