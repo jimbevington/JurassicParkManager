@@ -25,11 +25,17 @@
         <td>$dinosaur.getDanger()</td>
         <td>$dinosaur.getPaddock().getName()</td>
         <td>#if(${dinosaur.class.simpleName} == "Carnivore")
-        $dinosaur.getHunger()
+            $dinosaur.getHunger()
             #else
             n/a
-        #end</td>
-        <td>christie</td>
+            #end
+        </td>
+        <td>#if($dinosaur.isSecure())
+            Secure
+            #else
+            ESCAPED!
+            #end
+        </td>
         <td class="button"><a href="/dinosaurs/$dinosaur.getId()/feed">Feed Me</a></td>
         <td class="button"><a href="/dinosaurs/$dinosaur.getId()/move">Move Paddock</a></td>
         <td class="button"><a href="/dinosaurs/$dinosaur.getId()/remove">Remove</a></td>
@@ -49,7 +55,7 @@
         <th>Danger Level</th>
         <th>Paddock</th>
         <th>Hunger</th>
-        <th>Secure</th>
+        <th>Status</th>
     </tr>
 
     #foreach($dinosaur in $inNursery)
@@ -59,12 +65,18 @@
         <td>$dinosaur.getName()</td>
         <td>$dinosaur.getAge()</td>
         <td>$dinosaur.getDanger()</td>
+        <td>$dinosaur.getPaddock().getName()</td>
         <td>#if(${dinosaur.class.simpleName} == "Carnivore")
             $dinosaur.getHunger()
             #else
             n/a
             #end</td>
-        <td>christie</td>
+        <td>#if($dinosaur.isSecure())
+            Secure
+            #else
+            ESCAPED!
+            #end
+        </td>
         <td class="button"><a href="/dinosaurs/$dinosaur.getId()/feed">Feed Me</a></td>
         <td class="button"><a href="/dinosaurs/$dinosaur.getId()/move">Move Paddock</a></td>
         <td class="button"><a href="/dinosaurs/$dinosaur.getId()/remove">Remove</a></td>

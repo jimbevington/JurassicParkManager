@@ -17,8 +17,8 @@
         <th>ID</th>
         <th>Species</th>
         <th>Name</th>
+        <th>Age</th>
         <th>Danger</th>
-        <th>Health</th>
         <th>Hunger</th>
         <th>Status</th>
     </tr>
@@ -30,13 +30,17 @@
         <td>$dinosaur.getName()</td>
         <td>$dinosaur.getAge()</td>
         <td>$dinosaur.getDanger()</td>
-        <td>$dinosaur.getPaddock().getName()</td>
         <td>#if(${dinosaur.class.simpleName} == "Carnivore")
             $dinosaur.getHunger()
             #else
             n/a
             #end</td>
-        <td>christie</td>
+        <td>#if($dinosaur.isSecure())
+            Secure
+            #else
+            ESCAPED!
+            #end
+        </td>
     </tr>
     #end
 
