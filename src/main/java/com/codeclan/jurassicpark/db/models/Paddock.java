@@ -79,13 +79,13 @@ public class Paddock {
         this.open = open;
     }
 
-    @Column(name="secured")
-    public boolean isSecured() {
-        return secured;
+    @Column(name="alert")
+    public AlertType getAlert() {
+        return alert;
     }
 
-    public void setSecured(boolean secured) {
-        this.secured = secured;
+    public void setAlert(AlertType alert) {
+        this.alert = alert;
     }
 
     @OneToMany(mappedBy = "paddock", fetch = FetchType.EAGER)
