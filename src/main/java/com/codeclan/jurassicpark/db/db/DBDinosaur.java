@@ -146,7 +146,7 @@ public class DBDinosaur {
         dinosaur.setSecure(false);
         DBHelper.saveOrUpdate(dinosaur);
         Paddock paddock = dinosaur.getPaddock();
-        DBPaddock.checkSecure(paddock);
+        DBPaddock.checkAlert(paddock);
 
         List<Visitor> visitors = DBHelper.getPaddocksVisitors(paddock);
         if (visitors.size() > 1){
