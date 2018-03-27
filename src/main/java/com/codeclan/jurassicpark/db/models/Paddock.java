@@ -15,7 +15,7 @@ public class Paddock {
     private int capacity;
     private Park park;
     private boolean open;
-    private boolean secured;
+    private AlertType alert;
     private Set<Dinosaur> dinosaurs;
     private Set<Visitor> visitors;
 
@@ -27,7 +27,7 @@ public class Paddock {
         this.capacity = capacity;
         this.park = park;
         this.open = true;
-        this.secured = true;
+        this.alert = AlertType.NONE;
         this.visitors = new HashSet<>();
     }
 
@@ -79,13 +79,17 @@ public class Paddock {
         this.open = open;
     }
 
-    @Column(name="secured")
-    public boolean isSecured() {
-        return secured;
+    @Column(name="alert")
+    public AlertType getAlert() {
+        return alert;
     }
 
-    public void setSecured(boolean secured) {
-        this.secured = secured;
+    public void setAlert(AlertType alert) {
+        this.alert = alert;
+    }
+
+    public String getAlertMessage(){
+        return this.alert.getAlert();
     }
 
     @OneToMany(mappedBy = "paddock", fetch = FetchType.EAGER)
