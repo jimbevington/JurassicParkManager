@@ -6,6 +6,7 @@ import com.codeclan.jurassicpark.db.db.DBPaddock;
 import com.codeclan.jurassicpark.db.db.DBVisitor;
 import com.codeclan.jurassicpark.db.models.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
@@ -119,8 +120,11 @@ public class Runner {
 
         Paddock visitor3Paddock = visitor3.getPaddock();
 
-        List<Visitor> inParkVisitors = DBVisitor.inPark();
-        List<Visitor> notInParkVisitors = DBVisitor.notInPark();
+
+        HashMap<String, List<Visitor>> sortedVisitors = DBVisitor.sortVisitors();
+        List<Visitor> inParkVisitors = sortedVisitors.get("inPark");
+        List<Visitor> notInParkVisitors = sortedVisitors.get("notInPark");
+
 
     }
 
