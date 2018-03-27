@@ -21,6 +21,10 @@ public class Seeds {
 
         Paddock nurseryPaddock= new Paddock("Nursery", 50, park);
         DBHelper.saveOrUpdate(nurseryPaddock);
+
+        Paddock containmentPaddock = new Paddock("Containment", 100, park);
+        DBHelper.saveOrUpdate(containmentPaddock);
+
         Paddock paddock1 = new Paddock("Green Gully", 10, park);
         DBHelper.saveOrUpdate(paddock1);
         Paddock paddock2 = new Paddock("Arid Desert", 10, park);
