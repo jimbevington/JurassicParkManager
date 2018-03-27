@@ -124,6 +124,12 @@ public class Runner {
 
         List<Paddock> parkPaddocks = DBPaddock.getParkPaddocks();
 
+        Carnivore babyCarnivore = new Carnivore(SpeciesType.TREX, "Junior", 1, 10, nurseryPaddock);
+        DBHelper.saveOrUpdate(babyCarnivore);
+
+        HashMap<String, List<Dinosaur>> sortedDinos = DBDinosaur.sortDinosaurs();
+        List<Dinosaur> inNursery = sortedDinos.get("inNursery");
+        List<Dinosaur> inPark = sortedDinos.get("inPark");
     }
 
 
