@@ -72,30 +72,30 @@ public class DinosaurController {
 //            model.put("user", loggedInUser);
             List<Paddock> paddocks = DBHelper.getAll(Paddock.class);
             SpeciesType[] species = SpeciesType.values();
-            model.put("paddocks", paddocks);
             model.put("species", species);
             model.put("template", "templates/dinosaurs/new.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
         post ("/dinosaurs", (req, res) -> {
-            int paddockId = Integer.parseInt(req.queryParams("paddock"));
-            Paddock paddock = DBHelper.find(Paddock.class, paddockId);
             String species = req.queryParams("species");
             String name = req.queryParams("name");
             int age = Integer.parseInt(req.queryParams("age"));
             int danger = Integer.parseInt(req.queryParams("danger"));
+
+            Paddock nursery = DBHelper.find(Paddock.class, 1);
+
             if(species.equals(SpeciesType.TREX.getSpecies())){
-                Carnivore dinosaur = new Carnivore(SpeciesType.TREX, name, age, danger, paddock);
+                Carnivore dinosaur = new Carnivore(SpeciesType.TREX, name, age, danger, nursery);
                 DBHelper.saveOrUpdate(dinosaur);
             } else if (species.equals(SpeciesType.VELOCIRAPTOR.getSpecies())) {
-                Carnivore dinosaur = new Carnivore(SpeciesType.VELOCIRAPTOR, name, age, danger, paddock);
+                Carnivore dinosaur = new Carnivore(SpeciesType.VELOCIRAPTOR, name, age, danger, nursery);
                 DBHelper.saveOrUpdate(dinosaur);
             } else if(species.equals(SpeciesType.TRICERATOPS.getSpecies())){
-                Herbivore dinosaur = new Herbivore(SpeciesType.TRICERATOPS, name, age, danger, paddock);
+                Herbivore dinosaur = new Herbivore(SpeciesType.TRICERATOPS, name, age, danger, nursery);
                 DBHelper.saveOrUpdate(dinosaur);
             } else if(species.equals(SpeciesType.BRACHIOSAURUS.getSpecies())){
-                Herbivore dinosaur = new Herbivore(SpeciesType.BRACHIOSAURUS, name, age, danger, paddock);
+                Herbivore dinosaur = new Herbivore(SpeciesType.BRACHIOSAURUS, name, age, danger, nursery);
                 DBHelper.saveOrUpdate(dinosaur);
             }
             res.redirect("/dinosaurs");
