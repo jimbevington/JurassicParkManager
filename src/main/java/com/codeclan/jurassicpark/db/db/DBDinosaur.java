@@ -40,6 +40,10 @@ public class DBDinosaur {
         Paddock currentPaddock = DBHelper.find(Paddock.class, currentPaddockId);
         allPaddocks.remove(currentPaddock);
 
+//        make Nursery Unavailable
+        Paddock nurseryPaddock = DBHelper.find(Paddock.class, 1);
+        allPaddocks.remove(nurseryPaddock);
+
         List<Paddock> available = new ArrayList<>();
 
         for (Paddock paddock : allPaddocks) {
