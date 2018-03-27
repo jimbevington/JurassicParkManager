@@ -41,7 +41,7 @@
         <td class="button"><a href="/dinosaurs/$dinosaur.getId()/remove">Remove</a></td>
         #if(!$dinosaur.isSecure())
         <td class="button">
-            <form action="/paddocks/$paddock.getId()/capture" method="post">
+            <form action="/dinosaurs/$dinosaur.getId()/capture" method="post">
                 <input type="submit" value="Capture">
             </form>
         </td>
