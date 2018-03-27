@@ -41,6 +41,9 @@ public class ParkController {
             List<Paddock> paddocks = DBHelper.getAll(Paddock.class);
             model.put("paddocks", paddocks);
 
+            int totalVisitors = DBHelper.totalVisitors();
+            model.put("totalVisitors", totalVisitors);
+
             return new ModelAndView(model, "templates/layout.vtl");
 
         }, new VelocityTemplateEngine());
