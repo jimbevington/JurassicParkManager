@@ -156,7 +156,8 @@ public class DBDinosaur {
             DBHelper.delete(visitor);
         }
         if (dinosaur.getClass() == Carnivore.class){
-            (Carnivore) dinosaur.getFed();
+           Carnivore carnivore = (Carnivore)dinosaur;
+                   carnivore.getFed();
         }
     }
   
