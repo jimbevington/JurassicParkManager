@@ -17,6 +17,8 @@ public class Runner {
         Park park = new Park("Jurassic Park");
         DBHelper.saveOrUpdate(park);
 
+        Paddock nurseryPaddock= new Paddock("Nursery", 50, park);
+        DBHelper.saveOrUpdate(nurseryPaddock);
         Paddock paddock1 = new Paddock("Green Gully", 10, park);
         DBHelper.saveOrUpdate(paddock1);
         Paddock paddock2 = new Paddock("Arid Desert", 10, park);
@@ -86,9 +88,9 @@ public class Runner {
 //        should return Paddock 3 and 4 and emptyPaddock
 //        List<Paddock> paddocksAvailableForHerbivores = DBDinosaur.getAvailablePaddocks(foundHerbivore);
 //        should test Carnivores allowed only with other Carnivores
-        Paddock nurseryPaddock = new Paddock("Nursery", 80, park);  // for testing trex
-        DBHelper.saveOrUpdate(nurseryPaddock);
-        Carnivore newTrex = new Carnivore(SpeciesType.TREX, "Reginald", 6, 90, nurseryPaddock);
+        Paddock testCarnPaddock = new Paddock("testCarnivorePaddock", 80, park);  // for testing trex
+        DBHelper.saveOrUpdate(testCarnPaddock);
+        Carnivore newTrex = new Carnivore(SpeciesType.TREX, "Reginald", 6, 90, testCarnPaddock);
         DBHelper.saveOrUpdate(newTrex);
         List<Paddock> paddocksAvailableForTrex = DBDinosaur.getAvailablePaddocks(newTrex);
 
@@ -99,13 +101,8 @@ public class Runner {
 //        should show the dinos that are in paddock 3 currently
         List<Dinosaur> herbivoresAvailable = DBPaddock.getAvailableDinosaurs(foundPaddock4);
 //        should show Fluffy and Trevor T REX', not Fluffy
-        List<Dinosaur> carnivoresAvailable = DBPaddock.getAvailableDinosaurs(nurseryPaddock);
+        List<Dinosaur> carnivoresAvailable = DBPaddock.getAvailableDinosaurs(testCarnPaddock);
 
-
-//        these are erroring out for some reason
-//        String testPaddockDinoType__empty = DBPaddock.getPaddockDinoType(emptyPaddock);
-//        String testPaddockDinoType__herbivore = DBPaddock.getPaddockDinoType(foundPaddock4);
-//        String testPaddockDinoType__carnivore = DBPaddock.getPaddockDinoType(foundPaddock2);
 
 //        test ADD VISITOR TO PADDOCK
         DBPaddock.addVisitorToPaddock(visitor1, paddock2);
@@ -124,6 +121,8 @@ public class Runner {
         HashMap<String, List<Visitor>> sortedVisitors = DBVisitor.sortVisitors();
         List<Visitor> inParkVisitors = sortedVisitors.get("inPark");
         List<Visitor> notInParkVisitors = sortedVisitors.get("notInPark");
+
+        List<Paddock> parkPaddocks = DBPaddock.getParkPaddocks();
 
     }
 
