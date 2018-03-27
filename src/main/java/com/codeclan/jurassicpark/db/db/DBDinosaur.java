@@ -147,6 +147,14 @@ public class DBDinosaur {
         DBHelper.saveOrUpdate(dinosaur);
         Paddock paddock = dinosaur.getPaddock();
         DBPaddock.checkSecure(paddock);
+
+        List<Visitor> visitors = DBHelper.getPaddocksVisitors(paddock);
+        if (visitors.size() > 1){
+            Collections.shuffle(visitors);
+            Visitor visitor = visitors.get(0);
+            DBPaddock.removeVisitorFromPaddock(visitor, paddock);
+            DBHelper.delete(visitor);
+        }
     }
 
 ////    public static String species(Dinosaur dinosaur){
