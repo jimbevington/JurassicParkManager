@@ -1,9 +1,6 @@
 package com.codeclan.jurassicpark.db.controllers;
 
-import com.codeclan.jurassicpark.db.db.DBDinosaur;
-import com.codeclan.jurassicpark.db.db.DBHelper;
-import com.codeclan.jurassicpark.db.db.DBPaddock;
-import com.codeclan.jurassicpark.db.db.Seeds;
+import com.codeclan.jurassicpark.db.db.*;
 import com.codeclan.jurassicpark.db.models.*;
 import spark.ModelAndView;
 import spark.Spark;
@@ -73,6 +70,14 @@ public class ParkController {
                 DBDinosaur.rampage(dinosaur);
             }
         }, 8, 8, TimeUnit.SECONDS);
+
+        final ScheduledExecutorService wanderingVisitors = Executors.newSingleThreadScheduledExecutor();
+        rampagingDinos.scheduleWithFixedDelay(new Runnable() {
+            @Override
+            public void run() {
+                DBVisitor.moveVisitors();
+            }
+        }, 3, 3, TimeUnit.SECONDS);
 
 //        login page
 //        home page

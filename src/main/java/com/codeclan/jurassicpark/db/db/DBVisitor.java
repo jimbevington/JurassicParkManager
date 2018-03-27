@@ -1,11 +1,9 @@
 package com.codeclan.jurassicpark.db.db;
 
+import com.codeclan.jurassicpark.db.models.Paddock;
 import com.codeclan.jurassicpark.db.models.Visitor;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class DBVisitor {
 
@@ -30,6 +28,25 @@ public class DBVisitor {
         visitors.put("inPark", inPark);
 
         return visitors;
+
+    }
+
+    public static void moveVisitors(){
+        Random rand = new Random();
+        int num = rand.nextInt(6) + 1;
+        for (int i = 0; i < num; i++) {
+        List<Paddock> paddocks = DBHelper.getAll(Paddock.class);
+        Collections.shuffle(paddocks);
+        Paddock paddock = paddocks.get(0);
+        DBPaddock.lockDownPaddock(paddock);
+        List<Visitor> visitors = DBHelper.getAll(Visitor.class);
+        Collections.shuffle(visitors);
+        Visitor visitor = visitors.get(0);
+        DBPaddock.addVisitorToPaddock(visitor, paddock);
+        DBHelper.saveOrUpdate(visitor);
+        DBHelper.saveOrUpdate(paddock);
+        }
+
 
     }
 
