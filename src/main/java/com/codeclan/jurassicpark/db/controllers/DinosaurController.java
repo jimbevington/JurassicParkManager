@@ -85,18 +85,17 @@ public class DinosaurController {
             String name = req.queryParams("name");
             int age = Integer.parseInt(req.queryParams("age"));
             int danger = Integer.parseInt(req.queryParams("danger"));
-            SpeciesType[] speciestype = SpeciesType.values();
-            SpeciesType dinospecies = null;
-            for (SpeciesType s : speciestype){
-                if (s.getSpecies() == species){
-                    dinospecies = s;
-                }
-            }
-            if(dinospecies == SpeciesType.TREX || dinospecies == SpeciesType.VELOCIRAPTOR){
-                Carnivore dinosaur = new Carnivore(dinospecies, name, age, danger, paddock);
+            if(species.equals(SpeciesType.TREX.getSpecies())){
+                Carnivore dinosaur = new Carnivore(SpeciesType.TREX, name, age, danger, paddock);
                 DBHelper.saveOrUpdate(dinosaur);
-            } else{
-                Herbivore dinosaur = new Herbivore(dinospecies, name, age, danger, paddock);
+            } else if (species.equals(SpeciesType.VELOCIRAPTOR.getSpecies())) {
+                Carnivore dinosaur = new Carnivore(SpeciesType.VELOCIRAPTOR, name, age, danger, paddock);
+                DBHelper.saveOrUpdate(dinosaur);
+            } else if(species.equals(SpeciesType.TRICERATOPS.getSpecies())){
+                Herbivore dinosaur = new Herbivore(SpeciesType.TRICERATOPS, name, age, danger, paddock);
+                DBHelper.saveOrUpdate(dinosaur);
+            } else if(species.equals(SpeciesType.BRACHIOSAURUS.getSpecies())){
+                Herbivore dinosaur = new Herbivore(SpeciesType.BRACHIOSAURUS, name, age, danger, paddock);
                 DBHelper.saveOrUpdate(dinosaur);
             }
             res.redirect("/dinosaurs");
