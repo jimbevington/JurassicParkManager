@@ -26,13 +26,10 @@ public class VisitorController {
             Map<String, Object> model = new HashMap<>();
             model.put("template", "templates/visitors/index.vtl");
 
-            List<Visitor> visitors = DBHelper.getAll(Visitor.class);
-            model.put("visitors", visitors);
-
-            List<Visitor> visitorsInPark = DBVisitor.inPark();
-            model.put("visitorsInPark", visitorsInPark);
-//            List<Visitor> visitorsNotInPark = DBVisitor.notInPark();
-//            model.put("visitorsNotInPark", visitorsNotInPark);
+            HashMap<String, List<Visitor>> visitors = DBVisitor.sortVisitors();
+            model.put("visitors", visitors.get("all"));
+            model.put("inPark", visitors.get("inPark"));
+            model.put("notInPark", visitors.get("notInPark"));
 
             return new ModelAndView(model, "templates/layout.vtl");
 

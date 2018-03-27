@@ -12,7 +12,7 @@
         <th>Paddock</th>
     </tr>
 
-    #foreach($visitor in $visitorsInPark)
+    #foreach($visitor in $inPark)
     <tr>
         <td>$visitor.getId()</td>
         <td>$visitor.getName()</td>
@@ -30,7 +30,7 @@
         <th>Name</th>
     </tr>
 
-    #foreach($visitor in $visitorsNotInPark)
+    #foreach($visitor in $notInPark)
     <tr>
         <td>$visitor.getId()</td>
         <td>$visitor.getName()</td>
