@@ -42,6 +42,10 @@ public class PaddockController {
             List<Dinosaur> dinosaurs = DBHelper.getPaddocksDinosaurs(nursery);
             model.put("dinosaurs", dinosaurs);
 
+            Paddock containment = DBHelper.find(Paddock.class, 2);
+            List<Dinosaur> containDinos = DBHelper.getPaddocksDinosaurs(containment);
+            model.put("containDinos", containDinos);
+
             return new ModelAndView(model, "templates/layout.vtl");
 
         }, new VelocityTemplateEngine());
