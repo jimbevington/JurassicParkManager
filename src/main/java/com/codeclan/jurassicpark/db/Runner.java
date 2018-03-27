@@ -91,7 +91,7 @@ public class Runner {
         List<Paddock> paddocksAvailableForTrex = DBDinosaur.getAvailablePaddocks(newTrex);
 
 //        test get Dino Count
-        int paddock1DinoCount = DBPaddock.getDinoCount(paddock1);
+//        int paddock1DinoCount = DBPaddock.getDinoCount(paddock1);
 
 //        test the getAvailableDinosaurs
 
