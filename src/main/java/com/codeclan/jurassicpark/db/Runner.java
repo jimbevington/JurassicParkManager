@@ -3,6 +3,7 @@ package com.codeclan.jurassicpark.db;
 import com.codeclan.jurassicpark.db.db.DBDinosaur;
 import com.codeclan.jurassicpark.db.db.DBHelper;
 import com.codeclan.jurassicpark.db.db.DBPaddock;
+import com.codeclan.jurassicpark.db.db.DBVisitor;
 import com.codeclan.jurassicpark.db.models.*;
 
 import java.util.List;
@@ -117,6 +118,9 @@ public class Runner {
         int totalVisitors = DBHelper.totalVisitors();
 
         Paddock visitor3Paddock = visitor3.getPaddock();
+
+        List<Visitor> inParkVisitors = DBVisitor.inPark();
+
     }
 
 

@@ -1,6 +1,7 @@
 package com.codeclan.jurassicpark.db.controllers;
 
 import com.codeclan.jurassicpark.db.db.DBHelper;
+import com.codeclan.jurassicpark.db.db.DBVisitor;
 import com.codeclan.jurassicpark.db.models.Paddock;
 import com.codeclan.jurassicpark.db.models.Visitor;
 import spark.ModelAndView;
@@ -30,8 +31,8 @@ public class VisitorController {
 
             List<Visitor> visitorsInPark = DBVisitor.inPark();
             model.put("visitorsInPark", visitorsInPark);
-            List<Visitor> visitorsNotInPark = DBVisitor.notInPark();
-            model.put("visitorsNotInPark", visitorsNotInPark);
+//            List<Visitor> visitorsNotInPark = DBVisitor.notInPark();
+//            model.put("visitorsNotInPark", visitorsNotInPark);
 
             return new ModelAndView(model, "templates/layout.vtl");
 
