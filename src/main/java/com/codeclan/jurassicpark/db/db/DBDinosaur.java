@@ -3,6 +3,7 @@ package com.codeclan.jurassicpark.db.db;
 import com.codeclan.jurassicpark.db.models.*;
 import org.apache.commons.lang.ArrayUtils;
 
+import javax.smartcardio.CardNotPresentException;
 import java.util.*;
 
 public class DBDinosaur {
@@ -184,6 +185,23 @@ public class DBDinosaur {
         }
 
         return alerts;
+    }
+
+    public static String getDinoAlertType(Dinosaur dinosaur){
+
+        String alertType = null;
+
+        if (!dinosaur.isSecure()){
+            alertType = "ESCAPED!";
+        } else {
+            Carnivore carnivore = (Carnivore) dinosaur;
+            if (carnivore.getHunger() > 7){
+                alertType = "Hungry";
+            }
+        }
+
+        return alertType;
+
     }
 
 }
