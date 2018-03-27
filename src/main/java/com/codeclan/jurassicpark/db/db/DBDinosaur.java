@@ -156,12 +156,12 @@ public class DBDinosaur {
             DBHelper.delete(visitor);
         }
     }
-
+  
     public static void capture(Dinosaur dinosaur){
         dinosaur.setSecure(true);
         DBHelper.saveOrUpdate(dinosaur);
         Paddock paddock = dinosaur.getPaddock();
         DBPaddock.checkAlert(paddock);
     }
-
 }
+

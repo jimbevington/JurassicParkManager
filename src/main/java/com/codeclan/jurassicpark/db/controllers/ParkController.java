@@ -1,5 +1,6 @@
 package com.codeclan.jurassicpark.db.controllers;
 
+import com.codeclan.jurassicpark.db.db.DBDinosaur;
 import com.codeclan.jurassicpark.db.db.DBHelper;
 import com.codeclan.jurassicpark.db.db.DBPaddock;
 import com.codeclan.jurassicpark.db.db.Seeds;
@@ -20,18 +21,6 @@ import static spark.Spark.get;
 public class ParkController {
 
     public static void main(String[] args) {
-
-            final ScheduledExecutorService ses = Executors.newSingleThreadScheduledExecutor();
-            ses.scheduleWithFixedDelay(new Runnable() {
-                @Override
-                public void run() {
-                    List<Carnivore> carnivores = DBHelper.getAll(Carnivore.class);
-                    Collections.shuffle(carnivores);
-                    Carnivore carnivore = carnivores.get(0);
-                    carnivore.increaseHunger();
-                    DBHelper.saveOrUpdate(carnivore);
-                }
-            }, 5, 5, TimeUnit.SECONDS);
 
         Seeds.seedData();
 
@@ -62,17 +51,30 @@ public class ParkController {
 
         }, new VelocityTemplateEngine());
 
-        Spark.exception(Exception.class, (exception, request, response) -> {
-            exception.printStackTrace();
-        });
-    }
+        final ScheduledExecutorService hungerIncrease = Executors.newSingleThreadScheduledExecutor();
+        hungerIncrease.scheduleWithFixedDelay(new Runnable() {
+            @Override
+            public void run() {
+                List<Carnivore> carnivores = DBHelper.getAll(Carnivore.class);
+                Collections.shuffle(carnivores);
+                Carnivore carnivore = carnivores.get(0);
+                carnivore.increaseHunger();
+                DBHelper.saveOrUpdate(carnivore);
+            }
+        }, 5, 5, TimeUnit.SECONDS);
 
-
-
+        final ScheduledExecutorService rampagingDinos = Executors.newSingleThreadScheduledExecutor();
+        rampagingDinos.scheduleWithFixedDelay(new Runnable() {
+            @Override
+            public void run() {
+                List<Dinosaur> dinosaurs = DBDinosaur.listAll();
+                Collections.shuffle(dinosaurs);
+                Dinosaur dinosaur = dinosaurs.get(0);
+                DBDinosaur.rampage(dinosaur);
+            }
+        }, 8, 8, TimeUnit.SECONDS);
 
 //        login page
 //        home page
-
-
-
+    }
 }
