@@ -3,9 +3,7 @@ package com.codeclan.jurassicpark.db.controllers;
 import com.codeclan.jurassicpark.db.db.DBHelper;
 import com.codeclan.jurassicpark.db.db.DBPaddock;
 import com.codeclan.jurassicpark.db.db.Seeds;
-import com.codeclan.jurassicpark.db.models.Paddock;
-import com.codeclan.jurassicpark.db.models.SpeciesType;
-import com.codeclan.jurassicpark.db.models.Visitor;
+import com.codeclan.jurassicpark.db.models.*;
 import spark.ModelAndView;
 import spark.Spark;
 import spark.template.velocity.VelocityTemplateEngine;
@@ -14,6 +12,9 @@ import spark.template.velocity.VelocityTemplateEngine;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import static spark.SparkBase.staticFileLocation;
 import static spark.Spark.get;
@@ -21,6 +22,18 @@ import static spark.Spark.get;
 public class ParkController {
 
     public static void main(String[] args) {
+
+            final ScheduledExecutorService ses = Executors.newSingleThreadScheduledExecutor();
+            ses.scheduleWithFixedDelay(new Runnable() {
+                @Override
+                public void run() {
+                    List<Carnivore> carnivores = DBHelper.getAll(Carnivore.class);
+                    for(Carnivore carnivore : carnivores){
+                        carnivore.increaseHunger();
+                        DBHelper.saveOrUpdate(carnivore);
+                    }
+                }
+            }, 5, 10, TimeUnit.SECONDS);
 
         Seeds.seedData();
 
