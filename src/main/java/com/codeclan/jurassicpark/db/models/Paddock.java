@@ -88,6 +88,10 @@ public class Paddock {
         this.alert = alert;
     }
 
+    public String getAlertMessage(){
+        return this.alert.getAlert();
+    }
+
     @OneToMany(mappedBy = "paddock", fetch = FetchType.EAGER)
     public Set<Dinosaur> getDinosaurs() {
         return dinosaurs;
