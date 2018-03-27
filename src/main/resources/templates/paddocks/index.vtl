@@ -26,7 +26,6 @@
 </table>
 
 <h3>Nursery</h3>
-
 #if ($dinosaurs.size() == 0)
 <h5 class="italic">No Dinosaurs</h5>
 #else
@@ -41,7 +40,7 @@
     #foreach($dinosaur in $dinosaurs)
     <tr>
         <td>$dinosaur.getId()</td>
-        <td>$dinosaur.getSpecies()</td>
+        <td>$dinosaur.getSpecies().getSpecies()</td>
         <td>$dinosaur.getName()</td>
         <td>$dinosaur.getDanger()</td>
     </tr>
