@@ -29,6 +29,8 @@ public class Seeds {
         DBHelper.saveOrUpdate(paddock3);
         Paddock paddock4 = new Paddock("The Great Plains", 10, park);
         DBHelper.saveOrUpdate(paddock4);
+        Paddock paddock5 = new Paddock("Treachorous Tundra", 8, park);
+        DBHelper.saveOrUpdate(paddock5);
 
         Carnivore babyCarnivore = new Carnivore(SpeciesType.TREX, "Junior", 1, 10, nurseryPaddock);
         DBHelper.saveOrUpdate(babyCarnivore);
