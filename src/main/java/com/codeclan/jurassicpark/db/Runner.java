@@ -3,8 +3,10 @@ package com.codeclan.jurassicpark.db;
 import com.codeclan.jurassicpark.db.db.DBDinosaur;
 import com.codeclan.jurassicpark.db.db.DBHelper;
 import com.codeclan.jurassicpark.db.db.DBPaddock;
+import com.codeclan.jurassicpark.db.db.DBVisitor;
 import com.codeclan.jurassicpark.db.models.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
@@ -90,8 +92,6 @@ public class Runner {
         DBHelper.saveOrUpdate(newTrex);
         List<Paddock> paddocksAvailableForTrex = DBDinosaur.getAvailablePaddocks(newTrex);
 
-//        test get Dino Count
-        int paddock1DinoCount = DBPaddock.getDinoCount(paddock1);
 
 //        test the getAvailableDinosaurs
 
@@ -115,6 +115,17 @@ public class Runner {
 
         List<Visitor> paddock2Visitors = DBHelper.getPaddocksVisitors(paddock2);
         int paddock2VisitorCount = DBPaddock.getVisitorCount(paddock2);
+
+        int totalVisitors = DBHelper.totalVisitors();
+
+        Paddock visitor3Paddock = visitor3.getPaddock();
+
+
+        HashMap<String, List<Visitor>> sortedVisitors = DBVisitor.sortVisitors();
+        List<Visitor> inParkVisitors = sortedVisitors.get("inPark");
+        List<Visitor> notInParkVisitors = sortedVisitors.get("notInPark");
+
+
     }
 
 

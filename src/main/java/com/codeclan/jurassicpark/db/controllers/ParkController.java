@@ -4,6 +4,7 @@ import com.codeclan.jurassicpark.db.db.DBHelper;
 import com.codeclan.jurassicpark.db.db.Seeds;
 import com.codeclan.jurassicpark.db.models.Paddock;
 import com.codeclan.jurassicpark.db.models.SpeciesType;
+import com.codeclan.jurassicpark.db.models.Visitor;
 import spark.ModelAndView;
 import spark.Spark;
 import spark.template.velocity.VelocityTemplateEngine;
@@ -24,6 +25,7 @@ public class ParkController {
 
         staticFileLocation("/public");
 
+        VisitorController visitorController = new VisitorController();
         PaddockController paddockController = new PaddockController();
         DinosaurController dinosaurController = new DinosaurController();
         LoginController loginController = new LoginController();
@@ -40,6 +42,9 @@ public class ParkController {
 
             List<Paddock> paddocks = DBHelper.getAll(Paddock.class);
             model.put("paddocks", paddocks);
+
+            int totalVisitors = DBHelper.totalVisitors();
+            model.put("totalVisitors", totalVisitors);
 
             return new ModelAndView(model, "templates/layout.vtl");
 
