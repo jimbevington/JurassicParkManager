@@ -77,7 +77,7 @@ public class ParkController {
             public void run() {
                 DBVisitor.moveVisitors();
             }
-        }, 3, 3, TimeUnit.SECONDS);
+        }, 4, 7, TimeUnit.SECONDS);
 
 //        login page
 //        home page

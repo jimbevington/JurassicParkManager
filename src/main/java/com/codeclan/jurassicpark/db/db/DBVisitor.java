@@ -1,5 +1,6 @@
 package com.codeclan.jurassicpark.db.db;
 
+import com.codeclan.jurassicpark.db.models.AlertType;
 import com.codeclan.jurassicpark.db.models.Paddock;
 import com.codeclan.jurassicpark.db.models.Visitor;
 
@@ -42,6 +43,7 @@ public class DBVisitor {
         List<Visitor> visitors = DBHelper.getAll(Visitor.class);
         Collections.shuffle(visitors);
         Visitor visitor = visitors.get(0);
+        if (DBPaddock.checkAlert(paddock) = AlertType.NONE){
         DBPaddock.addVisitorToPaddock(visitor, paddock);
         DBHelper.saveOrUpdate(visitor);
         DBHelper.saveOrUpdate(paddock);
