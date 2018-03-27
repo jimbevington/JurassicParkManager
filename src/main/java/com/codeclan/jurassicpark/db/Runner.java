@@ -131,23 +131,40 @@ public class Runner {
         List<Dinosaur> inNursery = sortedDinos.get("inNursery");
         List<Dinosaur> inPark = sortedDinos.get("inPark");
 
+//        test REMOVE VISITOR from PADDOCK
         DBPaddock.removeVisitorFromPaddock(visitor1, paddock2);
         DBPaddock.removeVisitorFromPaddock(visitor4, paddock2); // testing doesn't crash if removing non-existent visitor
         Paddock paddockRemovedVisitor = DBHelper.find(Paddock.class, paddock2.getId());
         Visitor removedVisitor = DBHelper.find(Visitor.class, visitor1.getId());
 
+//        test LOCKDOWN PADDOCK
         DBPaddock.addVisitorToPaddock(visitor4, paddock2);
         Paddock updatedVisitorPaddock = DBHelper.find(Paddock.class, paddock2.getId());
         DBPaddock.lockDownPaddock(paddock2);
         Paddock noVisitorPaddock = DBHelper.find(Paddock.class, paddock2.getId());
         Visitor removedVisitor2 = DBHelper.find(Visitor.class, visitor4.getId());
 
+//        test RAMPAGING DINOS
         DBPaddock.addVisitorToPaddock(visitor3, paddock1);
         DBPaddock.addVisitorToPaddock(visitor4, paddock1);
         DBDinosaur.rampage(carnivore1);
         Dinosaur rampagingDino = DBHelper.find(Dinosaur.class, carnivore1.getId());
         Paddock unsecurePaddock = DBHelper.find(Paddock.class, paddock1.getId());
         List<Visitor> visitorsPostRampage = DBHelper.getAll(Visitor.class);
+
+//        test DINO ALERTS
+        Carnivore hungryCarnivore = new Carnivore(SpeciesType.TREX, "Geraldine", 4, 60, paddock1);
+        hungryCarnivore.setHunger(8);
+        DBHelper.saveOrUpdate(hungryCarnivore);
+
+        List<Dinosaur> dinoAlerts = DBDinosaur.getDinoAlerts();
+
+//        test GET DINO ALERT TYPE as INSTANCE of DBDINOSAUR for use inside VIEWS
+        DBDinosaur dbDinosaur = new DBDinosaur();
+
+        String escaped = dbDinosaur.getDinoAlertType(rampagingDino);
+        String hungry = dbDinosaur.getDinoAlertType(hungryCarnivore);
+
 
     }
 

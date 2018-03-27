@@ -30,6 +30,30 @@
         <th>Paddock #</th>
         <th>Alert</th>
     </tr>
+
+    #if($alerts.size() > 0)
+        #foreach($dinosaur in $alerts)
+        <tr>
+            <td>$dinosaur.getId()</td>
+            <td>$dinosaur.getSpecies().getSpecies()</td>
+            <td>$dinosaur.getName()</td>
+            <td>$dinosaur.getPaddock().getName()</td>
+            #set ($alert = ${dbDinosaur.getDinoAlertType($dinosaur)})
+            <td>$alert</td>
+            #if ($alert == "ESCAPED!")
+            <td class="button">
+                <form action="/dinosaurs/$dinosaur.getId()/capture" method="post">
+                    <input type="submit" value="Capture">
+                </form>
+            </td>
+            #else
+            <td class="button"><a href="/dinosaurs/$dinosaur.getId()/feed">Feed Me</a></td>
+            #end
+        </tr>
+        #end
+    #else
+    <h4>No Alerts</h4>
+    #end
 </table>
 
 <h3>Park Statistics</h3>
