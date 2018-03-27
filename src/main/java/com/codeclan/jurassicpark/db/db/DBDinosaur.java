@@ -164,6 +164,10 @@ public class DBDinosaur {
             DBPaddock.removeVisitorFromPaddock(visitor, paddock);
             DBHelper.delete(visitor);
         }
+        if (dinosaur.getClass() == Carnivore.class){
+           Carnivore carnivore = (Carnivore)dinosaur;
+                   carnivore.getFed();
+        }
     }
   
     public static void capture(Dinosaur dinosaur){

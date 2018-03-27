@@ -2,6 +2,7 @@ package com.codeclan.jurassicpark.db.models;
 
 import com.codeclan.jurassicpark.db.db.DBDinosaur;
 import com.codeclan.jurassicpark.db.db.DBHelper;
+import com.codeclan.jurassicpark.db.db.DBVisitor;
 
 import java.util.Collections;
 import java.util.List;
@@ -36,5 +37,13 @@ public class Test {
                 DBDinosaur.rampage(dinosaur);
             }
         }, 5, 15, TimeUnit.SECONDS);
+
+        final ScheduledExecutorService wanderingVisitors = Executors.newSingleThreadScheduledExecutor();
+        rampagingDinos.scheduleWithFixedDelay(new Runnable() {
+            @Override
+            public void run() {
+                DBVisitor.moveVisitors();
+            }
+        }, 3, 3, TimeUnit.SECONDS);
     }
 }
