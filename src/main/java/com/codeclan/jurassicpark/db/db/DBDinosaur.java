@@ -159,10 +159,4 @@ public class DBDinosaur {
 
 
 
-////    public static String species(Dinosaur dinosaur){
-////        Set<SpeciesType> speciesTypes = new HashSet<>();
-////
-////        }
-//    }
-
 }
