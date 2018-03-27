@@ -39,7 +39,8 @@ public class PaddockController {
             model.put("parkPaddocks", parkPaddocks);
 
             Paddock nursery = DBHelper.find(Paddock.class, 1);
-            model.put("nursery", nursery);
+            List<Dinosaur> dinosaurs = DBHelper.getPaddocksDinosaurs(nursery);
+            model.put("dinosaurs", dinosaurs);
 
             return new ModelAndView(model, "templates/layout.vtl");
 
