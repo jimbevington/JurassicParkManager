@@ -142,7 +142,6 @@ public class Runner {
         Paddock noVisitorPaddock = DBHelper.find(Paddock.class, paddock2.getId());
         Visitor removedVisitor2 = DBHelper.find(Visitor.class, visitor4.getId());
 
-
     }
 
 
