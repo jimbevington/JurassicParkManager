@@ -27,6 +27,7 @@ public class DinosaurController {
             HashMap<String, List<Dinosaur>> sortedDinos = DBDinosaur.sortDinosaurs();
             model.put("inPark", sortedDinos.get("inPark"));
             model.put("inNursery", sortedDinos.get("inNursery"));
+            model.put("inContainment", sortedDinos.get("inContainment"));
 
             model.put("template", "templates/dinosaurs/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
