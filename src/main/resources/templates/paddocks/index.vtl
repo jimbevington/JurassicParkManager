@@ -1,23 +1,24 @@
-    <h1>All Paddocks</h1>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Dinosaur Count</th>
-            <th>Visitor Count</th>
-            <th>Secure</th>
-        </tr>
+<h1>All Paddocks</h1>
 
-        #foreach($paddock in $paddocks)
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Dinosaur Count</th>
+        <th>Visitor Count</th>
+        <th>Secure</th>
+    </tr>
 
-        <tr>
-            <td>$paddock.getId()</td>
-            <td>$paddock.getName()</td>
-            <td>$paddock.dinoCount()</td>
-            <td>$paddock.visitorCount()</td>
-            <td>show Paddock Secure</td>
-            <td><a class="button" href="/paddocks/$paddock.getId()">Show More</a></td>
-        </tr>
-        #end
+    #foreach($paddock in $paddocks)
 
-    </table>
+    <tr>
+        <td>$paddock.getId()</td>
+        <td>$paddock.getName()</td>
+        <td>$paddock.dinoCount()</td>
+        <td>$paddock.visitorCount()</td>
+        <td>show Paddock Secure</td>
+        <td><a class="button" href="/paddocks/$paddock.getId()">Show More</a></td>
+    </tr>
+    #end
+
+</table>

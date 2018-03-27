@@ -1,0 +1,23 @@
+<h1>All Visitors</h1>
+
+#if ($visitors.size() == 0)
+<h5>No Visitors in Park</h5>
+#else
+<table>
+
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Paddock</th>
+    </tr>
+
+    #foreach($visitor in $visitors)
+    <tr>
+        <td>$visitor.getId()</td>
+        <td>$visitor.getName()</td>
+        <td>$visitor.getPaddock()</td>
+    </tr>
+    #end
+
+</table>
+#end
