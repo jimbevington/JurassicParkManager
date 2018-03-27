@@ -19,7 +19,9 @@ public class DBPaddock {
     public static List<Paddock> getParkPaddocks(){
         List<Paddock> all = DBHelper.getAll(Paddock.class);
         Paddock nursery = DBHelper.find(Paddock.class, 1);
+        Paddock containment = DBHelper.find(Paddock.class, 2);
         all.remove(nursery);
+        all.remove(containment);
         return all;
     }
 

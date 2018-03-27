@@ -19,9 +19,11 @@ public class Seeds {
 
 //        PADDOCKS
 
+//        Nursery Paddock - always has ID 1
         Paddock nurseryPaddock= new Paddock("Nursery", 50, park);
         DBHelper.saveOrUpdate(nurseryPaddock);
 
+//        Containment Paddock - always has ID 2
         Paddock containmentPaddock = new Paddock("Containment", 100, park);
         DBHelper.saveOrUpdate(containmentPaddock);
 
