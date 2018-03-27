@@ -2,10 +2,7 @@ package com.codeclan.jurassicpark.db.controllers;
 
 import com.codeclan.jurassicpark.db.db.DBDinosaur;
 import com.codeclan.jurassicpark.db.db.DBHelper;
-import com.codeclan.jurassicpark.db.models.Carnivore;
-import com.codeclan.jurassicpark.db.models.Dinosaur;
-import com.codeclan.jurassicpark.db.models.Paddock;
-import com.codeclan.jurassicpark.db.models.SpeciesType;
+import com.codeclan.jurassicpark.db.models.*;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -69,7 +66,41 @@ public class DinosaurController {
         }, new VelocityTemplateEngine());
 
 
+        get ("/dinosaurs/new", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+//            String loggedInUser = LoginController.getLoggedInUserName(req, res);
+//            model.put("user", loggedInUser);
+            List<Paddock> paddocks = DBHelper.getAll(Paddock.class);
+            SpeciesType[] species = SpeciesType.values();
+            model.put("paddocks", paddocks);
+            model.put("species", species);
+            model.put("template", "templates/dinosaurs/new.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
 
+        post ("/dinosaurs", (req, res) -> {
+            int paddockId = Integer.parseInt(req.queryParams("paddock"));
+            Paddock paddock = DBHelper.find(Paddock.class, paddockId);
+            String species = req.queryParams("species");
+            String name = req.queryParams("name");
+            int age = Integer.parseInt(req.queryParams("age"));
+            int danger = Integer.parseInt(req.queryParams("danger"));
+            if(species.equals(SpeciesType.TREX.getSpecies())){
+                Carnivore dinosaur = new Carnivore(SpeciesType.TREX, name, age, danger, paddock);
+                DBHelper.saveOrUpdate(dinosaur);
+            } else if (species.equals(SpeciesType.VELOCIRAPTOR.getSpecies())) {
+                Carnivore dinosaur = new Carnivore(SpeciesType.VELOCIRAPTOR, name, age, danger, paddock);
+                DBHelper.saveOrUpdate(dinosaur);
+            } else if(species.equals(SpeciesType.TRICERATOPS.getSpecies())){
+                Herbivore dinosaur = new Herbivore(SpeciesType.TRICERATOPS, name, age, danger, paddock);
+                DBHelper.saveOrUpdate(dinosaur);
+            } else if(species.equals(SpeciesType.BRACHIOSAURUS.getSpecies())){
+                Herbivore dinosaur = new Herbivore(SpeciesType.BRACHIOSAURUS, name, age, danger, paddock);
+                DBHelper.saveOrUpdate(dinosaur);
+            }
+            res.redirect("/dinosaurs");
+            return null;
+        }, new VelocityTemplateEngine());
 
         post ("/dinosaurs/:id/remove", (req, res) -> {
             int intId = Integer.parseInt(req.params(":id"));

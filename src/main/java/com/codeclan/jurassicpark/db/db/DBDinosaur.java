@@ -106,6 +106,20 @@ public class DBDinosaur {
         return dinosaurs;
     }
 
+    public static boolean speciesTest(Dinosaur dinosaur){
+        boolean result = false;
+        if (dinosaur.getSpecies() == SpeciesType.TREX) {
+            result = true;
+        } else {
+            if(dinosaur.getSpecies() == SpeciesType.VELOCIRAPTOR){
+                result = true;
+            } else {
+            result = false;
+            }
+        }
+        return result;
+    }
+
 ////    public static String species(Dinosaur dinosaur){
 ////        Set<SpeciesType> speciesTypes = new HashSet<>();
 ////
