@@ -19,12 +19,12 @@ public class TestPaddock {
 
     @Test
     public void canGetAlertMessage__NONE() {
-        assertEquals("", paddock.getAlertMessage());
+        assertEquals("", paddock.alertMessage());
     }
 
     @Test
     public void canGetAlertMessage__ESCAPE() {
         paddock.setAlert(AlertType.ESCAPE);
-        assertEquals("ESCAPE!", paddock.getAlertMessage());
+        assertEquals("ESCAPE!", paddock.alertMessage());
     }
 }
