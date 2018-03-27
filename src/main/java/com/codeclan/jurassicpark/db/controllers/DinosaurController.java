@@ -2,10 +2,7 @@ package com.codeclan.jurassicpark.db.controllers;
 
 import com.codeclan.jurassicpark.db.db.DBDinosaur;
 import com.codeclan.jurassicpark.db.db.DBHelper;
-import com.codeclan.jurassicpark.db.models.Carnivore;
-import com.codeclan.jurassicpark.db.models.Dinosaur;
-import com.codeclan.jurassicpark.db.models.Paddock;
-import com.codeclan.jurassicpark.db.models.SpeciesType;
+import com.codeclan.jurassicpark.db.models.*;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -88,9 +85,20 @@ public class DinosaurController {
             String name = req.queryParams("name");
             int age = Integer.parseInt(req.queryParams("age"));
             int danger = Integer.parseInt(req.queryParams("danger"));
-
-//            Dinosaur dinosaur = new Dinosaur(species, name, age, paddock, danger);
-//            DBHelper.saveOrUpdate(dinosaur);
+            SpeciesType[] speciestype = SpeciesType.values();
+            SpeciesType dinospecies = null;
+            for (SpeciesType s : speciestype){
+                if (s.getSpecies() == species){
+                    dinospecies = s;
+                }
+            }
+            if(dinospecies == SpeciesType.TREX || dinospecies == SpeciesType.VELOCIRAPTOR){
+                Carnivore dinosaur = new Carnivore(dinospecies, name, age, danger, paddock);
+                DBHelper.saveOrUpdate(dinosaur);
+            } else{
+                Herbivore dinosaur = new Herbivore(dinospecies, name, age, danger, paddock);
+                DBHelper.saveOrUpdate(dinosaur);
+            }
             res.redirect("/dinosaurs");
             return null;
         }, new VelocityTemplateEngine());

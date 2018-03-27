@@ -1,7 +1,8 @@
 <p class="pageHeader">New dinosaur</p>
 
 <form action="/dinosaurs" method="post">
-    <label for="species">Species:</label> <!-- NEW -->
+
+    <label for="species">Species:</label>
     <select id="species" name="species">
         #foreach( $species in $species )
         <option value="$species.getSpecies()">$species.getSpecies()</option>
@@ -9,7 +10,7 @@
     </select>
 
     <label for="name">Name:</label>
-    <input class="inputbox" type="text" name="name" required="true">
+    <input id="name" class="inputbox" type="text" name="name" required="true">
 
     <label for="paddock">Paddock:</label> <!-- NEW -->
     <select id="paddock" name="paddock">
