@@ -9,6 +9,7 @@ public class Seeds {
         DBHelper.deleteAll(Carnivore.class);
         DBHelper.deleteAll(Herbivore.class);
         DBHelper.deleteAll(Paddock.class);
+        DBHelper.deleteAll(Visitor.class);
         DBHelper.deleteAll(Park.class);
 
 
