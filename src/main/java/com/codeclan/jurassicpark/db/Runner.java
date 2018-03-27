@@ -125,7 +125,6 @@ public class Runner {
         List<Visitor> inParkVisitors = sortedVisitors.get("inPark");
         List<Visitor> notInParkVisitors = sortedVisitors.get("notInPark");
 
-
     }
 
 
