@@ -35,6 +35,6 @@ public class Test {
                 Dinosaur dinosaur = dinosaurs.get(0);
                 DBDinosaur.rampage(dinosaur);
             }
-        }, 5, 1, TimeUnit.MINUTES);
+        }, 5, 15, TimeUnit.SECONDS);
     }
 }

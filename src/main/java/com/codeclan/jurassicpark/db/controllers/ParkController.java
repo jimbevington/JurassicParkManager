@@ -21,17 +21,17 @@ public class ParkController {
 
     public static void main(String[] args) {
 
-            final ScheduledExecutorService ses = Executors.newSingleThreadScheduledExecutor();
-            ses.scheduleWithFixedDelay(new Runnable() {
-                @Override
-                public void run() {
-                    List<Carnivore> carnivores = DBHelper.getAll(Carnivore.class);
-                    Collections.shuffle(carnivores);
-                    Carnivore carnivore = carnivores.get(0);
-                    carnivore.increaseHunger();
-                    DBHelper.saveOrUpdate(carnivore);
-                }
-            }, 5, 5, TimeUnit.SECONDS);
+        final ScheduledExecutorService hungerIncrease = Executors.newSingleThreadScheduledExecutor();
+        hungerIncrease.scheduleWithFixedDelay(new Runnable() {
+            @Override
+            public void run() {
+                List<Carnivore> carnivores = DBHelper.getAll(Carnivore.class);
+                Collections.shuffle(carnivores);
+                Carnivore carnivore = carnivores.get(0);
+                carnivore.increaseHunger();
+                DBHelper.saveOrUpdate(carnivore);
+            }
+        }, 5, 5, TimeUnit.SECONDS);
 
         Seeds.seedData();
 
@@ -62,17 +62,7 @@ public class ParkController {
 
         }, new VelocityTemplateEngine());
 
-        Spark.exception(Exception.class, (exception, request, response) -> {
-            exception.printStackTrace();
-        });
-    }
-
-
-
-
 //        login page
 //        home page
-
-
-
+    }
 }
