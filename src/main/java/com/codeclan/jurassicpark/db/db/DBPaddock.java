@@ -114,6 +114,13 @@ public class DBPaddock {
         DBHelper.saveOrUpdate(paddock);
     }
 
+    public static void removeVisitorFromPaddock(Visitor visitor, Paddock paddock){
+        paddock.removeVisitor(visitor);
+        visitor.setPaddock(null);
+        DBHelper.saveOrUpdate(paddock);
+        DBHelper.saveOrUpdate(visitor);
+    }
+
 
     public static int getVisitorCount(Paddock paddock){
         List<Visitor> visitors = DBHelper.getPaddocksVisitors(paddock);
