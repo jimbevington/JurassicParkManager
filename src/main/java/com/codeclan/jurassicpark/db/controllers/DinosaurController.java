@@ -88,7 +88,7 @@ public class DinosaurController {
             String name = req.queryParams("name");
             int age = Integer.parseInt(req.queryParams("age"));
             int danger = Integer.parseInt(req.queryParams("danger"));
-            newdino = DBDinosaur
+
             Dinosaur dinosaur = new Dinosaur(species, name, age, paddock, danger);
             DBHelper.saveOrUpdate(dinosaur);
             res.redirect("/dinosaurs");
