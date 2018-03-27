@@ -35,12 +35,20 @@
             #else
             n/a
             #end</td>
-        <td>#if($dinosaur.isSecure())
+        #set ($secure = ${dinosaur.isSecure()})
+        <td>#if($secure)
             Secure
             #else
             ESCAPED!
             #end
         </td>
+        #if (!$secure)
+        <td class="button">
+            <form action="/dinosaurs/$dinosaur.getId()/capture" method="post">
+                <input type="submit" value="Capture">
+            </form>
+        </td>
+        #end
     </tr>
     #end
 
