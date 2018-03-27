@@ -71,5 +71,7 @@ public class Seeds {
 
         DBPaddock.addVisitorToPaddock(visitor1, paddock2);
         DBPaddock.addVisitorToPaddock(visitor2, paddock2);
+
+        DBDinosaur.rampage(carnivore1);
     }
 }

@@ -6,7 +6,7 @@
         <th>ID</th>
         <th>Name</th>
         <th>DinoCount</th>
-        <th>Secure</th>
+        <th>Status</th>
     </tr>
 
     #foreach($paddock in $paddocks)
@@ -15,7 +15,7 @@
         <td>$paddock.getId()</td>
         <td><a class="button" href="/paddocks/$paddock.getId()">$paddock.getName()</a></td>
         <td>$paddock.dinoCount()</td>
-        <td>show Paddock Secure</td>
+        <td>$paddock.alertMessage()</td>
     </tr>
     #end
 

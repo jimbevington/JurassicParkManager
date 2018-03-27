@@ -88,7 +88,7 @@ public class Paddock {
         this.alert = alert;
     }
 
-    public String getAlertMessage(){
+    public String alertMessage(){
         return this.alert.getAlert();
     }
 
