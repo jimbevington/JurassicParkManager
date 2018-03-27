@@ -137,10 +137,19 @@ public class DBPaddock {
 
     public static void checkAlert(Paddock paddock) {
         List<Dinosaur> dinosaurs = DBHelper.getPaddocksDinosaurs(paddock);
+
         for (Dinosaur dinosaur : dinosaurs){
+
             if (!dinosaur.isSecure()){
                 paddock.setAlert(AlertType.ESCAPE);
             }
+            else if (DBDinosaur.isHungry(dinosaur)){
+                paddock.setAlert(AlertType.HUNGRY);
+            }
+            else {
+                paddock.setAlert(AlertType.NONE);
+            }
+
         }
         DBHelper.saveOrUpdate(paddock);
     }

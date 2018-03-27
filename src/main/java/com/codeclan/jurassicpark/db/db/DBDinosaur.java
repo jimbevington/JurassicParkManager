@@ -204,5 +204,20 @@ public class DBDinosaur {
 
     }
 
+    public static boolean isHungry(Dinosaur dinosaur){
+
+        boolean result = false;
+
+        if (dinosaur instanceof Carnivore){
+            Carnivore carnivore = (Carnivore) dinosaur;
+            if (carnivore.getHunger() > 7){
+                result = true;
+            }
+        }
+
+        return result;
+
+    }
+
 }
 
