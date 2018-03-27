@@ -28,6 +28,11 @@ public class VisitorController {
             List<Visitor> visitors = DBHelper.getAll(Visitor.class);
             model.put("visitors", visitors);
 
+            List<Visitor> visitorsInPark = DBVisitor.inPark();
+            model.put("visitorsInPark", visitorsInPark);
+            List<Visitor> visitorsNotInPark = DBVisitor.notInPark();
+            model.put("visitorsNotInPark", visitorsNotInPark);
+
             return new ModelAndView(model, "templates/layout.vtl");
 
         }, new VelocityTemplateEngine());

@@ -116,6 +116,7 @@ public class Runner {
 
         int totalVisitors = DBHelper.totalVisitors();
 
+        Paddock visitor3Paddock = visitor3.getPaddock();
     }
 
 
