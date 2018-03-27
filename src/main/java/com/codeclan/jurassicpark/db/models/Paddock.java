@@ -112,4 +112,8 @@ public class Paddock {
     public int dinoCount(){
         return this.dinosaurs.size();
     }
+
+    public int visitorCount(){
+        return this.visitors.size();
+    }
 }

@@ -14,11 +14,6 @@ public class DBPaddock {
     private static Session session;
     private static Transaction transaction;
 
-//    public static int getDinoCount(Paddock paddock){
-//        List<Dinosaur> dinosaurs = DBHelper.getPaddocksDinosaurs(paddock);
-//        return dinosaurs.size();
-//    }
-
     public static String getPaddockDinoType(Paddock paddock){
         List<Dinosaur> dinosaurs = DBHelper.getPaddocksDinosaurs(paddock);
 
