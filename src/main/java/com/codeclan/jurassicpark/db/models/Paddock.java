@@ -15,7 +15,7 @@ public class Paddock {
     private int capacity;
     private Park park;
     private boolean open;
-    private boolean secured;
+    private AlertType alert;
     private Set<Dinosaur> dinosaurs;
     private Set<Visitor> visitors;
 
@@ -27,7 +27,7 @@ public class Paddock {
         this.capacity = capacity;
         this.park = park;
         this.open = true;
-        this.secured = true;
+        this.alert = AlertType.NONE;
         this.visitors = new HashSet<>();
     }
 
