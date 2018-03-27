@@ -113,6 +113,9 @@ public class Runner {
 
         List<Visitor> paddock2Visitors = DBHelper.getPaddocksVisitors(paddock2);
         int paddock2VisitorCount = DBPaddock.getVisitorCount(paddock2);
+
+        int totalVisitors = DBHelper.totalVisitors();
+
     }
 
 

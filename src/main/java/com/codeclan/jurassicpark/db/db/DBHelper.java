@@ -100,6 +100,10 @@ public class DBHelper {
         return results;
     }
 
+    public static int totalVisitors(){
+        List<Visitor> visitors = getAll(Visitor.class);
+        return visitors.size();
+    }
 
 
 //    getList
