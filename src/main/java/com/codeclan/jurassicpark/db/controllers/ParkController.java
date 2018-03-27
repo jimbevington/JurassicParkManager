@@ -40,9 +40,11 @@ public class ParkController {
 
             model.put("template", "templates/home.vtl");
 
-
             List<Paddock> paddocks = DBPaddock.getParkPaddocks();
             model.put("paddocks", paddocks);
+
+            List<Dinosaur> alerts = DBDinosaur.getDinoAlerts();
+            model.put("alerts", alerts);
 
             int totalVisitors = DBHelper.totalVisitors();
             model.put("totalVisitors", totalVisitors);
