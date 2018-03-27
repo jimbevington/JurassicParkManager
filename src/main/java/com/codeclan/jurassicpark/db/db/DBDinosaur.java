@@ -142,6 +142,21 @@ public class DBDinosaur {
         return result;
     }
 
+    public static void rampage(Dinosaur dinosaur){
+        dinosaur.setSecure(false);
+        DBHelper.saveOrUpdate(dinosaur);
+        Paddock paddock = dinosaur.getPaddock();
+        DBPaddock.checkSecure(paddock);
+
+        List<Visitor> visitors = DBHelper.getPaddocksVisitors(paddock);
+        if (visitors.size() > 1){
+            Collections.shuffle(visitors);
+            Visitor visitor = visitors.get(0);
+            DBPaddock.removeVisitorFromPaddock(visitor, paddock);
+            DBHelper.delete(visitor);
+        }
+    }
+
 ////    public static String species(Dinosaur dinosaur){
 ////        Set<SpeciesType> speciesTypes = new HashSet<>();
 ////

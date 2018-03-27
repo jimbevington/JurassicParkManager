@@ -135,4 +135,13 @@ public class DBPaddock {
         return visitors.size();
     }
 
+    public static void checkSecure(Paddock paddock) {
+        List<Dinosaur> dinosaurs = DBHelper.getPaddocksDinosaurs(paddock);
+        for (Dinosaur dinosaur : dinosaurs){
+            if (!dinosaur.isSecure()){
+                paddock.setSecured(false);
+            }
+        }
+        DBHelper.saveOrUpdate(paddock);
+    }
 }

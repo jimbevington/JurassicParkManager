@@ -142,6 +142,13 @@ public class Runner {
         Paddock noVisitorPaddock = DBHelper.find(Paddock.class, paddock2.getId());
         Visitor removedVisitor2 = DBHelper.find(Visitor.class, visitor4.getId());
 
+        DBPaddock.addVisitorToPaddock(visitor3, paddock1);
+        DBPaddock.addVisitorToPaddock(visitor4, paddock1);
+        DBDinosaur.rampage(carnivore1);
+        Dinosaur rampagingDino = DBHelper.find(Dinosaur.class, carnivore1.getId());
+        Paddock unsecurePaddock = DBHelper.find(Paddock.class, paddock1.getId());
+        List<Visitor> visitorsPostRampage = DBHelper.getAll(Visitor.class);
+
     }
 
 
