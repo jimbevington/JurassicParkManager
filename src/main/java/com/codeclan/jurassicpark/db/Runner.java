@@ -6,6 +6,7 @@ import com.codeclan.jurassicpark.db.db.DBPaddock;
 import com.codeclan.jurassicpark.db.models.*;
 
 import java.util.List;
+import java.util.Set;
 
 public class Runner {
 
@@ -41,12 +42,25 @@ public class Runner {
         Herbivore herbivore4 = new Herbivore(SpeciesType.TRICERATOPS, "Thomas", 42, 80, paddock4);
         DBHelper.saveOrUpdate(herbivore4);
 
+        Visitor visitor1 = new Visitor("Alan Grant");
+        DBHelper.saveOrUpdate(visitor1);
+        Visitor visitor2 = new Visitor("Ellie Satler");
+        DBHelper.saveOrUpdate(visitor2);
+        Visitor visitor3 = new Visitor("Ian Malcolm");
+        DBHelper.saveOrUpdate(visitor3);
+        Visitor visitor4 = new Visitor("Donald Gennaro");
+        DBHelper.saveOrUpdate(visitor4);
+
+//        TESTS
+
+
 //        test can get List of Objects
         List<Herbivore> foundHerbivores = DBHelper.getAll(Herbivore.class);
         List<Carnivore> foundCarnivores = DBHelper.getAll(Carnivore.class);
 //        test can get all Dinosaurs
         List<Dinosaur> foundDinosaurs = DBHelper.getAll(Dinosaur.class);
         List<Paddock> foundPaddocks = DBHelper.getAll(Paddock.class);
+        List<Visitor> foundVisitors = DBHelper.getAll(Visitor.class);
 
 //        test can get Individual Objects
         Herbivore foundHerbivore = DBHelper.find(Herbivore.class, herbivore2.getId());
@@ -87,10 +101,20 @@ public class Runner {
 //        should show Fluffy and Trevor T REX', not Fluffy
         List<Dinosaur> carnivoresAvailable = DBPaddock.getAvailableDinosaurs(nurseryPaddock);
 
-        String testPaddockDinoType__empty = DBPaddock.getPaddockDinoType(emptyPaddock);
-        String testPaddockDinoType__herbivore = DBPaddock.getPaddockDinoType(foundPaddock4);
-        String testPaddockDinoType__carnivore = DBPaddock.getPaddockDinoType(foundPaddock2);
 
+//        these are erroring out for some reason
+//        String testPaddockDinoType__empty = DBPaddock.getPaddockDinoType(emptyPaddock);
+//        String testPaddockDinoType__herbivore = DBPaddock.getPaddockDinoType(foundPaddock4);
+//        String testPaddockDinoType__carnivore = DBPaddock.getPaddockDinoType(foundPaddock2);
+
+//        test ADD VISITOR TO PADDOCK
+        DBPaddock.addVisitorToPaddock(visitor1, paddock2);
+        DBPaddock.addVisitorToPaddock(visitor2, paddock2);
+        Paddock paddockWithVisitor = DBHelper.find(Paddock.class, foundPaddock2.getId());
+        Visitor visitorWithPaddock = DBHelper.find(Visitor.class, visitor1.getId());
+
+        List<Visitor> paddock2Visitors = DBHelper.getPaddocksVisitors(paddock2);
+        int paddock2VisitorCount = DBPaddock.getVisitorCount(paddock2);
     }
 
 

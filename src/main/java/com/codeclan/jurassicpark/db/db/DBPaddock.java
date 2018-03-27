@@ -1,14 +1,18 @@
 package com.codeclan.jurassicpark.db.db;
 
-import com.codeclan.jurassicpark.db.models.Carnivore;
-import com.codeclan.jurassicpark.db.models.Dinosaur;
-import com.codeclan.jurassicpark.db.models.Herbivore;
-import com.codeclan.jurassicpark.db.models.Paddock;
+import com.codeclan.jurassicpark.db.models.*;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DBPaddock {
+
+    private static Session session;
+    private static Transaction transaction;
 
     public static int getDinoCount(Paddock paddock){
         List<Dinosaur> dinosaurs = DBHelper.getPaddocksDinosaurs(paddock);
@@ -94,6 +98,18 @@ public class DBPaddock {
         List<Dinosaur> dinosaurs = DBHelper.getPaddocksDinosaurs(paddock);
         return dinosaurs.size() < paddock.getCapacity();
 
+    }
+
+    public static void addVisitorToPaddock(Visitor visitor, Paddock paddock){
+        paddock.addVisitor(visitor);
+        visitor.setPaddock(paddock);
+        DBHelper.saveOrUpdate(visitor);
+        DBHelper.saveOrUpdate(paddock);
+    }
+
+    public static int getVisitorCount(Paddock paddock){
+        List<Visitor> visitors = DBHelper.getPaddocksVisitors(paddock);
+        return visitors.size();
     }
 
 }

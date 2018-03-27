@@ -1,9 +1,6 @@
 package com.codeclan.jurassicpark.db.db;
 
-import com.codeclan.jurassicpark.db.models.Carnivore;
-import com.codeclan.jurassicpark.db.models.Dinosaur;
-import com.codeclan.jurassicpark.db.models.Herbivore;
-import com.codeclan.jurassicpark.db.models.Paddock;
+import com.codeclan.jurassicpark.db.models.*;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -93,52 +90,16 @@ public class DBHelper {
         return results;
     }
 
-//    findAvailablePaddocks
+    //    getPaddockDinosaurs
+    public static List<Visitor> getPaddocksVisitors(Paddock paddock){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Visitor> results = null;
+        Criteria criteria = session.createCriteria(Visitor.class);
+        criteria.add(Restrictions.eq("paddock", paddock));
+        results = getList(criteria);
+        return results;
+    }
 
-//    this is shit. break into individual functions
-//    so if getAllPaddocks takes in a Carnivore, call a get Carnviore Paddocks method
-//    if its a Herbivore, call a get Herbivore Paddocks method.
-//    simplify, make modular
-
-//    if both conditions true, add Paddock to list of available
-//    public static List<Paddock> getAvailablePaddocks(Dinosaur dinosaur){
-//        List<Paddock> availablePaddocks = new ArrayList<>();
-//        List<Paddock> allPaddocks = getAll(Paddock.class);
-////        should remove dinosaurs current paddock from here
-//
-//        boolean spaceInPaddock;
-//        boolean dinoCond;
-//
-//        for (Paddock paddock : allPaddocks){
-//
-//            int dinoCount = getPaddocksDinosaurs(paddock).size();
-//            spaceInPaddock = dinoCount == 0 || dinoCount < paddock.getCapacity();
-//
-//            Dinosaur firstDino = null;
-////            set this if paddock not empty
-//            if (dinoCount != 0){
-//              firstDino = getPaddocksDinosaurs(paddock).get(0); // might cause issue
-//            }
-//
-////            set a DINO TYPE condition based upon the Dinosaur we're taking in
-//            if (dinosaur instanceof Carnivore){
-////                if its a Carnivore, check its the same species as the first dino in the Paddock
-//                dinoCond = dinosaur.getSpecies() == firstDino.getSpecies();
-//            } else {
-////                if its a Herbivore, check the first dino in the Paddock is also a Herbivore
-//                dinoCond = firstDino instanceof Herbivore;
-//            }
-//
-////            if there is SPACE IN THE PADDOCK and THE DINO TYPE CONDITION IS TRUE
-//            if (spaceInPaddock && dinoCond){
-//                availablePaddocks.add(paddock);
-//            }
-//
-//        }
-//
-//        return availablePaddocks;
-//
-//    }
 
 
 //    getList

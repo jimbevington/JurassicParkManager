@@ -21,6 +21,7 @@
         <mapping class = "com.codeclan.jurassicpark.db.models.Herbivore"/>
         <mapping class = "com.codeclan.jurassicpark.db.models.Park"/>
         <mapping class = "com.codeclan.jurassicpark.db.models.Paddock"/>
+        <mapping class = "com.codeclan.jurassicpark.db.models.Visitor"/>
 
     </session-factory>
 </hibernate-configuration>

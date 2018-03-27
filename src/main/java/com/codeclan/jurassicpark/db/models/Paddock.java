@@ -1,7 +1,9 @@
 package com.codeclan.jurassicpark.db.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -14,6 +16,7 @@ public class Paddock {
     private Park park;
     private boolean open;
     private Set<Dinosaur> dinosaurs;
+    private Set<Visitor> visitors;
 
     public Paddock() {
     }
@@ -23,6 +26,7 @@ public class Paddock {
         this.capacity = capacity;
         this.park = park;
         this.open = true;
+        this.visitors = new HashSet<>();
     }
 
     @Id
@@ -88,4 +92,24 @@ public class Paddock {
         return this.id == paddock.getId();
     }
 
+    @OneToMany(mappedBy = "paddock", fetch = FetchType.EAGER)
+    public Set<Visitor> getVisitors() {
+        return visitors;
+    }
+
+    public void setVisitors(Set<Visitor> visitors) {
+        this.visitors = visitors;
+    }
+
+    public void addVisitor(Visitor visitor){
+        this.visitors.add(visitor);
+    }
+
+    public void removeVisitor(Visitor visitor){
+        this.visitors.remove(visitor);
+    }
+
+    public int dinoCount(){
+        return this.dinosaurs.size();
+    }
 }

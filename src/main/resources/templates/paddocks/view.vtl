@@ -6,6 +6,9 @@
 
 <h3>Dinosaurs</h3>
 
+#if ($dinosaurs.size() == 0)
+<h5 class="italic">Paddock Empty</h5>
+#else
 <table>
     <tr>
         <th>ID</th>
@@ -35,3 +38,26 @@
     #end
 
 </table>
+#end
+
+<h3>Visitors</h3>
+
+#if ($visitors.size() == 0)
+<h5 class="italic">No Visitors</h5>
+#else
+<table>
+
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+
+    #foreach($visitor in $visitors)
+    <tr>
+        <td>$visitor.getId()</td>
+        <td>$visitor.getName()</td>
+    </tr>
+    #end
+
+</table>
+#end
