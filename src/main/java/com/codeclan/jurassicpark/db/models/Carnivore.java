@@ -3,6 +3,8 @@ package com.codeclan.jurassicpark.db.models;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 @Entity
 @Table(name="carnivores")
@@ -33,8 +35,14 @@ public class Carnivore extends Dinosaur {
     }
 
 //    we need a way for the Carnivore to get Hungry
-    public int increaseHunger(){
-        this.hunger += 1;
-        return this.hunger;
+
+    Runnable hungerIncrease = new Runnable() {
+        public int increaseHunger() {
+            hunger += 1;
+            return hunger;
+        }
     }
+    ScheduledExecutorService exec = Executors.newScheduledThreadPool(1);
+    exec.scheduleAtFixedRate(hungerIncrease , 0, 1, TimeUnit.MINUTES);
+
 }
