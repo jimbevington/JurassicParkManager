@@ -131,6 +131,19 @@ public class PaddockController {
             return null;
 
         }, new VelocityTemplateEngine());
+
+        post("/paddocks/:id/lock-down", (req, res) -> {
+
+            Integer id = Integer.parseInt(req.params(":id"));
+            Paddock paddock = DBHelper.find(Paddock.class, id);
+
+            DBPaddock.lockDownPaddock(paddock);
+
+            res.redirect("/paddocks/" + id.toString());
+            return null;
+
+        }, new VelocityTemplateEngine());
+
     }
 
 

@@ -20,6 +20,11 @@
         <td>$paddock.visitorCount()</td>
         <td>show Paddock Secure</td>
         <td><a class="button" href="/paddocks/$paddock.getId()">Show More</a></td>
+        <td>
+            <form action="/paddocks/$paddock.getId()/lock-down" method="post">
+                <input type="submit" value="Lock Down">
+            </form>
+        </td>
     </tr>
     #end
 
