@@ -130,6 +130,18 @@ public class Runner {
         HashMap<String, List<Dinosaur>> sortedDinos = DBDinosaur.sortDinosaurs();
         List<Dinosaur> inNursery = sortedDinos.get("inNursery");
         List<Dinosaur> inPark = sortedDinos.get("inPark");
+
+        DBPaddock.removeVisitorFromPaddock(visitor1, paddock2);
+        DBPaddock.removeVisitorFromPaddock(visitor4, paddock2); // testing doesn't crash if removing non-existent visitor
+        Paddock paddockRemovedVisitor = DBHelper.find(Paddock.class, paddock2.getId());
+        Visitor removedVisitor = DBHelper.find(Visitor.class, visitor1.getId());
+
+        DBPaddock.addVisitorToPaddock(visitor4, paddock2);
+        Paddock updatedVisitorPaddock = DBHelper.find(Paddock.class, paddock2.getId());
+        DBPaddock.lockDownPaddock(paddock2);
+        Paddock noVisitorPaddock = DBHelper.find(Paddock.class, paddock2.getId());
+        Visitor removedVisitor2 = DBHelper.find(Visitor.class, visitor4.getId());
+
     }
 
 
