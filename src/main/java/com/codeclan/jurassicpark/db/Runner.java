@@ -120,6 +120,7 @@ public class Runner {
         Paddock visitor3Paddock = visitor3.getPaddock();
 
         List<Visitor> inParkVisitors = DBVisitor.inPark();
+        List<Visitor> notInParkVisitors = DBVisitor.notInPark();
 
     }
 

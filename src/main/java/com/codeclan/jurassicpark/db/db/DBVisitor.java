@@ -20,4 +20,21 @@ public class DBVisitor {
         return inPark;
 
     }
+
+    public static List<Visitor> notInPark(){
+        List<Visitor> allVisitors = DBHelper.getAll(Visitor.class);
+        List<Visitor> notInPark = new ArrayList<>();
+
+        for (Visitor visitor : allVisitors){
+            if (visitor.getPaddock() == null){
+                notInPark.add(visitor);
+            }
+        }
+
+        return notInPark;
+
+    }
+
+
+
 }
