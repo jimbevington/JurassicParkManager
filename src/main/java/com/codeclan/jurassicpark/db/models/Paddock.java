@@ -108,4 +108,8 @@ public class Paddock {
     public void removeVisitor(Visitor visitor){
         this.visitors.remove(visitor);
     }
+
+    public int dinoCount(){
+        return this.dinosaurs.size();
+    }
 }
