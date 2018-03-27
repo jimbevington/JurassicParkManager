@@ -157,6 +157,13 @@ public class DBDinosaur {
         }
     }
 
+    public static void capture(Dinosaur dinosaur){
+        dinosaur.setSecure(true);
+        DBHelper.saveOrUpdate(dinosaur);
+        Paddock paddock = dinosaur.getPaddock();
+        DBPaddock.checkAlert(paddock);
+    }
+
 ////    public static String species(Dinosaur dinosaur){
 ////        Set<SpeciesType> speciesTypes = new HashSet<>();
 ////
