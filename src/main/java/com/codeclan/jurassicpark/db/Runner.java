@@ -136,6 +136,12 @@ public class Runner {
         Paddock paddockRemovedVisitor = DBHelper.find(Paddock.class, paddock2.getId());
         Visitor removedVisitor = DBHelper.find(Visitor.class, visitor1.getId());
 
+        DBPaddock.addVisitorToPaddock(visitor4, paddock2);
+        Paddock updatedVisitorPaddock = DBHelper.find(Paddock.class, paddock2.getId());
+        DBPaddock.lockDownPaddock(paddock2);
+        Paddock noVisitorPaddock = DBHelper.find(Paddock.class, paddock2.getId());
+        Visitor removedVisitor2 = DBHelper.find(Visitor.class, visitor4.getId());
+
 
     }
 

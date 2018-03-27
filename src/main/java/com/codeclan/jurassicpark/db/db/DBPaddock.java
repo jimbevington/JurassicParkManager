@@ -9,6 +9,7 @@ import org.hibernate.criterion.Restrictions;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 public class DBPaddock {
 
@@ -119,6 +120,13 @@ public class DBPaddock {
         visitor.setPaddock(null);
         DBHelper.saveOrUpdate(paddock);
         DBHelper.saveOrUpdate(visitor);
+    }
+
+    public static void lockDownPaddock(Paddock paddock){
+        List<Visitor> visitors = DBHelper.getPaddocksVisitors(paddock);
+        for (Visitor visitor : visitors){
+            removeVisitorFromPaddock(visitor, paddock);
+        }
     }
 
 
