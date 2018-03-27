@@ -38,7 +38,12 @@
         </td>
         <td class="button"><a href="/dinosaurs/$dinosaur.getId()/feed">Feed Me</a></td>
         <td class="button"><a href="/dinosaurs/$dinosaur.getId()/move">Move</a></td>
-        <td class="button"><a href="/dinosaurs/$dinosaur.getId()/remove">Remove</a></td>
+        <td class="button"><a href="/dinosaurs/$dinosaur.getId()/remove">Remove</a>
+        <td class="button">
+            <form action="/dinosaurs/$dinosaur.getId()/containment" method="post">
+                <input type="submit" value="Move to Containment">
+            </form>
+        </td>
         #if(!$dinosaur.isSecure())
         <td class="button">
             <form action="/dinosaurs/$dinosaur.getId()/capture" method="post">
@@ -61,7 +66,6 @@
         <th>Name</th>
         <th>Age</th>
         <th>Danger Level</th>
-        <th>Paddock</th>
         <th>Hunger</th>
         <th>Status</th>
     </tr>
@@ -73,7 +77,6 @@
         <td>$dinosaur.getName()</td>
         <td>$dinosaur.getAge()</td>
         <td>$dinosaur.getDanger()</td>
-        <td>$dinosaur.getPaddock().getName()</td>
         <td>#if(${dinosaur.class.simpleName} == "Carnivore")
             $dinosaur.getHunger()
             #else
@@ -87,6 +90,45 @@
         </td>
         <td class="button"><a href="/dinosaurs/$dinosaur.getId()/feed">Feed Me</a></td>
         <td class="button"><a href="/dinosaurs/$dinosaur.getId()/move">Move Paddock</a></td>
+        <td class="button"><a href="/dinosaurs/$dinosaur.getId()/remove">Remove</a></td>
+    </tr>
+    #end
+
+</table>
+
+<h3>Containment</h3>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Species</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Danger Level</th>
+        <th>Hunger</th>
+        <th>Status</th>
+    </tr>
+
+    #foreach($dinosaur in $inContainment)
+    <tr>
+        <td>$dinosaur.getId()</td>
+        <td>$dinosaur.getSpecies().getSpecies()</td>
+        <td>$dinosaur.getName()</td>
+        <td>$dinosaur.getAge()</td>
+        <td>$dinosaur.getDanger()</td>
+        <td>#if(${dinosaur.class.simpleName} == "Carnivore")
+            $dinosaur.getHunger()
+            #else
+            n/a
+            #end</td>
+        <td>#if($dinosaur.isSecure())
+            Secure
+            #else
+            ESCAPED!
+            #end
+        </td>
+        <td class="button"><a href="/dinosaurs/$dinosaur.getId()/feed">Feed Me</a></td>
+        <td class="button"><a href="/dinosaurs/$dinosaur.getId()/move">Move To Paddock</a></td>
         <td class="button"><a href="/dinosaurs/$dinosaur.getId()/remove">Remove</a></td>
     </tr>
     #end

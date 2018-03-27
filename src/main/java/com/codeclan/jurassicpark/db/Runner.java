@@ -19,6 +19,8 @@ public class Runner {
 
         Paddock nurseryPaddock= new Paddock("Nursery", 50, park);
         DBHelper.saveOrUpdate(nurseryPaddock);
+        Paddock containmentPaddock = new Paddock("Containment", 100, park);
+        DBHelper.saveOrUpdate(containmentPaddock);
         Paddock paddock1 = new Paddock("Green Gully", 10, park);
         DBHelper.saveOrUpdate(paddock1);
         Paddock paddock2 = new Paddock("Arid Desert", 10, park);
@@ -127,9 +129,13 @@ public class Runner {
         Carnivore babyCarnivore = new Carnivore(SpeciesType.TREX, "Junior", 1, 10, nurseryPaddock);
         DBHelper.saveOrUpdate(babyCarnivore);
 
+        Carnivore containedCarnivore = new Carnivore(SpeciesType.TREX, "Alan", 4, 50, containmentPaddock);
+        DBHelper.saveOrUpdate(containedCarnivore);
         HashMap<String, List<Dinosaur>> sortedDinos = DBDinosaur.sortDinosaurs();
         List<Dinosaur> inNursery = sortedDinos.get("inNursery");
         List<Dinosaur> inPark = sortedDinos.get("inPark");
+        List<Dinosaur> inContainment = sortedDinos.get("inContainment");
+
 
 //        test REMOVE VISITOR from PADDOCK
         DBPaddock.removeVisitorFromPaddock(visitor1, paddock2);

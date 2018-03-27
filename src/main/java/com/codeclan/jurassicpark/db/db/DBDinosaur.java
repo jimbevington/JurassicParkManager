@@ -15,10 +15,13 @@ public class DBDinosaur {
         List<Dinosaur> all = DBHelper.getAll(Dinosaur.class);
         List<Dinosaur> inPark = new ArrayList<>();
         List<Dinosaur> inNursery = new ArrayList<>();
+        List<Dinosaur> inContainment = new ArrayList<>();
 
         for (Dinosaur dinosaur : all){
             if (dinosaur.getPaddock().getId() == 1){
                 inNursery.add(dinosaur);
+            }  else if (dinosaur.getPaddock().getId() == 2) {
+                inContainment.add(dinosaur);
             } else {
                 inPark.add(dinosaur);
             }
@@ -27,6 +30,7 @@ public class DBDinosaur {
         sortedDinos.put("all", all);
         sortedDinos.put("inPark", inPark);
         sortedDinos.put("inNursery", inNursery);
+        sortedDinos.put("inContainment", inContainment);
 
         return sortedDinos;
     }

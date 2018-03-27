@@ -27,6 +27,7 @@ public class DinosaurController {
             HashMap<String, List<Dinosaur>> sortedDinos = DBDinosaur.sortDinosaurs();
             model.put("inPark", sortedDinos.get("inPark"));
             model.put("inNursery", sortedDinos.get("inNursery"));
+            model.put("inContainment", sortedDinos.get("inContainment"));
 
             model.put("template", "templates/dinosaurs/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
@@ -118,6 +119,21 @@ public class DinosaurController {
             Integer id = Integer.parseInt(req.params(":id"));
             Dinosaur dinosaur = DBHelper.find(Dinosaur.class, id);
             DBDinosaur.capture(dinosaur);
+            res.redirect("/dinosaurs");
+            return null;
+
+        }, new VelocityTemplateEngine());
+
+        post("/dinosaurs/:id/containment", (req, res) -> {
+
+            int id = Integer.parseInt(req.params(":id"));
+            Dinosaur dinosaur = DBHelper.find(Dinosaur.class, id);
+
+            Paddock containment = DBHelper.find(Paddock.class, 2);
+
+            dinosaur.setPaddock(containment);
+            DBHelper.saveOrUpdate(dinosaur);
+
             res.redirect("/dinosaurs");
             return null;
 
