@@ -159,8 +159,11 @@ public class Runner {
 
         List<Dinosaur> dinoAlerts = DBDinosaur.getDinoAlerts();
 
-        String escaped = DBDinosaur.getDinoAlertType(rampagingDino);
-        String hungry = DBDinosaur.getDinoAlertType(hungryCarnivore);
+//        test GET DINO ALERT TYPE as INSTANCE of DBDINOSAUR for use inside VIEWS
+        DBDinosaur dbDinosaur = new DBDinosaur();
+
+        String escaped = dbDinosaur.getDinoAlertType(rampagingDino);
+        String hungry = dbDinosaur.getDinoAlertType(hungryCarnivore);
 
 
     }

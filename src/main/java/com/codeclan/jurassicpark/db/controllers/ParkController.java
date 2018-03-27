@@ -46,6 +46,9 @@ public class ParkController {
             List<Dinosaur> alerts = DBDinosaur.getDinoAlerts();
             model.put("alerts", alerts);
 
+            DBDinosaur dbDinosaur = new DBDinosaur();
+            model.put("dbDinosaur", dbDinosaur);
+
             int totalVisitors = DBHelper.totalVisitors();
             model.put("totalVisitors", totalVisitors);
 
