@@ -164,10 +164,4 @@ public class DBDinosaur {
         DBPaddock.checkAlert(paddock);
     }
 
-////    public static String species(Dinosaur dinosaur){
-////        Set<SpeciesType> speciesTypes = new HashSet<>();
-////
-////        }
-//    }
-
 }
