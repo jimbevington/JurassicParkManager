@@ -16,5 +16,4 @@ public enum SpeciesType {
         return this.species;
     }
 
-
 }

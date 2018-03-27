@@ -7,7 +7,29 @@ import java.util.*;
 
 public class DBDinosaur {
 
-//    need to remove Dinosaurs current Paddock
+    public static HashMap<String, List<Dinosaur>> sortDinosaurs(){
+
+        HashMap<String, List<Dinosaur>> sortedDinos = new HashMap<>();
+
+        List<Dinosaur> all = DBHelper.getAll(Dinosaur.class);
+        List<Dinosaur> inPark = new ArrayList<>();
+        List<Dinosaur> inNursery = new ArrayList<>();
+
+        for (Dinosaur dinosaur : all){
+            if (dinosaur.getPaddock().getId() == 1){
+                inNursery.add(dinosaur);
+            } else {
+                inPark.add(dinosaur);
+            }
+        }
+
+        sortedDinos.put("all", all);
+        sortedDinos.put("inPark", inPark);
+        sortedDinos.put("inNursery", inNursery);
+
+        return sortedDinos;
+    }
+
 
     public static List<Paddock> getAvailablePaddocks(Dinosaur dinosaur){
 

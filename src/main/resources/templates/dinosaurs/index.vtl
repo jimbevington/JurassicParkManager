@@ -3,6 +3,7 @@
 <td class="button"><a href="/dinosaurs/new">Add New Dinosaur</a></td>
 <br>
 <br>
+<h3>Park</h3>
 <table>
     <tr>
         <th>ID</th>
@@ -15,7 +16,7 @@
         <th>Secure</th>
     </tr>
 
-    #foreach($dinosaur in $dinosaurs)
+    #foreach($dinosaur in $inPark)
     <tr>
         <td>$dinosaur.getId()</td>
         <td>$dinosaur.getSpecies().getSpecies()</td>
@@ -28,6 +29,41 @@
             #else
             n/a
         #end</td>
+        <td>christie</td>
+        <td class="button"><a href="/dinosaurs/$dinosaur.getId()/feed">Feed Me</a></td>
+        <td class="button"><a href="/dinosaurs/$dinosaur.getId()/move">Move Paddock</a></td>
+        <td class="button"><a href="/dinosaurs/$dinosaur.getId()/remove">Remove</a></td>
+    </tr>
+    #end
+
+</table>
+
+<h3>Nursery</h3>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Species</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Danger Level</th>
+        <th>Paddock</th>
+        <th>Hunger</th>
+        <th>Secure</th>
+    </tr>
+
+    #foreach($dinosaur in $inNursery)
+    <tr>
+        <td>$dinosaur.getId()</td>
+        <td>$dinosaur.getSpecies().getSpecies()</td>
+        <td>$dinosaur.getName()</td>
+        <td>$dinosaur.getAge()</td>
+        <td>$dinosaur.getDanger()</td>
+        <td>#if(${dinosaur.class.simpleName} == "Carnivore")
+            $dinosaur.getHunger()
+            #else
+            n/a
+            #end</td>
         <td>christie</td>
         <td class="button"><a href="/dinosaurs/$dinosaur.getId()/feed">Feed Me</a></td>
         <td class="button"><a href="/dinosaurs/$dinosaur.getId()/move">Move Paddock</a></td>

@@ -7,12 +7,20 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class DBPaddock {
 
     private static Session session;
     private static Transaction transaction;
+
+    public static List<Paddock> getParkPaddocks(){
+        List<Paddock> all = DBHelper.getAll(Paddock.class);
+        Paddock nursery = DBHelper.find(Paddock.class, 1);
+        all.remove(nursery);
+        return all;
+    }
 
     public static String getPaddockDinoType(Paddock paddock){
         List<Dinosaur> dinosaurs = DBHelper.getPaddocksDinosaurs(paddock);
@@ -105,6 +113,7 @@ public class DBPaddock {
         DBHelper.saveOrUpdate(visitor);
         DBHelper.saveOrUpdate(paddock);
     }
+
 
     public static int getVisitorCount(Paddock paddock){
         List<Visitor> visitors = DBHelper.getPaddocksVisitors(paddock);

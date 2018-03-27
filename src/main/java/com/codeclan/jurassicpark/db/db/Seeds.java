@@ -11,21 +11,26 @@ public class Seeds {
         DBHelper.deleteAll(Paddock.class);
         DBHelper.deleteAll(Park.class);
 
+
         Park park = new Park("Jurassic Park");
         DBHelper.saveOrUpdate(park);
 
+
+//        PADDOCKS
+
+        Paddock nurseryPaddock= new Paddock("Nursery", 50, park);
+        DBHelper.saveOrUpdate(nurseryPaddock);
         Paddock paddock1 = new Paddock("Green Gully", 10, park);
         DBHelper.saveOrUpdate(paddock1);
-
         Paddock paddock2 = new Paddock("Arid Desert", 10, park);
         DBHelper.saveOrUpdate(paddock2);
-
         Paddock paddock3 = new Paddock("Misty Mountains", 10, park);
         DBHelper.saveOrUpdate(paddock3);
-
         Paddock paddock4 = new Paddock("The Great Plains", 10, park);
         DBHelper.saveOrUpdate(paddock4);
 
+        Carnivore babyCarnivore = new Carnivore(SpeciesType.TREX, "Junior", 1, 10, nurseryPaddock);
+        DBHelper.saveOrUpdate(babyCarnivore);
 
         Carnivore carnivore1 = new Carnivore(SpeciesType.TREX, "Fluffy", 30, 70, paddock1);
         DBHelper.saveOrUpdate(carnivore1);

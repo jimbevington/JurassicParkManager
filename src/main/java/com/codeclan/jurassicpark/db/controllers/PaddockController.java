@@ -35,8 +35,12 @@ public class PaddockController {
             Map<String, Object> model = new HashMap<>();
             model.put("template", "templates/paddocks/index.vtl");
 
-            List<Paddock> paddocks = DBHelper.getAll(Paddock.class);
-            model.put("paddocks", paddocks);
+            List<Paddock> parkPaddocks = DBPaddock.getParkPaddocks();
+            model.put("parkPaddocks", parkPaddocks);
+
+            Paddock nursery = DBHelper.find(Paddock.class, 1);
+            List<Dinosaur> dinosaurs = DBHelper.getPaddocksDinosaurs(nursery);
+            model.put("dinosaurs", dinosaurs);
 
             return new ModelAndView(model, "templates/layout.vtl");
 

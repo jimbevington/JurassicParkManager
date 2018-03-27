@@ -1,6 +1,7 @@
 package com.codeclan.jurassicpark.db.controllers;
 
 import com.codeclan.jurassicpark.db.db.DBHelper;
+import com.codeclan.jurassicpark.db.db.DBPaddock;
 import com.codeclan.jurassicpark.db.db.Seeds;
 import com.codeclan.jurassicpark.db.models.Paddock;
 import com.codeclan.jurassicpark.db.models.SpeciesType;
@@ -40,7 +41,7 @@ public class ParkController {
             model.put("template", "templates/home.vtl");
 
 
-            List<Paddock> paddocks = DBHelper.getAll(Paddock.class);
+            List<Paddock> paddocks = DBPaddock.getParkPaddocks();
             model.put("paddocks", paddocks);
 
             int totalVisitors = DBHelper.totalVisitors();
