@@ -9,9 +9,7 @@ import spark.Spark;
 import spark.template.velocity.VelocityTemplateEngine;
 
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -28,12 +26,12 @@ public class ParkController {
                 @Override
                 public void run() {
                     List<Carnivore> carnivores = DBHelper.getAll(Carnivore.class);
-                    for(Carnivore carnivore : carnivores){
-                        carnivore.increaseHunger();
-                        DBHelper.saveOrUpdate(carnivore);
-                    }
+                    Collections.shuffle(carnivores);
+                    Carnivore carnivore = carnivores.get(0);
+                    carnivore.increaseHunger();
+                    DBHelper.saveOrUpdate(carnivore);
                 }
-            }, 5, 10, TimeUnit.SECONDS);
+            }, 5, 5, TimeUnit.SECONDS);
 
         Seeds.seedData();
 
