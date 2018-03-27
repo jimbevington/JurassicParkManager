@@ -163,5 +163,28 @@ public class DBDinosaur {
         Paddock paddock = dinosaur.getPaddock();
         DBPaddock.checkAlert(paddock);
     }
+
+    public static List<Dinosaur> getDinoAlerts(){
+
+        List<Dinosaur> all = DBHelper.getAll(Dinosaur.class);
+        List<Carnivore> carnivores = DBHelper.getAll(Carnivore.class);
+        List<Dinosaur> alerts = new ArrayList<>();
+
+//        add Unsecured Dinosaurs
+        for (Dinosaur dinosaur : all){
+            if (!dinosaur.isSecure()){
+                alerts.add(dinosaur);
+            }
+        }
+
+        for (Carnivore carnivore : carnivores){
+            if (carnivore.getHunger() > 7 && !alerts.contains(carnivore)){
+                alerts.add(carnivore);
+            }
+        }
+
+        return alerts;
+    }
+
 }
 
