@@ -1,0 +1,25 @@
+<p class="pageHeader">New dinosaur</p>
+
+<form action="/dinosaurs" method="post">
+    <label for="species">Species:</label>
+    <input class="inputbox" type="text" name="species" required="true">
+
+    <label for="name">Name:</label>
+    <input class="inputbox" type="text" name="name" required="true">
+
+    <label for="paddock">Paddock:</label> <!-- NEW -->
+    <select id="paddock" name="paddock">
+        #foreach( $paddock in $paddocks )
+        <option value="$paddock.getId()">$paddock.getName()</option>
+        #end
+    </select>
+
+    <label for="age">Age:</label>
+    <input type="number" name="age" required="true" class="inputbox">
+
+    <label for="danger">Danger Level:</label>
+    <input type="number" name="danger" required="true" class="inputbox">
+
+    <input type="submit" value="Save" class="button">
+</form>
+<a href="/dinosaurs" class="button center">Cancel</a>
