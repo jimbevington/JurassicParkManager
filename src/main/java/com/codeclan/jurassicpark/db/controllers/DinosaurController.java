@@ -77,7 +77,7 @@ public class DinosaurController {
             SpeciesType[] species = SpeciesType.values();
             model.put("paddocks", paddocks);
             model.put("species", species);
-            model.put("template", "templates/dinosaurs/create.vtl");
+            model.put("template", "templates/dinosaurs/new.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
@@ -89,8 +89,8 @@ public class DinosaurController {
             int age = Integer.parseInt(req.queryParams("age"));
             int danger = Integer.parseInt(req.queryParams("danger"));
 
-            Dinosaur dinosaur = new Dinosaur(species, name, age, paddock, danger);
-            DBHelper.saveOrUpdate(dinosaur);
+//            Dinosaur dinosaur = new Dinosaur(species, name, age, paddock, danger);
+//            DBHelper.saveOrUpdate(dinosaur);
             res.redirect("/dinosaurs");
             return null;
         }, new VelocityTemplateEngine());
