@@ -123,5 +123,20 @@ public class DinosaurController {
             return null;
 
         }, new VelocityTemplateEngine());
+
+        post("/dinosaurs/:id/containment", (req, res) -> {
+
+            int id = Integer.parseInt(req.params(":id"));
+            Dinosaur dinosaur = DBHelper.find(Dinosaur.class, id);
+
+            Paddock containment = DBHelper.find(Paddock.class, 2);
+
+            dinosaur.setPaddock(containment);
+            DBHelper.saveOrUpdate(dinosaur);
+
+            res.redirect("/dinosaurs");
+            return null;
+
+        }, new VelocityTemplateEngine());
     }
 }
