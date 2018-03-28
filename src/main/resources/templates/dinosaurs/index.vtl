@@ -159,8 +159,9 @@
     </table>
 
     <h2>Containment</h2>
-
+    #set ($containmentCount = ${inContainment.size()})
     <table>
+        #if ($containmentCount > 0)
         <tr>
             <th>ID</th>
             <th>Species</th>
@@ -229,6 +230,12 @@
                     <input type="submit" value="X" class="destroy_button" />
                 </form>
             </td>
+        </tr>
+        #end
+
+        #else
+        <tr>
+            <td>No Dinosaurs in Containment</td>
         </tr>
         #end
 
