@@ -36,17 +36,18 @@ public class DBVisitor {
         Random rand = new Random();
         int num = rand.nextInt(6) + 1;
         for (int i = 0; i < num; i++) {
-        List<Paddock> paddocks = DBHelper.getAll(Paddock.class);
-        Collections.shuffle(paddocks);
-        Paddock paddock = paddocks.get(0);
-        DBPaddock.lockDownPaddock(paddock);
-        List<Visitor> visitors = DBHelper.getAll(Visitor.class);
-        Collections.shuffle(visitors);
-        Visitor visitor = visitors.get(0);
-        if (DBPaddock.checkAlert(paddock) = AlertType.NONE){
-        DBPaddock.addVisitorToPaddock(visitor, paddock);
-        DBHelper.saveOrUpdate(visitor);
-        DBHelper.saveOrUpdate(paddock);
+            List<Paddock> paddocks = DBHelper.getAll(Paddock.class);
+            Collections.shuffle(paddocks);
+            Paddock paddock = paddocks.get(0);
+            DBPaddock.lockDownPaddock(paddock);
+            List<Visitor> visitors = DBHelper.getAll(Visitor.class);
+            Collections.shuffle(visitors);
+            Visitor visitor = visitors.get(0);
+            if (paddock.getAlert() == AlertType.NONE) {
+                DBPaddock.addVisitorToPaddock(visitor, paddock);
+                DBHelper.saveOrUpdate(visitor);
+                DBHelper.saveOrUpdate(paddock);
+            }
         }
 
 
