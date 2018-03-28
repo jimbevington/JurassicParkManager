@@ -28,9 +28,11 @@
             #end
         </td>
         <td>
+            #if($escape)
             <form action="/paddocks/$paddock.getId()/lock-down" method="post">
                 <input type="submit" value="Lock Down">
             </form>
+            #end
         </td>
     </tr>
     #end
