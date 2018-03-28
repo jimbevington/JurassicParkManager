@@ -53,9 +53,6 @@ public class ParkController {
             Map<String, Object> model = new HashMap<>();
             DBPaddock.apocalypseProtocol();
             return new ModelAndView(model, "templates/apocalypse.vtl");
-//            HttpSession session = req.getSession;
-//            session.setMaxInactiveInterval(1*30);
-//            res.sendRedirect("/");
         }, new VelocityTemplateEngine());
     }
 }
