@@ -39,9 +39,12 @@
         <div class="flex_item">
 
             <h2>ALERTS</h2>
-            #set ($alertshow = ${alerts.size()} > 0)
-            #if($alerts.size() > 0)
+            #set ( $alertCount = ${alerts.size()})
+            #set ($alertshow = ${alertCount} > 0)
+
             <table>
+
+                #if($alerts.size() > 0)
                 <tr>
                     <th>ID</th>
                     <th>Species</th>
@@ -75,10 +78,16 @@
                     #end
                 </tr>
                 #end
+
+                #else
+                <tr>
+                    <td>No Alerts</td>
+                </tr>
+
+                #end
             </table>
-            #else
-            <h4>No Alerts</h4>
-            #end
+
+
 
         </div>
 
