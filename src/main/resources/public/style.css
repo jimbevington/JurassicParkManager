@@ -157,6 +157,13 @@ tr.FEED, tr.HUNGRY {
     color: #e8e8e8;
 }
 
+td.messages_table {
+    text-align: left;
+    color: chartreuse;
+    background-color: black;
+    font-family: 'Cutive Mono', monospace;
+    font-style: italic;
+}
 
 /* FLEX ITEMS */
 
@@ -197,4 +204,10 @@ background: url(https://vignette.wikia.nocookie.net/jurassicpark/images/f/fe/Gat
 background-size: cover;
 background-position: 50% 50%;
 background-attachment: fixed;
+}
+
+#nedry_button {
+    background-color: red;
+    color: white;
+    border: solid black 2px;
 }

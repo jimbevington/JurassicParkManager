@@ -95,12 +95,12 @@
 
         <div class="flex_item">
             <h2>Park Status</h2>
-            <table>
+            <table class="messages_table">
                 <tr>
                     <th>Messages:</th>
                     #foreach($message in $messages)
                     <tr>
-                        <td>$message</td>
+                        <td class="messages_table">- $message</td>
                     </tr>
                     #end
                 </tr>
@@ -108,9 +108,11 @@
             <h4>Total Visitors: $totalVisitors</h4>
         </div>
 
+        <br>
+        <br>
         #if($user == "dennisnedry")
         <div>
-            <a href="/apocalypse">Fuck Shit UP</a>
+            <a id="nedry_button" class="big_button" href="/apocalypse">Fuck Shit UP!</a>
         </div>
         #end
 
