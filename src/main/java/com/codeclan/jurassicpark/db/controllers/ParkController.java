@@ -50,7 +50,7 @@ public class ParkController {
             Map<String, Object> model = new HashMap<>();
             DBPaddock.apocalypseProtocol();
 
-        })
+        }, new VelocityTemplateEngine());
 
     }
 }
