@@ -119,13 +119,11 @@ public class DinosaurController {
         }, new VelocityTemplateEngine());
 
         post ("/dinosaurs/:id/capture", (req, res) -> {
-
             Integer id = Integer.parseInt(req.params(":id"));
             Dinosaur dinosaur = DBHelper.find(Dinosaur.class, id);
             DBDinosaur.capture(dinosaur);
             res.redirect("/dinosaurs");
             return null;
-
         }, new VelocityTemplateEngine());
 
         post("/dinosaurs/:id/containment", (req, res) -> {
