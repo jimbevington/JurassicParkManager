@@ -36,7 +36,7 @@ public class DBVisitor {
         Random rand = new Random();
         int num = rand.nextInt(6) + 1;
         for (int i = 0; i < num; i++) {
-            List<Paddock> paddocks = DBHelper.getAll(Paddock.class);
+            List<Paddock> paddocks = DBPaddock.getParkPaddocks();
             Collections.shuffle(paddocks);
             Paddock paddock = paddocks.get(0);
             DBPaddock.lockDownPaddock(paddock);

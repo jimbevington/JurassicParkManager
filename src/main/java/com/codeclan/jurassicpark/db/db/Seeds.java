@@ -76,6 +76,21 @@ public class Seeds {
         DBHelper.saveOrUpdate(visitor3);
         Visitor visitor4 = new Visitor("Donald Gennaro");
         DBHelper.saveOrUpdate(visitor4);
+        Visitor visitor5 = new Visitor("John Hammond");
+        DBHelper.saveOrUpdate(visitor5);
+        Visitor visitor6 = new Visitor("Lex Murphy");
+        DBHelper.saveOrUpdate(visitor6);
+        Visitor visitor7 = new Visitor("Tim Murphy");
+        DBHelper.saveOrUpdate(visitor7);
+        Visitor visitor8 = new Visitor("Dr Henry Wu");
+        DBHelper.saveOrUpdate(visitor8);
+        Visitor visitor9 = new Visitor("Ray Arnold");
+        DBHelper.saveOrUpdate(visitor9);
+        Visitor visitor10 = new Visitor("Mr D.N.A");
+        DBHelper.saveOrUpdate(visitor10);
+        Visitor visitor11 = new Visitor("Dennis Nedry");
+        DBHelper.saveOrUpdate(visitor11);
+
 
         DBPaddock.addVisitorToPaddock(visitor1, paddock2);
         DBPaddock.addVisitorToPaddock(visitor2, paddock2);
