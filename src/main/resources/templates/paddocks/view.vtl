@@ -41,9 +41,9 @@
             #set ($secure = ${dinosaur.isSecure()})
             <td>$alert</td>
             #if (!$secure)
-            <td class="button">
+            <td class="button table_ACTION_button">
                 <form action="/dinosaurs/$dinosaur.getId()/capture" method="post">
-                    <input type="submit" value="Capture">
+                    <input type="submit" value="Capture" class="submit_ACTION_button">
                 </form>
             </td>
             #else
