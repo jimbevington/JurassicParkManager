@@ -151,7 +151,7 @@ public class DinosaurController {
                 carnivore.increaseHunger();
                 DBHelper.saveOrUpdate(carnivore);
             }
-        }, 2, 3, TimeUnit.MINUTES);
+        }, 2, 3, TimeUnit.SECONDS);
 
         final ScheduledExecutorService rampagingDinos = Executors.newSingleThreadScheduledExecutor();
         rampagingDinos.scheduleWithFixedDelay(new Runnable() {

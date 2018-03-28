@@ -2,7 +2,7 @@ package com.codeclan.jurassicpark.db.models;
 
 public enum AlertType {
     NONE(""),
-    HUNGRY("Hungry Dino"),
+    HUNGRY("FEED"),
     SICK("Sick Dino"),
     ESCAPE("ESCAPE");
 

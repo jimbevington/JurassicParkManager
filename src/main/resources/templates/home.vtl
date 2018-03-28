@@ -16,6 +16,7 @@
             #foreach($paddock in $paddocks)
             #set( $alertmsg = $paddock.alertMessage())
             #set( $escape = ($alertmsg == "ESCAPE"))
+            #set( $hungry = ($alertmsg == "FEED"))
             <tr class="$alertmsg">
                 <td>$paddock.getId()</td>
                 <td><a class="button" href="/paddocks/$paddock.getId()">$paddock.getName()</a></td>
