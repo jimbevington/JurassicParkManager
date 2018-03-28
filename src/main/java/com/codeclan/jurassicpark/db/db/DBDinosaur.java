@@ -171,6 +171,7 @@ public class DBDinosaur {
         if (dinosaur.getClass() == Carnivore.class){
            Carnivore carnivore = (Carnivore)dinosaur;
                    carnivore.getFed();
+                   DBHelper.saveOrUpdate(carnivore);
         }
     }
   
