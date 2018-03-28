@@ -15,11 +15,11 @@
 
             #foreach($paddock in $paddocks)
             #set( $alertmsg = $paddock.alertMessage())
-            <tr>
-                <td class="$alertmsg">$paddock.getId()</td>
-                <td class="$alertmsg"><a class="button" href="/paddocks/$paddock.getId()">$paddock.getName()</a></td>
-                <td class="$alertmsg">$paddock.dinoCount()</td>
-                <td class="$alertmsg">$alertmsg</td>
+            <tr class="$alertmsg">
+                <td>$paddock.getId()</td>
+                <td><a class="button" href="/paddocks/$paddock.getId()">$paddock.getName()</a></td>
+                <td>$paddock.dinoCount()</td>
+                <td>$alertmsg</td>
             </tr>
             #end
         </table>
@@ -78,7 +78,7 @@
 
         #if($user == "dennisnedry")
         <div>
-            <a href="">Fuck Shit UP</a>
+            <a href="/apocalypse">Fuck Shit UP</a>
         </div>
         #end
 

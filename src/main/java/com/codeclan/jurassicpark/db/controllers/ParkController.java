@@ -3,10 +3,13 @@ package com.codeclan.jurassicpark.db.controllers;
 import com.codeclan.jurassicpark.db.db.*;
 import com.codeclan.jurassicpark.db.models.*;
 import spark.ModelAndView;
+import spark.Request;
+import spark.Response;
 import spark.Spark;
 import spark.template.velocity.VelocityTemplateEngine;
 
 
+import javax.servlet.http.HttpSession;
 import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -46,5 +49,13 @@ public class ParkController {
 
         }, new VelocityTemplateEngine());
 
+        get("/apocalypse", (req, res) ->{
+            Map<String, Object> model = new HashMap<>();
+            DBPaddock.apocalypseProtocol();
+            return new ModelAndView(model, "templates/apocalypse.vtl");
+//            HttpSession session = req.getSession;
+//            session.setMaxInactiveInterval(1*30);
+//            res.sendRedirect("/");
+        }, new VelocityTemplateEngine());
     }
 }
