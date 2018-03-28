@@ -14,7 +14,7 @@
             <th>Danger Level</th>
             <th>Paddock</th>
             <th>Hunger</th>
-            <th>Secure</th>
+            <th>Status</th>
             <th>ACTION</th>
             <th>Move To:</th>
             <th>Destroy</th>
@@ -77,7 +77,6 @@
                     <input type="submit" value="X" class="destroy_button" />
                 </form>
             </td>
-
         </tr>
         #end
 
@@ -94,10 +93,14 @@
             <th>Danger Level</th>
             <th>Hunger</th>
             <th>Status</th>
+            <th>ACTION</th>
+            <th>Move To:</th>
+            <th>Destroy</th>
         </tr>
 
         #foreach($dinosaur in $inNursery)
-        <tr>
+        #set ($alert = ${dbDinosaur.getDinoAlertType($dinosaur)})
+        <tr class="$alert">
             <td>$dinosaur.getId()</td>
             <td>$dinosaur.getSpecies().getSpecies()</td>
             <td>$dinosaur.getName()</td>
@@ -114,15 +117,40 @@
                 ESCAPED!
                 #end
             </td>
+            #if ($alert == "ESCAPED")
+            <td class="button table_ACTION_button">
+                <form action="/dinosaurs/$dinosaur.getId()/capture" method="post">
+                    <input type="submit" value="Capture" class="submit_ACTION_button">
+                </form>
+            </td>
+            #elseif ($alert == "HUNGRY")
             <td class="button table_FEED_button">
                 <form action="/dinosaurs/$dinosaur.getId()/feed" method="post">
                     <input type="submit" value="Feed" class="submit_FEED_button">
                 </form>
             </td>
-            <td class="button"><a href="/dinosaurs/$dinosaur.getId()/move">Move Paddock</a></td>
+            #else
+            <td></td>
+            #end
+            <td>
+                <form action="/dinosaurs/$dinosaur.getId()" method="post">
+                    <select id="paddocks" name="paddock">
+                        #set ($availablePaddocks = ${dbDinosaur.getAvailablePaddocks($dinosaur)})
+                        #foreach( $paddock in $availablePaddocks )
+                        <option value="$paddock.getId()"
+                                #if ($paddock.getId() == 2)
+                                selected
+                                #end>
+                            $paddock.getName()
+                        </option>
+                        #end
+                    </select>
+                    <input type="submit" value="Move">
+                </form>
+            </td>
             <td class="button">
                 <form action="/dinosaurs/$dinosaur.getId()/remove" method="post">
-                    <input type="submit" value="Remove" />
+                    <input type="submit" value="X" class="destroy_button" />
                 </form>
             </td>
         </tr>
@@ -141,10 +169,14 @@
             <th>Danger Level</th>
             <th>Hunger</th>
             <th>Status</th>
+            <th>ACTION</th>
+            <th>Move To:</th>
+            <th>Destroy</th>
         </tr>
 
         #foreach($dinosaur in $inContainment)
-        <tr>
+        #set ($alert = ${dbDinosaur.getDinoAlertType($dinosaur)})
+        <tr class="alert">
             <td>$dinosaur.getId()</td>
             <td>$dinosaur.getSpecies().getSpecies()</td>
             <td>$dinosaur.getName()</td>
@@ -161,15 +193,40 @@
                 ESCAPED!
                 #end
             </td>
+            #if ($alert == "ESCAPED")
+            <td class="button table_ACTION_button">
+                <form action="/dinosaurs/$dinosaur.getId()/capture" method="post">
+                    <input type="submit" value="Capture" class="submit_ACTION_button">
+                </form>
+            </td>
+            #elseif ($alert == "HUNGRY")
             <td class="button table_FEED_button">
                 <form action="/dinosaurs/$dinosaur.getId()/feed" method="post">
                     <input type="submit" value="Feed" class="submit_FEED_button">
                 </form>
             </td>
-            <td class="button"><a href="/dinosaurs/$dinosaur.getId()/move">Move To Paddock</a></td>
+            #else
+            <td></td>
+            #end
+            <td>
+                <form action="/dinosaurs/$dinosaur.getId()" method="post">
+                    <select id="paddocks" name="paddock">
+                        #set ($availablePaddocks = ${dbDinosaur.getAvailablePaddocks($dinosaur)})
+                        #foreach( $paddock in $availablePaddocks )
+                        <option value="$paddock.getId()"
+                                #if ($paddock.getId() == 2)
+                                selected
+                                #end>
+                            $paddock.getName()
+                        </option>
+                        #end
+                    </select>
+                    <input type="submit" value="Move">
+                </form>
+            </td>
             <td class="button">
                 <form action="/dinosaurs/$dinosaur.getId()/remove" method="post">
-                    <input type="submit" value="Remove" />
+                    <input type="submit" value="X" class="destroy_button" />
                 </form>
             </td>
         </tr>
