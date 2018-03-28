@@ -27,7 +27,7 @@
 
         #foreach($dinosaur in $dinosaurs)
         #set ($alert = ${dbDinosaur.getDinoAlertType($dinosaur)})
-        <tr>
+        <tr class="$alert">
             <td>$dinosaur.getId()</td>
             <td>$dinosaur.getSpecies()</td>
             <td>$dinosaur.getName()</td>
