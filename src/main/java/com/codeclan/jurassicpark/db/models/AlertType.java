@@ -4,7 +4,7 @@ public enum AlertType {
     NONE(""),
     HUNGRY("Hungry Dino"),
     SICK("Sick Dino"),
-    ESCAPE("ESCAPE!");
+    ESCAPE("ESCAPE");
 
     private String alert;
 
