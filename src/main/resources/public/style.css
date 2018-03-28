@@ -8,6 +8,28 @@ body {
     font-style:italic;
 }
 
+.big_button {
+    height:27px;
+    margin:0px;
+    background-color: #FFAF70;
+    border: groove 5px #edf1f7;
+    text-align: center;
+    font-size: 1em;
+    padding:1em
+}
+
+.button_row{
+    display: flex;
+    flex: row nowrap;
+    align-items:center;
+}
+
+.submit_in_button {
+    background-color: inherit;
+    font: inherit;
+    border: none;
+}
+
 
 /* HEADER STUFF */
 
