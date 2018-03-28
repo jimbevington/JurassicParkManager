@@ -22,6 +22,12 @@ public class DBPaddock {
         Paddock containment = DBHelper.find(Paddock.class, 2);
         all.remove(nursery);
         all.remove(containment);
+
+//        check their Alerts
+        for (Paddock paddock : all){
+            DBPaddock.checkAlert(paddock);
+        }
+
         return all;
     }
 

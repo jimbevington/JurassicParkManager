@@ -37,9 +37,6 @@ public class ParkController {
             model.put("user", loggedInUser);
             model.put("template", "templates/home.vtl");
             List<Paddock> paddocks = DBPaddock.getParkPaddocks();
-            for (Paddock paddock : paddocks){
-                DBPaddock.checkAlert(paddock);
-            }
             model.put("paddocks", paddocks);
             List<Dinosaur> alerts = DBDinosaur.getDinoAlerts();
             model.put("alerts", alerts);
