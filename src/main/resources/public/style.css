@@ -74,11 +74,25 @@ th {
     border-bottom: inset black 2px;
 }
 
-
-
 .table_capture_button{
     background-color: red;
+    padding:0px;
 }
+
+input[type=submit].submit_capture_button {
+  width: 100%;
+  border: none;
+  background-color: inherit;
+  font-size: 1em;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.table_capture_button:hover, input[type=submit].submit_capture_button:hover{
+    color: #e8e8e8;
+    background-color: #595959;
+}
+
 
 /* FLEX ITEMS */
 
