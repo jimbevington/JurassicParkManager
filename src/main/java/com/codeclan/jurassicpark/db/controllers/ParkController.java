@@ -42,6 +42,8 @@ public class ParkController {
             model.put("alerts", alerts);
             DBDinosaur dbDinosaur = new DBDinosaur();
             model.put("dbDinosaur", dbDinosaur);
+            List<String> messages = DBHelper.getStatusMsgs();
+            model.put("messages", messages);
             int totalVisitors = DBHelper.totalVisitors();
             model.put("totalVisitors", totalVisitors);
 

@@ -181,6 +181,9 @@ public class Runner {
 
         DBHelper.delete(carnivore9);
 
+
+        //TEST Status Messages
+        List<String> messages = DBHelper.getStatusMsgs();
     }
 
 
