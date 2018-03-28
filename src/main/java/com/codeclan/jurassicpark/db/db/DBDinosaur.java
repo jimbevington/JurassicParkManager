@@ -62,6 +62,10 @@ public class DBDinosaur {
             }
         }
 
+//        make Containment always available
+        Paddock containmentPaddock = DBHelper.find(Paddock.class, 2);
+        available.add(containmentPaddock);
+
         return available;
     }
 
@@ -167,6 +171,7 @@ public class DBDinosaur {
         if (dinosaur.getClass() == Carnivore.class){
            Carnivore carnivore = (Carnivore)dinosaur;
                    carnivore.getFed();
+                   DBHelper.saveOrUpdate(carnivore);
         }
     }
   

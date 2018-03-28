@@ -33,17 +33,23 @@ public class ParkController {
 
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
+            model.put("template", "templates/home.vtl");
+
             String loggedInUser = LoginController.getLoggedInUsername(req, res);
             model.put("user", loggedInUser);
-            model.put("template", "templates/home.vtl");
+
             List<Paddock> paddocks = DBPaddock.getParkPaddocks();
             model.put("paddocks", paddocks);
+
             List<Dinosaur> alerts = DBDinosaur.getDinoAlerts();
             model.put("alerts", alerts);
+
             DBDinosaur dbDinosaur = new DBDinosaur();
             model.put("dbDinosaur", dbDinosaur);
+
             List<String> messages = DBHelper.getStatusMsgs();
             model.put("messages", messages);
+
             int totalVisitors = DBHelper.totalVisitors();
             model.put("totalVisitors", totalVisitors);
 

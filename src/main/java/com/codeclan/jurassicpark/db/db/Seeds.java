@@ -94,6 +94,11 @@ public class Seeds {
 
         DBPaddock.addVisitorToPaddock(visitor1, paddock2);
         DBPaddock.addVisitorToPaddock(visitor2, paddock2);
+        DBPaddock.addVisitorToPaddock(visitor3, paddock3);
+        DBPaddock.addVisitorToPaddock(visitor4, paddock4);
+        DBPaddock.addVisitorToPaddock(visitor5, paddock1);
+        DBPaddock.addVisitorToPaddock(visitor6, paddock5);
+        DBPaddock.addVisitorToPaddock(visitor7, paddock1);
 
         DBDinosaur.rampage(carnivore1);
         carnivore2.setHunger(9);

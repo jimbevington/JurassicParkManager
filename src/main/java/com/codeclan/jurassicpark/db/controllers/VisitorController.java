@@ -29,6 +29,9 @@ public class VisitorController {
             Map<String, Object> model = new HashMap<>();
             model.put("template", "templates/visitors/index.vtl");
 
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
+            model.put("user", loggedInUser);
+
             HashMap<String, List<Visitor>> visitors = DBVisitor.sortVisitors();
             model.put("visitors", visitors.get("all"));
             model.put("inPark", visitors.get("inPark"));
@@ -38,12 +41,16 @@ public class VisitorController {
 
         }, new VelocityTemplateEngine());
 
+//        TIMED ACTIVITY
+
+//        Move Visitors
+
         final ScheduledExecutorService wanderingVisitors = Executors.newSingleThreadScheduledExecutor();
         wanderingVisitors.scheduleWithFixedDelay(new Runnable() {
             @Override
             public void run() {
                 DBVisitor.moveVisitors();
             }
-        }, 3, 5, TimeUnit.MINUTES);
+        }, 3, 30, TimeUnit.SECONDS);
     }
 }
