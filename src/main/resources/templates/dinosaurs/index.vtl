@@ -39,11 +39,21 @@
                 ESCAPED!
                 #end
             </td>
+            #if ($alert == "ESCAPED")
+            <td class="button table_ACTION_button">
+                <form action="/dinosaurs/$dinosaur.getId()/capture" method="post">
+                    <input type="submit" value="Capture" class="submit_ACTION_button">
+                </form>
+            </td>
+            #elseif ($alert == "HUNGRY")
             <td class="button table_FEED_button">
                 <form action="/dinosaurs/$dinosaur.getId()/feed" method="post">
                     <input type="submit" value="Feed" class="submit_FEED_button">
                 </form>
             </td>
+            #else
+            <td></td>
+            #end
             <td class="button"><a href="/dinosaurs/$dinosaur.getId()/move">Move</a></td>
             <td class="button">
                 <form action="/dinosaurs/$dinosaur.getId()/remove" method="post">
@@ -55,13 +65,6 @@
                     <input type="submit" value="Move to Containment" />
                 </form>
             </td>
-            #if(!$dinosaur.isSecure())
-            <td class="button">
-                <form action="/dinosaurs/$dinosaur.getId()/capture" method="post">
-                    <input type="submit" value="Capture" />
-                </form>
-            </td>
-            #end
 
         </tr>
         #end
