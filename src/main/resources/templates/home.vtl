@@ -15,11 +15,18 @@
 
             #foreach($paddock in $paddocks)
             #set( $alertmsg = $paddock.alertMessage())
+            #set( $escape = ($alertmsg == "ESCAPE"))
             <tr class="$alertmsg">
                 <td>$paddock.getId()</td>
                 <td><a class="button" href="/paddocks/$paddock.getId()">$paddock.getName()</a></td>
                 <td>$paddock.dinoCount()</td>
-                <td>$alertmsg</td>
+                <td>
+                    #if($escape)
+                    <a class="button" href="/paddocks/$paddock.getId()">$alertmsg</a>
+                    #else
+                    $alertmsg
+                    #end
+                </td>
             </tr>
             #end
         </table>
