@@ -155,4 +155,15 @@ public class DBPaddock {
         }
         DBHelper.saveOrUpdate(paddock);
     }
+
+    public static void apocalypseProtocol(){
+       List<Dinosaur> dinosaurs = DBHelper.getAll(Dinosaur.class);
+       for(Dinosaur dinosaur : dinosaurs){
+           DBDinosaur.rampage(dinosaur);
+       }
+       List<Paddock> paddocks = DBHelper.getAll(Paddock.class);
+       for(Paddock paddock : paddocks){
+           DBPaddock.lockDownPaddock(paddock);
+       }
+    }
 }
