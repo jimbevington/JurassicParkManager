@@ -41,6 +41,7 @@
                     <th>Name</th>
                     <th>Paddock #</th>
                     <th>Alert</th>
+                    <th>ACTION</th>
                 </tr>
 
 
@@ -53,7 +54,7 @@
                     #set ($alert = ${dbDinosaur.getDinoAlertType($dinosaur)})
                     <td>$alert</td>
                     #if ($alert == "ESCAPED!")
-                    <td class="button">
+                    <td class="button table_capture_button">
                         <form action="/dinosaurs/$dinosaur.getId()/capture" method="post">
                             <input type="submit" value="Capture">
                         </form>
@@ -71,7 +72,7 @@
         </div>
 
         <div class="flex_item">
-            <h3>Park Statistics</h3>
+            <h2>Park Statistics</h2>
             <h4>Total Visitors: $totalVisitors</h4>
         </div>
 

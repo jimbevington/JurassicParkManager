@@ -67,9 +67,17 @@ td, th {
 }
 
 th {
+    border-left: none;
+    border-right: none;
     background-color: #424344;
     color: #ededed;
     border-bottom: inset black 2px;
+}
+
+
+
+.table_capture_button{
+    background-color: red;
 }
 
 /* FLEX ITEMS */
