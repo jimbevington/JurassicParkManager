@@ -140,6 +140,7 @@ tr.ESCAPE {
     margin: auto;
     display:flex;
     flex-flow: column nowrap;
+    align-items: center;
 }
 
 .flex_item{

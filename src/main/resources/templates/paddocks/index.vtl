@@ -1,93 +1,106 @@
-<h1>PADDOCKS</h1>
+<h1 class="page_title">PADDOCKS</h1>
 
-<h2>Park</h2>
+<div class="flex_item_half_page">
 
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Dinosaur Count</th>
-        <th>Visitor Count</th>
-        <th>Secure</th>
-        <th></th>
-    </tr>
+    <div class="flex_item">
 
-    #foreach($paddock in $parkPaddocks)
-    #set( $alertmsg = $paddock.alertMessage())
-    #set( $escape = ($alertmsg == "ESCAPE"))
-    <tr class="$alertmsg">
-        <td>$paddock.getId()</td>
-        <td><a class="button" href="/paddocks/$paddock.getId()">$paddock.getName()</a></td>
-        <td>$paddock.dinoCount()</td>
-        <td>$paddock.visitorCount()</td>
-        <td>
-            #if($escape)
-            <a class="button" href="/paddocks/$paddock.getId()">$alertmsg</a>
-            #else
-            $alertmsg
+        <h2>Park</h2>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Dinosaur Count</th>
+                <th>Visitor Count</th>
+                <th>Secure</th>
+                <th></th>
+            </tr>
+
+            #foreach($paddock in $parkPaddocks)
+            #set( $alertmsg = $paddock.alertMessage())
+            #set( $escape = ($alertmsg == "ESCAPE"))
+            <tr class="$alertmsg">
+                <td>$paddock.getId()</td>
+                <td><a class="button" href="/paddocks/$paddock.getId()">$paddock.getName()</a></td>
+                <td>$paddock.dinoCount()</td>
+                <td>$paddock.visitorCount()</td>
+                <td>
+                    #if($escape)
+                    <a class="button" href="/paddocks/$paddock.getId()">$alertmsg</a>
+                    #else
+                    $alertmsg
+                    #end
+                </td>
+                #if($escape)
+                <td class="button table_lockDown_button">
+                    <form action="/paddocks/$paddock.getId()/lock-down" method="post">
+                        <input type="submit" value="Lock Down" class="submit_lockDown_button">
+                    </form>
+                </td>
+                #else
+                <td></td>
+                #end
+                </td>
+            </tr>
             #end
-        </td>
-        #if($escape)
-        <td class="button table_lockDown_button">
-            <form action="/paddocks/$paddock.getId()/lock-down" method="post">
-                <input type="submit" value="Lock Down" class="submit_lockDown_button">
-            </form>
-        </td>
+
+        </table>
+    </div>
+
+    <div class="flex_item">
+
+        <h2>Nursery</h2>
+        #if ($dinosaurs.size() == 0)
+        <h5 class="italic">Nursery Empty</h5>
         #else
-        <td></td>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Species</th>
+                <th>Name</th>
+                <th>Danger</th>
+            </tr>
+
+            #foreach($dinosaur in $dinosaurs)
+            <tr>
+                <td>$dinosaur.getId()</td>
+                <td>$dinosaur.getSpecies().getSpecies()</td>
+                <td>$dinosaur.getName()</td>
+                <td>$dinosaur.getDanger()</td>
+            </tr>
+            #end
+
+        </table>
         #end
-        </td>
-    </tr>
-    #end
+    </div>
 
-</table>
+    <div class="flex_item">
 
-<h2>Nursery</h2>
-#if ($dinosaurs.size() == 0)
-<h5 class="italic">Nursery Empty</h5>
-#else
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Species</th>
-        <th>Name</th>
-        <th>Danger</th>
-    </tr>
+        <h2>Containment Area</h2>
+        #if ($containDinos.size() == 0)
+        <h5 class="italic">Empty</h5>
+        #else
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Species</th>
+                <th>Name</th>
+                <th>Danger</th>
+            </tr>
 
-    #foreach($dinosaur in $dinosaurs)
-    <tr>
-        <td>$dinosaur.getId()</td>
-        <td>$dinosaur.getSpecies().getSpecies()</td>
-        <td>$dinosaur.getName()</td>
-        <td>$dinosaur.getDanger()</td>
-    </tr>
-    #end
+            #foreach($dinosaur in $containDinos)
+            <tr>
+                <td>$dinosaur.getId()</td>
+                <td>$dinosaur.getSpecies().getSpecies()</td>
+                <td>$dinosaur.getName()</td>
+                <td>$dinosaur.getDanger()</td>
+            </tr>
+            #end
 
-</table>
-#end
+        </table>
+        #end
 
-<h2>Containment Area</h2>
-#if ($containDinos.size() == 0)
-<h5 class="italic">Empty</h5>
-#else
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Species</th>
-        <th>Name</th>
-        <th>Danger</th>
-    </tr>
+    </div>
 
-    #foreach($dinosaur in $containDinos)
-    <tr>
-        <td>$dinosaur.getId()</td>
-        <td>$dinosaur.getSpecies().getSpecies()</td>
-        <td>$dinosaur.getName()</td>
-        <td>$dinosaur.getDanger()</td>
-    </tr>
-    #end
-
-</table>
-#end
-
+</div>
 
