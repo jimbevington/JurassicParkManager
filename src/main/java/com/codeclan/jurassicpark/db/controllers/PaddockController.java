@@ -64,6 +64,9 @@ public class PaddockController {
             List<Dinosaur> dinosaurs = DBHelper.getPaddocksDinosaurs(paddock);
             model.put("dinosaurs", dinosaurs);
 
+            DBDinosaur dbDinosaur = new DBDinosaur();
+            model.put("dbDinosaur", dbDinosaur);
+
             List<Visitor> visitors = DBHelper.getPaddocksVisitors(paddock);
             model.put("visitors", visitors);
 

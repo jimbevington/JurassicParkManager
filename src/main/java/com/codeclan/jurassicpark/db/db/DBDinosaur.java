@@ -201,11 +201,11 @@ public class DBDinosaur {
 
     public static String getDinoAlertType(Dinosaur dinosaur){
 
-        String alertType = null;
+        String alertType = "";
 
         if (!dinosaur.isSecure()){
             alertType = "ESCAPED";
-        } else {
+        } else if (dinosaur instanceof Carnivore){
             Carnivore carnivore = (Carnivore) dinosaur;
             if (carnivore.getHunger() > 7){
                 alertType = "Hungry";
