@@ -75,7 +75,7 @@ th {
 }
 
 .table_capture_button{
-    background-color: red;
+    background-color: #ff4c4c;
     padding:0px;
 }
 
@@ -91,6 +91,11 @@ input[type=submit].submit_capture_button {
 .table_capture_button:hover, input[type=submit].submit_capture_button:hover{
     color: #e8e8e8;
     background-color: #595959;
+}
+
+td.ESCAPE {
+    background-color: #ff4c4c;
+    color: #e8e8e8;
 }
 
 

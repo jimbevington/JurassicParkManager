@@ -14,12 +14,12 @@
             </tr>
 
             #foreach($paddock in $paddocks)
-
+            #set( $alertmsg = $paddock.alertMessage())
             <tr>
-                <td>$paddock.getId()</td>
-                <td><a class="button" href="/paddocks/$paddock.getId()">$paddock.getName()</a></td>
-                <td>$paddock.dinoCount()</td>
-                <td>$paddock.alertMessage()</td>
+                <td class="$alertmsg">$paddock.getId()</td>
+                <td class="$alertmsg"><a class="button" href="/paddocks/$paddock.getId()">$paddock.getName()</a></td>
+                <td class="$alertmsg">$paddock.dinoCount()</td>
+                <td class="$alertmsg">$alertmsg</td>
             </tr>
             #end
         </table>
