@@ -10,6 +10,9 @@ import spark.template.velocity.VelocityTemplateEngine;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import static spark.Spark.get;
 
@@ -35,5 +38,12 @@ public class VisitorController {
 
         }, new VelocityTemplateEngine());
 
+        final ScheduledExecutorService wanderingVisitors = Executors.newSingleThreadScheduledExecutor();
+        wanderingVisitors.scheduleWithFixedDelay(new Runnable() {
+            @Override
+            public void run() {
+                DBVisitor.moveVisitors();
+            }
+        }, 4, 5, TimeUnit.MINUTES);
     }
 }
