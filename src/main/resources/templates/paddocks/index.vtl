@@ -27,12 +27,15 @@
             $alertmsg
             #end
         </td>
-        <td>
-            #if($escape)
+        #if($escape)
+        <td class="button table_lockDown_button">
             <form action="/paddocks/$paddock.getId()/lock-down" method="post">
-                <input type="submit" value="Lock Down">
+                <input type="submit" value="Lock Down" class="submit_lockDown_button">
             </form>
-            #end
+        </td>
+        #else
+        <td></td>
+        #end
         </td>
     </tr>
     #end

@@ -93,6 +93,27 @@ input[type=submit].submit_capture_button {
     background-color: #595959;
 }
 
+.table_lockDown_button {
+    background-color: #8e1111;
+    padding:0px;
+    border: inset lightgrey;
+}
+
+input[type=submit].submit_lockDown_button {
+  width: 100%;
+  border: none;
+  background-color: inherit;
+  font-size: 1em;
+  font-weight: 600;
+  font-style: italic;
+  color: #e8e8e8;
+}
+
+.table_lockDown_button:hover, input[type=submit].submit_lockDown_button:hover{
+    color: #e8e8e8;
+    background-color: #595959;
+}
+
 tr.ESCAPE {
     background-color: #ff4c4c;
     color: #e8e8e8;
