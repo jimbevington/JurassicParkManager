@@ -37,14 +37,11 @@ public class DinosaurController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-        get("/dinosaurs/:id/feed", (req, res) -> {
-            String stringId = req.params(":id");
-            Integer intId = Integer.parseInt(stringId);
-            Carnivore hungrydino = DBHelper.find(Carnivore.class, intId);
-            hungrydino.getFed();
-            DBHelper.saveOrUpdate(hungrydino);
+        get("/dinosaurs/:id/fed", (req, res) -> {
+            Integer id = Integer.parseInt(req.params(":id"));
+            Carnivore fedDino = DBHelper.find(Carnivore.class, id);
             Map<String, Object> model = new HashMap<>();
-            model.put("hungrydino", hungrydino);
+            model.put("fedDino", fedDino);
             model.put("template", "templates/dinosaurs/feed.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
@@ -59,6 +56,15 @@ public class DinosaurController {
             model.put("paddocks", paddocks);
             model.put("template", "templates/dinosaurs/move.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        post("/dinosaurs/:id/feed", (req, res) -> {
+            Integer id = Integer.parseInt(req.params(":id"));
+            Carnivore hungrydino = DBHelper.find(Carnivore.class, id);
+            hungrydino.getFed();
+            DBHelper.saveOrUpdate(hungrydino);
+            res.redirect("/dinosaurs/" + id.toString() +"/fed");
+            return null;
         }, new VelocityTemplateEngine());
 
         post("/dinosaurs/:id", (req, res)->{
