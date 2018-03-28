@@ -40,10 +40,16 @@
                 #end</td>
             #set ($secure = ${dinosaur.isSecure()})
             <td>$alert</td>
-            #if (!$secure)
+            #if ($alert == "ESCAPED")
             <td class="button table_ACTION_button">
                 <form action="/dinosaurs/$dinosaur.getId()/capture" method="post">
                     <input type="submit" value="Capture" class="submit_ACTION_button">
+                </form>
+            </td>
+            #elseif ($alert == "HUNGRY")
+            <td class="button table_FEED_button">
+                <form action="/dinosaurs/$dinosaur.getId()/feed" method="get">
+                    <input type="submit" value="Feed" class="submit_FEED_button">
                 </form>
             </td>
             #else
