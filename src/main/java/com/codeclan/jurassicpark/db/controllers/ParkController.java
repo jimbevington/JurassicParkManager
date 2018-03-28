@@ -46,5 +46,11 @@ public class ParkController {
 
         }, new VelocityTemplateEngine());
 
+        get("/apocalypse", (req, res)->{
+            Map<String, Object> model = new HashMap<>();
+            DBPaddock.apocalypseProtocol();
+
+        })
+
     }
 }
