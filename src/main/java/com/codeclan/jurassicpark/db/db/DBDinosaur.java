@@ -204,7 +204,7 @@ public class DBDinosaur {
         String alertType = null;
 
         if (!dinosaur.isSecure()){
-            alertType = "ESCAPED!";
+            alertType = "ESCAPED";
         } else {
             Carnivore carnivore = (Carnivore) dinosaur;
             if (carnivore.getHunger() > 7){
