@@ -208,7 +208,7 @@ public class DBDinosaur {
         } else if (dinosaur instanceof Carnivore){
             Carnivore carnivore = (Carnivore) dinosaur;
             if (carnivore.getHunger() > 7){
-                alertType = "Hungry";
+                alertType = "HUNGRY";
             }
         }
 

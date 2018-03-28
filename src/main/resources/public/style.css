@@ -121,7 +121,7 @@ tr.ESCAPE, tr.ESCAPED {
     color: #e8e8e8;
 }
 
-tr.FEED {
+tr.FEED, tr.HUNGRY {
     background-color: #f79d16;
     color: #e8e8e8;
 }
