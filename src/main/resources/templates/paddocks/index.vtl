@@ -14,12 +14,19 @@
 
     #foreach($paddock in $parkPaddocks)
     #set( $alertmsg = $paddock.alertMessage())
+    #set( $escape = ($alertmsg == "ESCAPE"))
     <tr class="$alertmsg">
         <td>$paddock.getId()</td>
         <td><a class="button" href="/paddocks/$paddock.getId()">$paddock.getName()</a></td>
         <td>$paddock.dinoCount()</td>
         <td>$paddock.visitorCount()</td>
-        <td>$alertmsg</td>
+        <td>
+            #if($escape)
+            <a class="button" href="/paddocks/$paddock.getId()">$alertmsg</a>
+            #else
+            $alertmsg
+            #end
+        </td>
         <td>
             <form action="/paddocks/$paddock.getId()/lock-down" method="post">
                 <input type="submit" value="Lock Down">
