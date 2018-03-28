@@ -38,16 +38,20 @@
         </td>
         <td class="button"><a href="/dinosaurs/$dinosaur.getId()/feed">Feed Me</a></td>
         <td class="button"><a href="/dinosaurs/$dinosaur.getId()/move">Move</a></td>
-        <td class="button"><a href="/dinosaurs/$dinosaur.getId()/remove">Remove</a>
+        <td class="button">
+            <form action="/dinosaurs/$dinosaur.getId()/remove" method="post">
+                <input type="submit" value="Remove" />
+            </form>
+        </td>
         <td class="button">
             <form action="/dinosaurs/$dinosaur.getId()/containment" method="post">
-                <input type="submit" value="Move to Containment">
+                <input type="submit" value="Move to Containment" />
             </form>
         </td>
         #if(!$dinosaur.isSecure())
         <td class="button">
             <form action="/dinosaurs/$dinosaur.getId()/capture" method="post">
-                <input type="submit" value="Capture">
+                <input type="submit" value="Capture" />
             </form>
         </td>
         #end
@@ -90,7 +94,11 @@
         </td>
         <td class="button"><a href="/dinosaurs/$dinosaur.getId()/feed">Feed Me</a></td>
         <td class="button"><a href="/dinosaurs/$dinosaur.getId()/move">Move Paddock</a></td>
-        <td class="button"><a href="/dinosaurs/$dinosaur.getId()/remove">Remove</a></td>
+        <td class="button">
+            <form action="/dinosaurs/$dinosaur.getId()/remove" method="post">
+                <input type="submit" value="Remove" />
+            </form>
+        </td>
     </tr>
     #end
 
@@ -129,7 +137,11 @@
         </td>
         <td class="button"><a href="/dinosaurs/$dinosaur.getId()/feed">Feed Me</a></td>
         <td class="button"><a href="/dinosaurs/$dinosaur.getId()/move">Move To Paddock</a></td>
-        <td class="button"><a href="/dinosaurs/$dinosaur.getId()/remove">Remove</a></td>
+        <td class="button">
+            <form action="/dinosaurs/$dinosaur.getId()/remove" method="post">
+                <input type="submit" value="Remove" />
+            </form>
+        </td>
     </tr>
     #end
 

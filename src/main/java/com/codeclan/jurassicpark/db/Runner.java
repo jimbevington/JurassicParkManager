@@ -172,6 +172,15 @@ public class Runner {
         String hungry = dbDinosaur.getDinoAlertType(hungryCarnivore);
 
 
+        //TEST delete Dinosaur
+        Carnivore carnivore8 = new Carnivore(SpeciesType.VELOCIRAPTOR, "Delta", 10, 85, paddock1);
+        DBHelper.saveOrUpdate(carnivore8);
+
+        Carnivore carnivore9 = new Carnivore(SpeciesType.VELOCIRAPTOR, "Charlie", 10, 85, paddock1);
+        DBHelper.saveOrUpdate(carnivore9);
+
+        DBHelper.delete(carnivore9);
+
     }
 
 

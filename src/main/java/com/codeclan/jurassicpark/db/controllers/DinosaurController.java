@@ -119,13 +119,11 @@ public class DinosaurController {
         }, new VelocityTemplateEngine());
 
         post ("/dinosaurs/:id/capture", (req, res) -> {
-
             Integer id = Integer.parseInt(req.params(":id"));
             Dinosaur dinosaur = DBHelper.find(Dinosaur.class, id);
             DBDinosaur.capture(dinosaur);
             res.redirect("/dinosaurs");
             return null;
-
         }, new VelocityTemplateEngine());
 
         post("/dinosaurs/:id/containment", (req, res) -> {
@@ -159,9 +157,10 @@ public class DinosaurController {
         rampagingDinos.scheduleWithFixedDelay(new Runnable() {
             @Override
             public void run() {
-                List<Dinosaur> dinosaurs = DBDinosaur.listAll();
-                Collections.shuffle(dinosaurs);
-                Dinosaur dinosaur = dinosaurs.get(0);
+                HashMap<String, List<Dinosaur>> sortedDinos = DBDinosaur.sortDinosaurs();
+                List <Dinosaur> inPark = sortedDinos.get("inPark");
+                Collections.shuffle(inPark);
+                Dinosaur dinosaur = inPark.get(0);
                 DBDinosaur.rampage(dinosaur);
             }
         }, 3, 9, TimeUnit.MINUTES);
