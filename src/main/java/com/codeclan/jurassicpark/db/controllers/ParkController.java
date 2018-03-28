@@ -42,6 +42,8 @@ public class ParkController {
             model.put("alerts", alerts);
             DBDinosaur dbDinosaur = new DBDinosaur();
             model.put("dbDinosaur", dbDinosaur);
+            List<String> messages = DBHelper.getStatusMsgs();
+            model.put("messages", messages);
             int totalVisitors = DBHelper.totalVisitors();
             model.put("totalVisitors", totalVisitors);
 
@@ -53,9 +55,6 @@ public class ParkController {
             Map<String, Object> model = new HashMap<>();
             DBPaddock.apocalypseProtocol();
             return new ModelAndView(model, "templates/apocalypse.vtl");
-//            HttpSession session = req.getSession;
-//            session.setMaxInactiveInterval(1*30);
-//            res.sendRedirect("/");
         }, new VelocityTemplateEngine());
     }
 }

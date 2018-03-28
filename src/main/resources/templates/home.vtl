@@ -79,7 +79,17 @@
         </div>
 
         <div class="flex_item">
-            <h2>Park Statistics</h2>
+            <h2>Park Status</h2>
+            <table>
+                <tr>
+                    <th>Messages:</th>
+                    #foreach($message in $messages)
+                    <tr>
+                        <td>$message</td>
+                    </tr>
+                    #end
+                </tr>
+            </table>
             <h4>Total Visitors: $totalVisitors</h4>
         </div>
 

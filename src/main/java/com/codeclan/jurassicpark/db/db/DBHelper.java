@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class DBHelper {
@@ -138,6 +139,22 @@ public class DBHelper {
         }
         return result;
     }
+
+    //get random status messages
+    public static List<String> getStatusMsgs(){
+        List<String> messages = new ArrayList<>();
+        List<String> outputMessages = new ArrayList<>();
+        for(ParkStatus status : ParkStatus.values()){
+            messages.add(status.getStatus().toString());
+        }
+        Collections.shuffle(messages);
+        for (int i = 0; i < 3; i++){
+            outputMessages.add(messages.get(i));
+        }
+        return outputMessages;
+    }
+
+
 
 
 }
