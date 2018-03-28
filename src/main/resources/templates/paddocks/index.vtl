@@ -18,7 +18,6 @@
 
             #foreach($paddock in $parkPaddocks)
             #set( $alertmsg = $paddock.alertMessage())
-            #set( $escape = ($alertmsg == "ESCAPE"))
             #set( $alert = ($alertmsg == "ESCAPE" || $alertmsg == "FEED"))
             <tr class="$alertmsg">
                 <td>$paddock.getId()</td>
