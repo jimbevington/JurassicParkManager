@@ -10,18 +10,21 @@
 </head>
 <body>
 <div class="welcome">
-    <h1>Welcome to Jurassic Park!</h1>
+    <h1>Welcome to</h1>
 </div>
 
 <div class="loginmessage">
-    <h3>Please login to start your session.</h3>
+    <h3>Please login to start your session:</h3>
 </div>
 
 <div class="loginbox">
     <form action="/login" method="post">
-        <label for="username">Your name:</label>
-        <input id="username" name="username" type="text">
+        <label for="username">Name:</label>
+        <input id="username" name="username" type="text" placeholder="Your Name">
         <button type="submit">Submit name</button>
+        <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
     </form>
 </div>
 
