@@ -12,13 +12,13 @@
     </tr>
 
     #foreach($paddock in $parkPaddocks)
-
-    <tr>
+    #set( $alertmsg = $paddock.alertMessage())
+    <tr class="$alertmsg">
         <td>$paddock.getId()</td>
         <td>$paddock.getName()</td>
         <td>$paddock.dinoCount()</td>
         <td>$paddock.visitorCount()</td>
-        <td>$paddock.alertMessage()</td>
+        <td>$alertmsg</td>
         <td><a class="button" href="/paddocks/$paddock.getId()">Show More</a></td>
         <td>
             <form action="/paddocks/$paddock.getId()/lock-down" method="post">

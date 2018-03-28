@@ -98,6 +98,11 @@ td.ESCAPE {
     color: #e8e8e8;
 }
 
+tr.ESCAPE {
+    background-color: #ff4c4c;
+    color: #e8e8e8;
+}
+
 
 /* FLEX ITEMS */
 
