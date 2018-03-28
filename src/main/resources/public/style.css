@@ -74,6 +74,11 @@ th {
 
 /* FLEX ITEMS */
 
+.page_title {
+    width: 100%;
+    text-align: center;
+}
+
 .content {
     margin:2em;
     margin-top:0.5em;
@@ -85,4 +90,16 @@ th {
     margin-left: 1em;
     margin-right: 1em;
     margin: auto;
+    display:flex;
+    flex-flow: column nowrap;
+}
+
+.flex_item{
+    margin-bottom:5%;
+    min-width: 400px;
+
+}
+
+.hidden {
+    visibility: hidden;
 }

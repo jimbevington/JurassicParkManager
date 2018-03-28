@@ -1,4 +1,4 @@
-<h1>Dashboard</h1>
+<h1 class="page_title">Dashboard</h1>
 
 <div class="content">
 
@@ -28,17 +28,22 @@
 
     <div class="flex_item_half_page">
 
-        <table>
-            <tr><th>ALERTS</th></tr>
-            <tr>
-                <th>ID</th>
-                <th>Species</th>
-                <th>Name</th>
-                <th>Paddock #</th>
-                <th>Alert</th>
-            </tr>
 
+        <div class="flex_item">
+
+            <h2>ALERTS</h2>
+            #set ($alertshow = ${alerts.size()} > 0)
             #if($alerts.size() > 0)
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Species</th>
+                    <th>Name</th>
+                    <th>Paddock #</th>
+                    <th>Alert</th>
+                </tr>
+
+
                 #foreach($dinosaur in $alerts)
                 <tr>
                     <td>$dinosaur.getId()</td>
@@ -58,13 +63,17 @@
                     #end
                 </tr>
                 #end
+            </table>
             #else
             <h4>No Alerts</h4>
             #end
-        </table>
 
-        <h3>Park Statistics</h3>
-        <h4>Total Visitors: $totalVisitors</h4>
+        </div>
+
+        <div class="flex_item">
+            <h3>Park Statistics</h3>
+            <h4>Total Visitors: $totalVisitors</h4>
+        </div>
 
     </div>
 
