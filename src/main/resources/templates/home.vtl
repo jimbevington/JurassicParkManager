@@ -15,11 +15,18 @@
 
             #foreach($paddock in $paddocks)
             #set( $alertmsg = $paddock.alertMessage())
+            #set( $escape = ($alertmsg == "ESCAPE"))
             <tr class="$alertmsg">
                 <td>$paddock.getId()</td>
                 <td><a class="button" href="/paddocks/$paddock.getId()">$paddock.getName()</a></td>
                 <td>$paddock.dinoCount()</td>
-                <td>$alertmsg</td>
+                <td>
+                    #if($escape)
+                    <a class="button" href="/paddocks/$paddock.getId()">$alertmsg</a>
+                    #else
+                    $alertmsg
+                    #end
+                </td>
             </tr>
             #end
         </table>
@@ -46,17 +53,17 @@
 
 
                 #foreach($dinosaur in $alerts)
-                <tr>
+                #set ($alert = ${dbDinosaur.getDinoAlertType($dinosaur)})
+                <tr class="$alert">
                     <td>$dinosaur.getId()</td>
                     <td>$dinosaur.getSpecies().getSpecies()</td>
                     <td>$dinosaur.getName()</td>
                     <td>$dinosaur.getPaddock().getName()</td>
-                    #set ($alert = ${dbDinosaur.getDinoAlertType($dinosaur)})
                     <td>$alert</td>
-                    #if ($alert == "ESCAPED!")
-                    <td class="button table_capture_button">
+                    #if ($alert == "ESCAPED")
+                    <td class="button table_ACTION_button">
                         <form action="/dinosaurs/$dinosaur.getId()/capture" method="post">
-                            <input type="submit" value="Capture" class="submit_capture_button">
+                            <input type="submit" value="Capture" class="submit_ACTION_button">
                         </form>
                     </td>
                     #else

@@ -1,77 +1,80 @@
-<h1>$paddock.getId(). $paddock.getName()</h1>
+<h1 class="page_title">#$paddock.getId(). $paddock.getName()</h1>
 
-<a class="button" href="/paddocks/$paddock.getId()/add-dino">Add Dinosaur</a>
-<a class="button" href="/paddocks/$paddock.getId()/edit">Edit Details</a>
-<form action="/paddocks/$paddock.getId()/lock-down" method="post">
-    <input type="submit" value="Lock Down">
-</form>
+<div class="flex_item_half_page">
 
-<h3>Dinosaurs</h3>
+    <a class="button" href="/paddocks/$paddock.getId()/add-dino">Add Dinosaur</a>
+    <a class="button" href="/paddocks/$paddock.getId()/edit">Edit Details</a>
+    <form action="/paddocks/$paddock.getId()/lock-down" method="post">
+        <input type="submit" value="Lock Down">
+    </form>
 
-#if ($dinosaurs.size() == 0)
-<h5 class="italic">Paddock Empty</h5>
-#else
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Species</th>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Danger</th>
-        <th>Hunger</th>
-        <th>Status</th>
-    </tr>
+    <h3>Dinosaurs</h3>
 
-    #foreach($dinosaur in $dinosaurs)
-    <tr>
-        <td>$dinosaur.getId()</td>
-        <td>$dinosaur.getSpecies()</td>
-        <td>$dinosaur.getName()</td>
-        <td>$dinosaur.getAge()</td>
-        <td>$dinosaur.getDanger()</td>
-        <td>#if(${dinosaur.class.simpleName} == "Carnivore")
-            $dinosaur.getHunger()
+    #if ($dinosaurs.size() == 0)
+    <h5 class="italic">Paddock Empty</h5>
+    #else
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Species</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Danger</th>
+            <th>Hunger</th>
+            <th>Status</th>
+            <th>ACTION</th>
+        </tr>
+
+        #foreach($dinosaur in $dinosaurs)
+        #set ($alert = ${dbDinosaur.getDinoAlertType($dinosaur)})
+        <tr class="$alert">
+            <td>$dinosaur.getId()</td>
+            <td>$dinosaur.getSpecies()</td>
+            <td>$dinosaur.getName()</td>
+            <td>$dinosaur.getAge()</td>
+            <td>$dinosaur.getDanger()</td>
+            <td>#if(${dinosaur.class.simpleName} == "Carnivore")
+                $dinosaur.getHunger()
+                #else
+                n/a
+                #end</td>
+            #set ($secure = ${dinosaur.isSecure()})
+            <td>$alert</td>
+            #if (!$secure)
+            <td class="button table_ACTION_button">
+                <form action="/dinosaurs/$dinosaur.getId()/capture" method="post">
+                    <input type="submit" value="Capture" class="submit_ACTION_button">
+                </form>
+            </td>
             #else
-            n/a
-            #end</td>
-        #set ($secure = ${dinosaur.isSecure()})
-        <td>#if($secure)
-            Secure
-            #else
-            ESCAPED!
+            <td></td>
             #end
-        </td>
-        #if (!$secure)
-        <td class="button">
-            <form action="/dinosaurs/$dinosaur.getId()/capture" method="post">
-                <input type="submit" value="Capture">
-            </form>
-        </td>
+        </tr>
         #end
-    </tr>
+
+    </table>
     #end
 
-</table>
-#end
+    <h3>Visitors</h3>
 
-<h3>Visitors</h3>
+    #if ($visitors.size() == 0)
+    <h5 class="italic">No Visitors</h5>
+    #else
+    <table>
 
-#if ($visitors.size() == 0)
-<h5 class="italic">No Visitors</h5>
-#else
-<table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
 
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-    </tr>
+        #foreach($visitor in $visitors)
+        <tr>
+            <td>$visitor.getId()</td>
+            <td>$visitor.getName()</td>
+        </tr>
+        #end
 
-    #foreach($visitor in $visitors)
-    <tr>
-        <td>$visitor.getId()</td>
-        <td>$visitor.getName()</td>
-    </tr>
+    </table>
     #end
 
-</table>
-#end
+</div>
