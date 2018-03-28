@@ -35,6 +35,9 @@ public class PaddockController {
             Map<String, Object> model = new HashMap<>();
             model.put("template", "templates/paddocks/index.vtl");
 
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
+            model.put("user", loggedInUser);
+
             List<Paddock> parkPaddocks = DBPaddock.getParkPaddocks();
             model.put("parkPaddocks", parkPaddocks);
 
@@ -56,6 +59,9 @@ public class PaddockController {
 
             Map<String, Object> model = new HashMap<>();
             model.put("template", "templates/paddocks/view.vtl");
+
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
+            model.put("user", loggedInUser);
 
             int paddockId = Integer.parseInt(req.params(":id"));
             Paddock paddock = DBHelper.find(Paddock.class, paddockId);
@@ -80,6 +86,9 @@ public class PaddockController {
             Map<String, Object> model = new HashMap<>();
             model.put("template", "templates/paddocks/edit.vtl");
 
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
+            model.put("user", loggedInUser);
+
             int paddockId = Integer.parseInt(req.params(":id"));
             Paddock paddock = DBHelper.find(Paddock.class, paddockId);
             model.put("paddock", paddock);
@@ -87,6 +96,28 @@ public class PaddockController {
             return new ModelAndView(model, "templates/layout.vtl");
 
         }, new VelocityTemplateEngine());
+
+
+//    add Dinosaurs
+        get("/paddocks/:id/add-dino", (req, res) -> {
+
+            Map<String, Object> model = new HashMap<>();
+            model.put("template", "templates/paddocks/add-dino.vtl");
+
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
+            model.put("user", loggedInUser);
+
+            int paddockId = Integer.parseInt(req.params(":id"));
+            Paddock paddock = DBHelper.find(Paddock.class, paddockId);
+            model.put("paddock", paddock);
+
+            List<Dinosaur> dinosaurs = DBPaddock.getAvailableDinosaurs(paddock);
+            model.put("dinosaurs", dinosaurs);
+
+            return new ModelAndView(model, "templates/layout.vtl");
+
+        }, new VelocityTemplateEngine());
+
 
         post("/paddocks/:id/edit", (req, res) -> {
 
@@ -106,22 +137,6 @@ public class PaddockController {
 
         }, new VelocityTemplateEngine());
 
-//    add Dinosaurs
-        get("/paddocks/:id/add-dino", (req, res) -> {
-
-            Map<String, Object> model = new HashMap<>();
-            model.put("template", "templates/paddocks/add-dino.vtl");
-
-            int paddockId = Integer.parseInt(req.params(":id"));
-            Paddock paddock = DBHelper.find(Paddock.class, paddockId);
-            model.put("paddock", paddock);
-
-            List<Dinosaur> dinosaurs = DBPaddock.getAvailableDinosaurs(paddock);
-            model.put("dinosaurs", dinosaurs);
-
-            return new ModelAndView(model, "templates/layout.vtl");
-
-        }, new VelocityTemplateEngine());
 
         post("/paddocks/:id/add-dino", (req, res) -> {
 
@@ -138,6 +153,7 @@ public class PaddockController {
             return null;
 
         }, new VelocityTemplateEngine());
+
 
         post("/paddocks/:id/lock-down", (req, res) -> {
 
