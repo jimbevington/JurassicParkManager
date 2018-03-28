@@ -33,6 +33,9 @@ public class DinosaurController {
             model.put("inNursery", sortedDinos.get("inNursery"));
             model.put("inContainment", sortedDinos.get("inContainment"));
 
+            DBDinosaur dbDinosaur = new DBDinosaur();
+            model.put("dbDinosaur", dbDinosaur);
+
             model.put("template", "templates/dinosaurs/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
@@ -157,7 +160,7 @@ public class DinosaurController {
                 carnivore.increaseHunger();
                 DBHelper.saveOrUpdate(carnivore);
             }
-        }, 2, 3, TimeUnit.SECONDS);
+        }, 2, 15, TimeUnit.SECONDS);
 
         final ScheduledExecutorService rampagingDinos = Executors.newSingleThreadScheduledExecutor();
         rampagingDinos.scheduleWithFixedDelay(new Runnable() {
@@ -169,6 +172,6 @@ public class DinosaurController {
                 Dinosaur dinosaur = inPark.get(0);
                 DBDinosaur.rampage(dinosaur);
             }
-        }, 3, 10, TimeUnit.SECONDS);
+        }, 3, 45, TimeUnit.SECONDS);
     }
 }
