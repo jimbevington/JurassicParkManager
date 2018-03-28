@@ -1,0 +1,8 @@
+html {
+  background: url(https://i.ytimg.com/vi/hI84y9g-SBc/maxresdefault.jpg) no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-attachment: fixed;
+  height: 100%;
+  width: 100%;
+}
