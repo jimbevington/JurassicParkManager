@@ -16,6 +16,8 @@
             <th>Hunger</th>
             <th>Secure</th>
             <th>ACTION</th>
+            <th>Move To:</th>
+            <th>Destroy</th>
         </tr>
 
         #foreach($dinosaur in $inPark)
@@ -54,15 +56,25 @@
             #else
             <td></td>
             #end
-            <td class="button"><a href="/dinosaurs/$dinosaur.getId()/move">Move</a></td>
-            <td class="button">
-                <form action="/dinosaurs/$dinosaur.getId()/remove" method="post">
-                    <input type="submit" value="Remove" />
+            <td>
+                <form action="/dinosaurs/$dinosaur.getId()" method="post">
+                    <select id="paddocks" name="paddock">
+                        #set ($availablePaddocks = ${dbDinosaur.getAvailablePaddocks($dinosaur)})
+                        #foreach( $paddock in $availablePaddocks )
+                        <option value="$paddock.getId()"
+                                #if ($paddock.getId() == 2)
+                                selected
+                                #end>
+                            $paddock.getName()
+                        </option>
+                        #end
+                    </select>
+                    <input type="submit" value="Move">
                 </form>
             </td>
             <td class="button">
-                <form action="/dinosaurs/$dinosaur.getId()/containment" method="post">
-                    <input type="submit" value="Move to Containment" />
+                <form action="/dinosaurs/$dinosaur.getId()/remove" method="post">
+                    <input type="submit" value="X" class="destroy_button" />
                 </form>
             </td>
 
