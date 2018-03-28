@@ -10,6 +10,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>DinoCount</th>
+                <th>VisitorCount</th>
                 <th>Status</th>
             </tr>
 
@@ -20,6 +21,7 @@
                 <td>$paddock.getId()</td>
                 <td><a class="button" href="/paddocks/$paddock.getId()">$paddock.getName()</a></td>
                 <td>$paddock.dinoCount()</td>
+                <td>$paddock.visitorCount()</td>
                 <td>
                     #if($alert)
                     <a class="button" href="/paddocks/$paddock.getId()">$alertmsg</a>
