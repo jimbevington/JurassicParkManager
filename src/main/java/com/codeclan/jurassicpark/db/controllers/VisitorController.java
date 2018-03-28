@@ -44,6 +44,6 @@ public class VisitorController {
             public void run() {
                 DBVisitor.moveVisitors();
             }
-        }, 4, 5, TimeUnit.MINUTES);
+        }, 3, 5, TimeUnit.MINUTES);
     }
 }
