@@ -49,8 +49,6 @@ public class DBVisitor {
                 DBHelper.saveOrUpdate(paddock);
             }
         }
-
-
     }
 
 
