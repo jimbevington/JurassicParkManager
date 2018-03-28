@@ -6,9 +6,13 @@ import com.codeclan.jurassicpark.db.models.*;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import static spark.Spark.get;
 import static spark.Spark.post;
@@ -72,8 +76,8 @@ public class DinosaurController {
 
         get ("/dinosaurs/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-//            String loggedInUser = LoginController.getLoggedInUserName(req, res);
-//            model.put("user", loggedInUser);
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
+            model.put("user", loggedInUser);
             List<Paddock> paddocks = DBHelper.getAll(Paddock.class);
             SpeciesType[] species = SpeciesType.values();
             model.put("species", species);
@@ -138,5 +142,28 @@ public class DinosaurController {
             return null;
 
         }, new VelocityTemplateEngine());
+
+        final ScheduledExecutorService hungerIncrease = Executors.newSingleThreadScheduledExecutor();
+        hungerIncrease.scheduleWithFixedDelay(new Runnable() {
+            @Override
+            public void run() {
+                List<Carnivore> carnivores = DBHelper.getAll(Carnivore.class);
+                Collections.shuffle(carnivores);
+                Carnivore carnivore = carnivores.get(0);
+                carnivore.increaseHunger();
+                DBHelper.saveOrUpdate(carnivore);
+            }
+        }, 2, 3, TimeUnit.MINUTES);
+
+        final ScheduledExecutorService rampagingDinos = Executors.newSingleThreadScheduledExecutor();
+        rampagingDinos.scheduleWithFixedDelay(new Runnable() {
+            @Override
+            public void run() {
+                List<Dinosaur> dinosaurs = DBDinosaur.listAll();
+                Collections.shuffle(dinosaurs);
+                Dinosaur dinosaur = dinosaurs.get(0);
+                DBDinosaur.rampage(dinosaur);
+            }
+        }, 3, 9, TimeUnit.MINUTES);
     }
 }

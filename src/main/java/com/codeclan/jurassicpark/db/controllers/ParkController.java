@@ -29,23 +29,16 @@ public class ParkController {
         LoginController loginController = new LoginController();
 
         get("/", (req, res) -> {
-
             Map<String, Object> model = new HashMap<>();
-
-//            String loggedInUser = LoginController.getLoggedInUsername(req, res);
-//            model.put("user", loggedInUser);
-
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
+            model.put("user", loggedInUser);
             model.put("template", "templates/home.vtl");
-
             List<Paddock> paddocks = DBPaddock.getParkPaddocks();
             model.put("paddocks", paddocks);
-
             List<Dinosaur> alerts = DBDinosaur.getDinoAlerts();
             model.put("alerts", alerts);
-
             DBDinosaur dbDinosaur = new DBDinosaur();
             model.put("dbDinosaur", dbDinosaur);
-
             int totalVisitors = DBHelper.totalVisitors();
             model.put("totalVisitors", totalVisitors);
 
@@ -53,38 +46,5 @@ public class ParkController {
 
         }, new VelocityTemplateEngine());
 
-        final ScheduledExecutorService hungerIncrease = Executors.newSingleThreadScheduledExecutor();
-        hungerIncrease.scheduleWithFixedDelay(new Runnable() {
-            @Override
-            public void run() {
-                List<Carnivore> carnivores = DBHelper.getAll(Carnivore.class);
-                Collections.shuffle(carnivores);
-                Carnivore carnivore = carnivores.get(0);
-                carnivore.increaseHunger();
-                DBHelper.saveOrUpdate(carnivore);
-            }
-        }, 5, 5, TimeUnit.SECONDS);
-
-        final ScheduledExecutorService rampagingDinos = Executors.newSingleThreadScheduledExecutor();
-        rampagingDinos.scheduleWithFixedDelay(new Runnable() {
-            @Override
-            public void run() {
-                List<Dinosaur> dinosaurs = DBDinosaur.listAll();
-                Collections.shuffle(dinosaurs);
-                Dinosaur dinosaur = dinosaurs.get(0);
-                DBDinosaur.rampage(dinosaur);
-            }
-        }, 8, 8, TimeUnit.SECONDS);
-
-        final ScheduledExecutorService wanderingVisitors = Executors.newSingleThreadScheduledExecutor();
-        rampagingDinos.scheduleWithFixedDelay(new Runnable() {
-            @Override
-            public void run() {
-                DBVisitor.moveVisitors();
-            }
-        }, 4, 7, TimeUnit.SECONDS);
-
-//        login page
-//        home page
     }
 }
