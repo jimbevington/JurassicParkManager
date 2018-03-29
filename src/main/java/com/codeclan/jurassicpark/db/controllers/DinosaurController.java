@@ -60,27 +60,6 @@ public class DinosaurController {
         }, new VelocityTemplateEngine());
 
 
-        get("/dinosaurs/:id/move", (req, res)->{
-
-            Map<String, Object> model = new HashMap<>();
-            model.put("template", "templates/dinosaurs/move.vtl");
-
-            String loggedInUser = LoginController.getLoggedInUsername(req, res);
-            model.put("user", loggedInUser);
-
-            String stringId = req.params(":id");
-            Integer intId = Integer.parseInt(stringId);
-            Dinosaur tobemoved = DBHelper.find(Dinosaur.class, intId);
-            model.put("dinosaur", tobemoved);
-
-            List<Paddock> paddocks = DBDinosaur.getAvailablePaddocks(tobemoved);
-            model.put("paddocks", paddocks);
-
-            return new ModelAndView(model, "templates/layout.vtl");
-
-        }, new VelocityTemplateEngine());
-
-
         get ("/dinosaurs/new", (req, res) -> {
 
             Map<String, Object> model = new HashMap<>();
