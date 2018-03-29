@@ -127,7 +127,8 @@ table {
 }
 
 table.small_table {
-    min-width: 500px;
+    min-width: 600px;
+    max-width: 600px;
 }
 
 td, th {
