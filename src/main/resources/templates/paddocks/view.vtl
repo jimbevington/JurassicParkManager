@@ -2,16 +2,20 @@
 
 <div class="flex_item_half_page">
 
-    #set ($paddocAlert = ${paddock.alertMessage()})
+    #set ($paddockAlert = ${paddock.alertMessage()})
+    #set ($onAlert = ($paddockAlert == "ESCAPE"))
     #set ($openStatus = ${dbPaddock.checkPaddockOpen($paddock)})
 
     <div class="button_row">
         <a class="big_button" href="/paddocks/$paddock.getId()/add-dino">Add Dinosaur</a>
         <a class="big_button" href="/paddocks/$paddock.getId()/edit">Edit Details</a>
-        #if ($openStatus == "Open")
+        #if ($openStatus == "Open" || $onAlert)
         <form
-
+                #if ( $onAlert )
+                class="big_red_button"
+                #else
                 class="big_button"
+                #end
               action="/paddocks/$paddock.getId()/lock-down" method="post">
             <input type="submit" value="Lock Down" class="submit_in_button">
         </form>
