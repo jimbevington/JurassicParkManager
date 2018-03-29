@@ -117,11 +117,15 @@ public class DBPaddock {
     }
 
     public static void addVisitorToPaddock(Visitor visitor, Paddock paddock){
-        paddock.addVisitor(visitor);
-        visitor.setPaddock(paddock);
-        DBHelper.saveOrUpdate(visitor);
-        DBHelper.saveOrUpdate(paddock);
+        if (paddock.isOpen()) {
+            paddock.addVisitor(visitor);
+            visitor.setPaddock(paddock);
+            DBHelper.saveOrUpdate(visitor);
+            DBHelper.saveOrUpdate(paddock);
+        }
     }
+
+
 
     public static void removeVisitorFromPaddock(Visitor visitor, Paddock paddock){
         paddock.removeVisitor(visitor);
