@@ -38,6 +38,12 @@
                         <input type="submit" value="Lock Down" class="submit_ACTION_button">
                     </form>
                 </td>
+                #elseif($openStatus == "Closed")
+                <td class="button table_OPEN_button">
+                    <form action="/paddocks/$paddock.getId()/open" method="post">
+                        <input type="submit" value="Open" class="submit_OPEN_button">
+                    </form>
+                </td>
                 #else
                 <td></td>
                 #end
