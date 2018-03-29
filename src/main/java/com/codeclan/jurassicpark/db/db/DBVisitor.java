@@ -39,7 +39,12 @@ public class DBVisitor {
             List<Paddock> paddocks = DBPaddock.getParkPaddocks();
             Collections.shuffle(paddocks);
             Paddock paddock = paddocks.get(0);
-            DBPaddock.lockDownPaddock(paddock);
+
+            List<Visitor> paddocksVisitors = DBHelper.getPaddocksVisitors(paddock);
+            for (Visitor visitor : paddocksVisitors){
+                DBPaddock.removeVisitorFromPaddock(visitor, paddock);
+            }
+
             List<Visitor> visitors = DBHelper.getAll(Visitor.class);
             Collections.shuffle(visitors);
             Visitor visitor = visitors.get(0);
