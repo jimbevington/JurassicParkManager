@@ -27,7 +27,7 @@ public enum ParkStatus {
     ASSETDEV("Update from Genetics: Gene-splicing test successful."),
     OPSUPDATE("Scheduled System Maintenance: 0200-0400 30.04.18"),
     VISCEN("Visitor Centre Tour reaching capacity. Queuing system initiated."),
-    PADUP("Paddock Update: Misty Mountains has experienced small rockfall."),
+    PADUP("Paddock Update: Misty Mountains have experienced small rockfall."),
     NURSUP("Nursery Update: 2 Brachiosauruses were born today."),
     WEATHERALERT("Weather Alert: Tropical Storm system approaching from South."),
     HELIPAD("Coastguard Helicopter on approach. Ready Helipad."),;
