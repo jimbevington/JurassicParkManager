@@ -170,6 +170,18 @@ public class PaddockController {
 
         }, new VelocityTemplateEngine());
 
+        post("/paddocks/:id/open", (req, res) -> {
+
+            Integer id = Integer.parseInt(req.params(":id"));
+            Paddock paddock = DBHelper.find(Paddock.class, id);
+
+            DBPaddock.openPaddock(paddock);
+
+            res.redirect("/paddocks/" + id.toString());
+            return null;
+
+        }, new VelocityTemplateEngine());
+
     }
 
 
