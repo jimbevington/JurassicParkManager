@@ -1,9 +1,6 @@
 package com.codeclan.jurassicpark.db;
 
-import com.codeclan.jurassicpark.db.db.DBDinosaur;
-import com.codeclan.jurassicpark.db.db.DBHelper;
-import com.codeclan.jurassicpark.db.db.DBPaddock;
-import com.codeclan.jurassicpark.db.db.DBVisitor;
+import com.codeclan.jurassicpark.db.db.*;
 import com.codeclan.jurassicpark.db.models.*;
 
 import java.util.HashMap;
@@ -194,6 +191,24 @@ public class Runner {
         Paddock openedPaddock = DBHelper.find(Paddock.class, paddock4.getId());
         boolean paddockOpenIsTrue = openedPaddock.isOpen();
         String paddockOpen = DBPaddock.checkPaddockOpen(openedPaddock);
+
+//        test generate Activity with Strings
+//        String test1 = DBActivity.generateActivity();
+//        String test2 = DBActivity.generateActivity();
+//        String test3 = DBActivity.generateActivity();
+//        String test4 = DBActivity.generateActivity();
+//        String test5 = DBActivity.generateActivity();
+//        String test6 = DBActivity.generateActivity();
+//        String test7 = DBActivity.generateActivity();
+//        String test8 = DBActivity.generateActivity();
+//        String test9 = DBActivity.generateActivity();
+//        String test10 = DBActivity.generateActivity();
+//        String test11 = DBActivity.generateActivity();
+//        String test12 = DBActivity.generateActivity();
+//        String test13 = DBActivity.generateActivity();
+//        String test14 = DBActivity.generateActivity();
+//        String test15 = DBActivity.generateActivity();
+
     }
 
 

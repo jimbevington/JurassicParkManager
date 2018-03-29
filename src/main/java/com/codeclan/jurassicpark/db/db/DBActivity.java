@@ -13,17 +13,12 @@ public class DBActivity {
         Random rand = new Random();
         int choice = rand.nextInt(9);
 
-        // least likely is Rampage
-        // Make Hungry and Move Visitors equally likely
-        if (choice > 6) {
+        if (choice > 5) {
             DBDinosaur.makeRampage();
-        } else if (choice % 2 == 0) {
+        } else  {
             DBDinosaur.makeHungry();
-        } else {
             DBVisitor.moveVisitors();
         }
-
-        System.out.println(choice);
 
     }
 
