@@ -1,5 +1,6 @@
 package com.codeclan.jurassicpark.db.controllers;
 
+import com.codeclan.jurassicpark.db.db.DBActivity;
 import com.codeclan.jurassicpark.db.db.DBDinosaur;
 import com.codeclan.jurassicpark.db.db.DBHelper;
 import com.codeclan.jurassicpark.db.models.*;
@@ -26,6 +27,9 @@ public class DinosaurController {
     private void setupEndpoints() {
 
         get("/dinosaurs", (req, res) -> {
+
+            DBActivity.makeActivityDecision();  // decides whether to generate Activity
+
             Map<String, Object> model = new HashMap<>();
 
             String loggedInUser = LoginController.getLoggedInUsername(req, res);
@@ -42,6 +46,7 @@ public class DinosaurController {
             model.put("template", "templates/dinosaurs/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
 
         get("/dinosaurs/:id/fed", (req, res) -> {
 

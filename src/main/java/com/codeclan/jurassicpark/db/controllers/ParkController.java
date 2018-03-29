@@ -33,7 +33,7 @@ public class ParkController {
 
         get("/", (req, res) -> {
 
-            DBActivity.makeActivityDecision();
+            DBActivity.makeActivityDecision();  // decides whether to generate Activity
 
             Map<String, Object> model = new HashMap<>();
             model.put("template", "templates/home.vtl");

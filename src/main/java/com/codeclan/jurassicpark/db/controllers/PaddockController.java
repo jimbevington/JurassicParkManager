@@ -1,5 +1,6 @@
 package com.codeclan.jurassicpark.db.controllers;
 
+import com.codeclan.jurassicpark.db.db.DBActivity;
 import com.codeclan.jurassicpark.db.db.DBDinosaur;
 import com.codeclan.jurassicpark.db.db.DBHelper;
 import com.codeclan.jurassicpark.db.db.DBPaddock;
@@ -32,6 +33,8 @@ public class PaddockController {
 
         get("/paddocks", (req, res) -> {
 
+            DBActivity.makeActivityDecision();  // decides whether to generate Activity
+
             Map<String, Object> model = new HashMap<>();
             model.put("template", "templates/paddocks/index.vtl");
 
@@ -59,6 +62,8 @@ public class PaddockController {
 
         //    view Paddock with Details
         get("/paddocks/:id", (req, res) -> {
+
+            DBActivity.makeActivityDecision();  // decides whether to generate Activity
 
             Map<String, Object> model = new HashMap<>();
             model.put("template", "templates/paddocks/view.vtl");

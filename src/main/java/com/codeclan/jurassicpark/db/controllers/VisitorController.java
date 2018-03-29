@@ -1,5 +1,6 @@
 package com.codeclan.jurassicpark.db.controllers;
 
+import com.codeclan.jurassicpark.db.db.DBActivity;
 import com.codeclan.jurassicpark.db.db.DBHelper;
 import com.codeclan.jurassicpark.db.db.DBVisitor;
 import com.codeclan.jurassicpark.db.models.Paddock;
@@ -25,6 +26,8 @@ public class VisitorController {
     private void setupEndpoints() {
 
         get("/visitors", (req, res) -> {
+
+            DBActivity.makeActivityDecision();  // decides whether to generate Activity
 
             Map<String, Object> model = new HashMap<>();
             model.put("template", "templates/visitors/index.vtl");
