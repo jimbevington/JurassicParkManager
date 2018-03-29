@@ -51,21 +51,8 @@ public class DBPaddock {
         return result;
     }
 
-    private static boolean paddockEmpty(Paddock paddock) {
-
-        List<Dinosaur> dinosaurs = DBHelper.getPaddocksDinosaurs(paddock);
-        boolean result = false;
-
-        if (dinosaurs.size() == 0){
-            result = true;
-        }
-
-        return result;
-    }
-
     public static List<Dinosaur> getAvailableDinosaurs(Paddock paddock){
 
-//        return me a list of Dinosaurs
         List<Dinosaur> availableDinosaurs = new ArrayList<>();
 
         List<Dinosaur> allDinosaurs = DBHelper.getAll(Dinosaur.class);
@@ -76,8 +63,8 @@ public class DBPaddock {
 
             if (paddockEmpty(paddock)){
                 availableDinosaurs = allDinosaurs;
-            } else
-
+            }
+            else
 //            if the first Dino is a Herbivore, set availableDinosaurs to: all the Herbivores
             if (herbivoreTest(paddock)) {
                 availableDinosaurs = DBHelper.getAll(Herbivore.class);
@@ -95,25 +82,37 @@ public class DBPaddock {
         }
 
 //        remove all Dinosaurs currently in the Paddock from the Available Dinosaurs list
+//        ... overriden Dinosaur equals method required for this.
         for (Dinosaur dinosaur : currentDinosaurs){
             availableDinosaurs.remove(dinosaur);
         }
 
         return availableDinosaurs;
 
-
-    }
-
-    private static boolean herbivoreTest(Paddock paddock) {
-        List<Dinosaur> currentDinosaurs = DBHelper.getPaddocksDinosaurs(paddock);
-        Dinosaur firstDino = currentDinosaurs.get(0);
-        return firstDino instanceof Herbivore;
     }
 
     public static boolean paddockHasSpace(Paddock paddock) {
         List<Dinosaur> dinosaurs = DBHelper.getPaddocksDinosaurs(paddock);
         return dinosaurs.size() < paddock.getCapacity();
 
+    }
+
+    private static boolean paddockEmpty(Paddock paddock) {
+
+        List<Dinosaur> dinosaurs = DBHelper.getPaddocksDinosaurs(paddock);
+        boolean result = false;
+
+        if (dinosaurs.size() == 0){
+            result = true;
+        }
+
+        return result;
+    }
+
+    private static boolean herbivoreTest(Paddock paddock) {
+        List<Dinosaur> currentDinosaurs = DBHelper.getPaddocksDinosaurs(paddock);
+        Dinosaur firstDino = currentDinosaurs.get(0);
+        return firstDino instanceof Herbivore;
     }
 
     public static void addVisitorToPaddock(Visitor visitor, Paddock paddock){
