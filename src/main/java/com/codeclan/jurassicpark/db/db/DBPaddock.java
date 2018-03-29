@@ -135,6 +135,13 @@ public class DBPaddock {
         DBHelper.saveOrUpdate(paddock);
     }
 
+    public static String checkPaddockOpen(Paddock paddock){
+        if (paddock.isOpen()){
+            return "Open";
+        }
+        return "Closed";
+    }
+
     public static void removeVisitorFromPaddock(Visitor visitor, Paddock paddock){
         paddock.removeVisitor(visitor);
         visitor.setPaddock(null);

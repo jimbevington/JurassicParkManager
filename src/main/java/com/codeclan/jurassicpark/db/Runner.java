@@ -189,9 +189,11 @@ public class Runner {
         DBPaddock.lockDownPaddock(paddockToLockdown);
         Paddock lockedDownPaddock = DBHelper.find(Paddock.class, paddock4.getId());
         boolean paddockOpenIsFalse = lockedDownPaddock.isOpen();
+        String paddockClosed = DBPaddock.checkPaddockOpen(lockedDownPaddock);
         DBPaddock.openPaddock(lockedDownPaddock);
         Paddock openedPaddock = DBHelper.find(Paddock.class, paddock4.getId());
         boolean paddockOpenIsTrue = openedPaddock.isOpen();
+        String paddockOpen = DBPaddock.checkPaddockOpen(openedPaddock);
     }
 
 
