@@ -5,7 +5,7 @@
     <div class="flex_item">
 
         <h2>Park</h2>
-
+        <br>
         <table>
             <tr>
                 <th>ID</th>
@@ -13,12 +13,11 @@
                 <th>Dinosaur Count</th>
                 <th>Visitor Count</th>
                 <th>Secure</th>
-                <th></th>
+                <th>ACTION</th>
             </tr>
 
             #foreach($paddock in $parkPaddocks)
             #set( $alertmsg = $paddock.alertMessage())
-            #set( $escape = ($alertmsg == "ESCAPE"))
             #set( $alert = ($alertmsg == "ESCAPE" || $alertmsg == "FEED"))
             <tr class="$alertmsg">
                 <td>$paddock.getId()</td>
@@ -41,7 +40,6 @@
                 #else
                 <td></td>
                 #end
-                </td>
             </tr>
             #end
 

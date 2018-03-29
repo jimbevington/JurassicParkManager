@@ -135,6 +135,7 @@ public class DBPaddock {
         for (Visitor visitor : visitors){
             removeVisitorFromPaddock(visitor, paddock);
         }
+
     }
 
 

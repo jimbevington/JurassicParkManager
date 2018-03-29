@@ -10,6 +10,46 @@ body {
     font-style:italic;
 }
 
+input[type=submit] {
+    cursor: pointer;
+}
+
+.big_button {
+    height:27px;
+    margin:0px;
+    background-color: #FFAF70;
+    border: groove 5px #edf1f7;
+    text-align: center;
+    font-size: 1em;
+    padding:1em;
+    cursor: pointer;
+}
+
+.small_button {
+    background-color: #FFAF70;
+    border: groove 5px #edf1f7;
+    text-align: center;
+    font-size: 1em;
+    padding:1em;
+    cursor: pointer;
+}
+
+a.big_button {
+    text-decoration: none;
+}
+
+.button_row{
+    display: flex;
+    flex: row nowrap;
+    align-items:center;
+}
+
+.submit_in_button {
+    background-color: inherit;
+    font: inherit;
+    border: none;
+}
+
 
 /* HEADER STUFF */
 
@@ -128,6 +168,13 @@ tr.FEED, tr.HUNGRY {
     color: #e8e8e8;
 }
 
+td.messages_table {
+    text-align: left;
+    color: chartreuse;
+    background-color: black;
+    font-family: 'Cutive Mono', monospace;
+    font-style: italic;
+}
 
 /* FLEX ITEMS */
 
@@ -169,3 +216,33 @@ background-size: cover;
 background-position: 50% 50%;
 background-attachment: fixed;
 }
+
+#nedry_button {
+    background-color: red;
+    color: white;
+    border: solid black 2px;
+}
+
+form.column_form {
+    display: flex;
+    flex-flow: column nowrap;
+    min-height: 15em;
+    justify-content:space-evenly;
+    align-items: center;
+}
+
+.form_field {
+    display:flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin: auto;
+}
+
+label{
+    margin-bottom: 5px;
+}
+
+input[type=text] {
+    max-width:150px;
+}
+
