@@ -19,7 +19,7 @@
         <mapping class = "com.codeclan.jurassicpark.db.models.Dinosaur"/>
         <mapping class = "com.codeclan.jurassicpark.db.models.Carnivore"/>
         <mapping class = "com.codeclan.jurassicpark.db.models.Herbivore"/>
-        <mapping class = "com.codeclan.jurassicpark.db.models.Park"/>
+        <!--<mapping class = "com.codeclan.jurassicpark.db.models.Park"/>-->
         <mapping class = "com.codeclan.jurassicpark.db.models.Paddock"/>
         <mapping class = "com.codeclan.jurassicpark.db.models.Visitor"/>
 

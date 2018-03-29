@@ -10,32 +10,27 @@ public class Seeds {
         DBHelper.deleteAll(Herbivore.class);
         DBHelper.deleteAll(Paddock.class);
         DBHelper.deleteAll(Visitor.class);
-        DBHelper.deleteAll(Park.class);
-
-
-        Park park = new Park("Jurassic Park");
-        DBHelper.saveOrUpdate(park);
 
 
 //        PADDOCKS
 
 //        Nursery Paddock - always has ID 1
-        Paddock nurseryPaddock= new Paddock("Nursery", 50, park);
+        Paddock nurseryPaddock= new Paddock("Nursery", 50);
         DBHelper.saveOrUpdate(nurseryPaddock);
 
 //        Containment Paddock - always has ID 2
-        Paddock containmentPaddock = new Paddock("Containment", 100, park);
+        Paddock containmentPaddock = new Paddock("Containment", 100);
         DBHelper.saveOrUpdate(containmentPaddock);
 
-        Paddock paddock1 = new Paddock("Green Gully", 10, park);
+        Paddock paddock1 = new Paddock("Green Gully", 10);
         DBHelper.saveOrUpdate(paddock1);
-        Paddock paddock2 = new Paddock("Arid Desert", 10, park);
+        Paddock paddock2 = new Paddock("Arid Desert", 10);
         DBHelper.saveOrUpdate(paddock2);
-        Paddock paddock3 = new Paddock("Misty Mountains", 10, park);
+        Paddock paddock3 = new Paddock("Misty Mountains", 10);
         DBHelper.saveOrUpdate(paddock3);
-        Paddock paddock4 = new Paddock("The Great Plains", 10, park);
+        Paddock paddock4 = new Paddock("The Great Plains", 10);
         DBHelper.saveOrUpdate(paddock4);
-        Paddock paddock5 = new Paddock("Treachorous Tundra", 8, park);
+        Paddock paddock5 = new Paddock("Treachorous Tundra", 8);
         DBHelper.saveOrUpdate(paddock5);
 
         Carnivore babyCarnivore = new Carnivore(SpeciesType.TREX, "Junior", 1, 10, nurseryPaddock);

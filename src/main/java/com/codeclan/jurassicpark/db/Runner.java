@@ -14,20 +14,18 @@ public class Runner {
 
     public static void main(String[] args) {
 
-        Park park = new Park("Jurassic Park");
-        DBHelper.saveOrUpdate(park);
 
-        Paddock nurseryPaddock= new Paddock("Nursery", 50, park);
+        Paddock nurseryPaddock= new Paddock("Nursery", 50);
         DBHelper.saveOrUpdate(nurseryPaddock);
-        Paddock containmentPaddock = new Paddock("Containment", 100, park);
+        Paddock containmentPaddock = new Paddock("Containment", 100);
         DBHelper.saveOrUpdate(containmentPaddock);
-        Paddock paddock1 = new Paddock("Green Gully", 10, park);
+        Paddock paddock1 = new Paddock("Green Gully", 10);
         DBHelper.saveOrUpdate(paddock1);
-        Paddock paddock2 = new Paddock("Arid Desert", 10, park);
+        Paddock paddock2 = new Paddock("Arid Desert", 10);
         DBHelper.saveOrUpdate(paddock2);
-        Paddock paddock3 = new Paddock("Misty Mountains", 10, park);
+        Paddock paddock3 = new Paddock("Misty Mountains", 10);
         DBHelper.saveOrUpdate(paddock3);
-        Paddock paddock4 = new Paddock("The Great Plains", 10, park);
+        Paddock paddock4 = new Paddock("The Great Plains", 10);
         DBHelper.saveOrUpdate(paddock4);
 
         Carnivore carnivore1 = new Carnivore(SpeciesType.TREX, "Fluffy", 30, 70, paddock1);
@@ -82,15 +80,15 @@ public class Runner {
 
 //        testing getAvailablePaddocks
 //        empty paddocks shown for all
-        Paddock emptyPaddock = new Paddock("Empty", 10, park);   // will always be shown
+        Paddock emptyPaddock = new Paddock("Empty", 10);   // will always be shown
         DBHelper.saveOrUpdate(emptyPaddock);
 //        paddock can't be shown if full
-        Paddock noCapacityPaddock = new Paddock("No Space", 0, park);   // will never be shown as has no capacity
+        Paddock noCapacityPaddock = new Paddock("No Space", 0);   // will never be shown as has no capacity
         DBHelper.saveOrUpdate(noCapacityPaddock);
 //        should return Paddock 3 and 4 and emptyPaddock
 //        List<Paddock> paddocksAvailableForHerbivores = DBDinosaur.getAvailablePaddocks(foundHerbivore);
 //        should test Carnivores allowed only with other Carnivores
-        Paddock testCarnPaddock = new Paddock("testCarnivorePaddock", 80, park);  // for testing trex
+        Paddock testCarnPaddock = new Paddock("testCarnivorePaddock", 80);  // for testing trex
         DBHelper.saveOrUpdate(testCarnPaddock);
         Carnivore newTrex = new Carnivore(SpeciesType.TREX, "Reginald", 6, 90, testCarnPaddock);
         DBHelper.saveOrUpdate(newTrex);
