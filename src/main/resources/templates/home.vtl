@@ -17,6 +17,7 @@
             #foreach($paddock in $paddocks)
             #set( $alertmsg = $paddock.alertMessage())
             #set( $alert = ($alertmsg == "ESCAPE" || $alertmsg == "FEED"))
+            #set ($openStatus = ${dbPaddock.checkPaddockOpen($paddock)})
             <tr class="$alertmsg">
                 <td>$paddock.getId()</td>
                 <td><a class="button" href="/paddocks/$paddock.getId()">$paddock.getName()</a></td>
@@ -26,7 +27,7 @@
                     #if($alert)
                     <a class="button" href="/paddocks/$paddock.getId()">$alertmsg</a>
                     #else
-                    $alertmsg
+                    $openStatus
                     #end
                 </td>
             </tr>

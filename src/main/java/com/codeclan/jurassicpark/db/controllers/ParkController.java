@@ -53,6 +53,9 @@ public class ParkController {
             int totalVisitors = DBHelper.totalVisitors();
             model.put("totalVisitors", totalVisitors);
 
+            DBPaddock dbPaddock = new DBPaddock();
+            model.put("dbPaddock", dbPaddock);
+
             return new ModelAndView(model, "templates/layout.vtl");
 
         }, new VelocityTemplateEngine());

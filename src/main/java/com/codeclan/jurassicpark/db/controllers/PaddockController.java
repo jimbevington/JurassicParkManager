@@ -79,6 +79,9 @@ public class PaddockController {
             List<Visitor> visitors = DBHelper.getPaddocksVisitors(paddock);
             model.put("visitors", visitors);
 
+            DBPaddock dbPaddock = new DBPaddock();
+            model.put("dbPaddock", dbPaddock);
+
             return new ModelAndView(model, "templates/layout.vtl");
 
         }, new VelocityTemplateEngine());
@@ -169,6 +172,7 @@ public class PaddockController {
             return null;
 
         }, new VelocityTemplateEngine());
+
 
         post("/paddocks/:id/open", (req, res) -> {
 
