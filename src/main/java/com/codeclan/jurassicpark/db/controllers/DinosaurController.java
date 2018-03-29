@@ -201,6 +201,6 @@ public class DinosaurController {
                 Dinosaur dinosaur = inPark.get(0);
                 DBDinosaur.rampage(dinosaur);
             }
-        }, 3, 45, TimeUnit.SECONDS);
+        }, 3, 43, TimeUnit.SECONDS);
     }
 }

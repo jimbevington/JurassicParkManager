@@ -76,6 +76,8 @@ header {
 }
 
 .nav_button {
+    background-color: #FFAF70;
+    display: inline-block;
     padding:1em;
     border: inset black 3px;
     height:100%;
