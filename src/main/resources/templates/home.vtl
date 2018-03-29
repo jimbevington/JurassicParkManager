@@ -5,7 +5,7 @@
     <div class="flex_item_half_page">
 
         <h2>Paddock Status</h2>
-        <table>
+        <table class="small_table">
             <tr>
                 <th>ID</th>
                 <th>Name</th>
@@ -45,7 +45,7 @@
             #set ( $alertCount = ${alerts.size()})
             #set ($alertshow = ${alertCount} > 0)
 
-            <table>
+            <table class="small_table">
 
                 #if($alerts.size() > 0)
                 <tr>
@@ -96,7 +96,7 @@
 
         <div class="flex_item">
             <h2>Park Status</h2>
-            <table class="messages_table">
+            <table class="messages_table small_table">
                 <tr>
                     <th>Messages:</th>
                     #foreach($message in $messages)

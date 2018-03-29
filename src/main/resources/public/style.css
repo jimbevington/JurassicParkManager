@@ -126,6 +126,10 @@ table {
     border-collapse: collapse;
 }
 
+table.small_table {
+    min-width: 500px;
+}
+
 td, th {
     padding: 0.5em;
     border: solid black 1px;
