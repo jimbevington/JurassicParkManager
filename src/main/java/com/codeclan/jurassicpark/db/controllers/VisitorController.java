@@ -45,12 +45,12 @@ public class VisitorController {
 
 //        Move Visitors
 
-        final ScheduledExecutorService wanderingVisitors = Executors.newSingleThreadScheduledExecutor();
-        wanderingVisitors.scheduleWithFixedDelay(new Runnable() {
-            @Override
-            public void run() {
-                DBVisitor.moveVisitors();
-            }
-        }, 4, 20, TimeUnit.SECONDS);
+//        final ScheduledExecutorService wanderingVisitors = Executors.newSingleThreadScheduledExecutor();
+//        wanderingVisitors.scheduleWithFixedDelay(new Runnable() {
+//            @Override
+//            public void run() {
+//                DBVisitor.moveVisitors();
+//            }
+//        }, 4, 20, TimeUnit.SECONDS);
     }
 }

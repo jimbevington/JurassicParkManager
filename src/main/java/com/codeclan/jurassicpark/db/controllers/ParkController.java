@@ -32,6 +32,9 @@ public class ParkController {
         LoginController loginController = new LoginController();
 
         get("/", (req, res) -> {
+
+            DBActivity.generateActivity();
+
             Map<String, Object> model = new HashMap<>();
             model.put("template", "templates/home.vtl");
 

@@ -178,29 +178,29 @@ public class DinosaurController {
 //        TIMED ACTIVITIES
 
 //        Carnivores Get Hungry
-        final ScheduledExecutorService hungerIncrease = Executors.newSingleThreadScheduledExecutor();
-        hungerIncrease.scheduleWithFixedDelay(new Runnable() {
-            @Override
-            public void run() {
-                List<Carnivore> carnivores = DBHelper.getAll(Carnivore.class);
-                Collections.shuffle(carnivores);
-                Carnivore carnivore = carnivores.get(0);
-                carnivore.increaseHunger();
-                DBHelper.saveOrUpdate(carnivore);
-            }
-        }, 2, 1, TimeUnit.MINUTES);
-
-//        Dinosaurs Rampage
-        final ScheduledExecutorService rampagingDinos = Executors.newSingleThreadScheduledExecutor();
-        rampagingDinos.scheduleWithFixedDelay(new Runnable() {
-            @Override
-            public void run() {
-                HashMap<String, List<Dinosaur>> sortedDinos = DBDinosaur.sortDinosaurs();
-                List <Dinosaur> inPark = sortedDinos.get("inPark");
-                Collections.shuffle(inPark);
-                Dinosaur dinosaur = inPark.get(0);
-                DBDinosaur.rampage(dinosaur);
-            }
-        }, 3, 2, TimeUnit.MINUTES);
+//        final ScheduledExecutorService hungerIncrease = Executors.newSingleThreadScheduledExecutor();
+//        hungerIncrease.scheduleWithFixedDelay(new Runnable() {
+//            @Override
+//            public void run() {
+//                List<Carnivore> carnivores = DBHelper.getAll(Carnivore.class);
+//                Collections.shuffle(carnivores);
+//                Carnivore carnivore = carnivores.get(0);
+//                carnivore.increaseHunger();
+//                DBHelper.saveOrUpdate(carnivore);
+//            }
+//        }, 2, 1, TimeUnit.MINUTES);
+//
+////        Dinosaurs Rampage
+//        final ScheduledExecutorService rampagingDinos = Executors.newSingleThreadScheduledExecutor();
+//        rampagingDinos.scheduleWithFixedDelay(new Runnable() {
+//            @Override
+//            public void run() {
+//                HashMap<String, List<Dinosaur>> sortedDinos = DBDinosaur.sortDinosaurs();
+//                List <Dinosaur> inPark = sortedDinos.get("inPark");
+//                Collections.shuffle(inPark);
+//                Dinosaur dinosaur = inPark.get(0);
+//                DBDinosaur.rampage(dinosaur);
+//            }
+//        }, 3, 2, TimeUnit.MINUTES);
     }
 }

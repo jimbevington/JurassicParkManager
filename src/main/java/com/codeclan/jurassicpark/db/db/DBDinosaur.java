@@ -239,5 +239,20 @@ public class DBDinosaur {
 
     }
 
+    public static void makeHungry() {
+        List<Carnivore> carnivores = DBHelper.getAll(Carnivore.class);
+        Collections.shuffle(carnivores);
+        Carnivore carnivore = carnivores.get(0);
+        carnivore.increaseHunger();
+        DBHelper.saveOrUpdate(carnivore);
+    }
+
+    public static void makeRampage() {
+        HashMap<String, List<Dinosaur>> sortedDinos = DBDinosaur.sortDinosaurs();
+        List <Dinosaur> inPark = sortedDinos.get("inPark");
+        Collections.shuffle(inPark);
+        Dinosaur dinosaur = inPark.get(0);
+        DBDinosaur.rampage(dinosaur);
+    }
 }
 
