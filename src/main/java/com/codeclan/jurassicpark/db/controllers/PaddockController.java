@@ -49,6 +49,9 @@ public class PaddockController {
             List<Dinosaur> containDinos = DBHelper.getPaddocksDinosaurs(containment);
             model.put("containDinos", containDinos);
 
+            DBPaddock dbPaddock = new DBPaddock();
+            model.put("dbPaddock", dbPaddock);
+
             return new ModelAndView(model, "templates/layout.vtl");
 
         }, new VelocityTemplateEngine());
@@ -75,6 +78,9 @@ public class PaddockController {
 
             List<Visitor> visitors = DBHelper.getPaddocksVisitors(paddock);
             model.put("visitors", visitors);
+
+            DBPaddock dbPaddock = new DBPaddock();
+            model.put("dbPaddock", dbPaddock);
 
             return new ModelAndView(model, "templates/layout.vtl");
 
@@ -161,6 +167,19 @@ public class PaddockController {
             Paddock paddock = DBHelper.find(Paddock.class, id);
 
             DBPaddock.lockDownPaddock(paddock);
+
+            res.redirect("/paddocks/" + id.toString());
+            return null;
+
+        }, new VelocityTemplateEngine());
+
+
+        post("/paddocks/:id/open", (req, res) -> {
+
+            Integer id = Integer.parseInt(req.params(":id"));
+            Paddock paddock = DBHelper.find(Paddock.class, id);
+
+            DBPaddock.openPaddock(paddock);
 
             res.redirect("/paddocks/" + id.toString());
             return null;

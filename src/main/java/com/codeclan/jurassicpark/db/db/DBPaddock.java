@@ -117,10 +117,29 @@ public class DBPaddock {
     }
 
     public static void addVisitorToPaddock(Visitor visitor, Paddock paddock){
-        paddock.addVisitor(visitor);
-        visitor.setPaddock(paddock);
-        DBHelper.saveOrUpdate(visitor);
+        if (paddock.isOpen()) {
+            paddock.addVisitor(visitor);
+            visitor.setPaddock(paddock);
+            DBHelper.saveOrUpdate(visitor);
+            DBHelper.saveOrUpdate(paddock);
+        }
+    }
+
+    public static void openPaddock(Paddock paddock){
+        paddock.setOpen(true);
         DBHelper.saveOrUpdate(paddock);
+    }
+
+    public static void closePaddock(Paddock paddock){
+        paddock.setOpen(false);
+        DBHelper.saveOrUpdate(paddock);
+    }
+
+    public static String checkPaddockOpen(Paddock paddock){
+        if (paddock.isOpen()){
+            return "Open";
+        }
+        return "Closed";
     }
 
     public static void removeVisitorFromPaddock(Visitor visitor, Paddock paddock){
@@ -131,11 +150,11 @@ public class DBPaddock {
     }
 
     public static void lockDownPaddock(Paddock paddock){
-        paddock.setOpen(false);
         List<Visitor> visitors = DBHelper.getPaddocksVisitors(paddock);
         for (Visitor visitor : visitors){
             removeVisitorFromPaddock(visitor, paddock);
         }
+        closePaddock(paddock);
     }
 
 

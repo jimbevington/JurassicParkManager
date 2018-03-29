@@ -2,12 +2,20 @@
 
 <div class="flex_item_half_page">
 
+    #set ($openStatus = ${dbPaddock.checkPaddockOpen($paddock)})
+
     <div class="button_row">
         <a class="big_button" href="/paddocks/$paddock.getId()/add-dino">Add Dinosaur</a>
         <a class="big_button" href="/paddocks/$paddock.getId()/edit">Edit Details</a>
+        #if ($openStatus == "Open")
         <form class="big_button" action="/paddocks/$paddock.getId()/lock-down" method="post">
             <input type="submit" value="Lock Down" class="submit_in_button">
         </form>
+        #else
+        <form class="big_green_button" action="/paddocks/$paddock.getId()/open" method="post">
+            <input type="submit" value="Open" class="submit_in_button">
+        </form>
+        #end
     </div>
 
     <h3>Dinosaurs</h3>
@@ -30,8 +38,10 @@
         </tr>
 
         #foreach($dinosaur in $dinosaurs)
-        #set ($alert = ${dbDinosaur.getDinoAlertType($dinosaur)})
-        <tr class="$alert">
+        #set ($alertmsg = ${dbDinosaur.getDinoAlertType($dinosaur)})
+        #set( $alert = ($alertmsg == "ESCAPE" || $alertmsg == "FEED"))
+
+        <tr class="$alertmsg">
             <td>$dinosaur.getId()</td>
             <td>$dinosaur.getSpecies()</td>
             <td>$dinosaur.getName()</td>
@@ -43,14 +53,18 @@
                 n/a
                 #end</td>
             #set ($secure = ${dinosaur.isSecure()})
-            <td>$alert</td>
-            #if ($alert == "ESCAPED")
+            <td>
+                #if ($alert)
+                $alertmsg
+                #end
+            </td>
+            #if ($alertmsg == "ESCAPED")
             <td class="button table_ACTION_button">
                 <form action="/dinosaurs/$dinosaur.getId()/capture" method="post">
                     <input type="submit" value="Capture" class="submit_ACTION_button">
                 </form>
             </td>
-            #elseif ($alert == "HUNGRY")
+            #elseif ($alertmsg == "HUNGRY")
             <td class="button table_FEED_button">
                 <form action="/dinosaurs/$dinosaur.getId()/feed" method="post">
                     <input type="submit" value="Feed" class="submit_FEED_button">

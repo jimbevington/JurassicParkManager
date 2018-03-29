@@ -12,13 +12,14 @@
                 <th>Name</th>
                 <th>Dinosaur Count</th>
                 <th>Visitor Count</th>
-                <th>Secure</th>
+                <th>Status</th>
                 <th>ACTION</th>
             </tr>
 
             #foreach($paddock in $parkPaddocks)
             #set( $alertmsg = $paddock.alertMessage())
             #set( $alert = ($alertmsg == "ESCAPE" || $alertmsg == "FEED"))
+            #set ($openStatus = ${dbPaddock.checkPaddockOpen($paddock)})
             <tr class="$alertmsg">
                 <td>$paddock.getId()</td>
                 <td><a class="button" href="/paddocks/$paddock.getId()">$paddock.getName()</a></td>
@@ -28,13 +29,19 @@
                     #if($alert)
                     <a class="button" href="/paddocks/$paddock.getId()">$alertmsg</a>
                     #else
-                    $alertmsg
+                    $openStatus
                     #end
                 </td>
                 #if($alertmsg == "ESCAPE")
                 <td class="button table_ACTION_button">
                     <form action="/paddocks/$paddock.getId()/lock-down" method="post">
                         <input type="submit" value="Lock Down" class="submit_ACTION_button">
+                    </form>
+                </td>
+                #elseif($openStatus == "Closed")
+                <td class="button table_OPEN_button">
+                    <form action="/paddocks/$paddock.getId()/open" method="post">
+                        <input type="submit" value="Open" class="submit_OPEN_button">
                     </form>
                 </td>
                 #else
