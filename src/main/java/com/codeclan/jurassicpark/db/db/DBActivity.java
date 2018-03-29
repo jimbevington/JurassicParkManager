@@ -6,10 +6,6 @@ public class DBActivity {
 
     public static void generateActivity(){
 
-//        make a decision to generate Activity
-//        choose an activity: move Visitors, get Hungry, makeRampage
-//        carry it out.
-
         Random rand = new Random();
         int choice = rand.nextInt(9);
 
@@ -23,7 +19,12 @@ public class DBActivity {
     }
 
     public static void makeActivityDecision(){
+        Random rand = new Random();
+        int choice = rand.nextInt(2);
 
+        if (choice == 1){
+            generateActivity();
+        }
     }
 
 }
