@@ -62,9 +62,12 @@ public class DBDinosaur {
             }
         }
 
-//        make Containment always available
+//        ensure Containment Paddock is always available
         Paddock containmentPaddock = DBHelper.find(Paddock.class, 2);
-        available.add(containmentPaddock);
+
+        if (!available.contains(containmentPaddock)) {
+            available.add(containmentPaddock);
+        }
 
         return available;
     }
