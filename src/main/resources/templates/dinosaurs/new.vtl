@@ -1,23 +1,28 @@
-<p class="pageHeader">New dinosaur</p>
+<h1 class="page_title">ADD DINOSAUR</h1>
 
-<form action="/dinosaurs" method="post">
+<div class="flex_item_half_page">
 
-    <label for="species">Species:</label>
-    <select id="species" name="species">
-        #foreach( $species in $species )
-        <option value="$species.getSpecies()">$species.getSpecies()</option>
-        #end
-    </select>
+    <form action="/dinosaurs" method="post">
 
-    <label for="name">Name:</label>
-    <input id="name" class="inputbox" type="text" name="name" required="true">
+        <label for="species">Species:</label>
+        <select id="species" name="species">
+            #foreach( $species in $species )
+            <option value="$species.getSpecies()">$species.getSpecies()</option>
+            #end
+        </select>
 
-    <label for="age">Age:</label>
-    <input id="age" type="number" name="age" required="true" class="inputbox">
+        <label for="name">Name:</label>
+        <input id="name" class="inputbox" type="text" name="name" required="true">
 
-    <label for="danger">Danger Level:</label>
-    <input id="danger" type="number" name="danger" required="true" class="inputbox">
+        <label for="age">Age:</label>
+        <input id="age" type="number" name="age" required="true" class="inputbox">
 
-    <input type="submit" value="Save" class="button">
-</form>
-<a href="/dinosaurs" class="button center">Cancel</a>
+        <label for="danger">Danger Level:</label>
+        <input id="danger" type="number" name="danger" required="true" class="inputbox">
+
+        <input type="submit" value="Save" class="button">
+    </form>
+
+    <a href="/dinosaurs" class="button center">Cancel</a>
+
+</div>
