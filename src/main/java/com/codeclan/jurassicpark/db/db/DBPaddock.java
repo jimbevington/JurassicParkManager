@@ -131,11 +131,11 @@ public class DBPaddock {
     }
 
     public static void lockDownPaddock(Paddock paddock){
+        paddock.setOpen(false);
         List<Visitor> visitors = DBHelper.getPaddocksVisitors(paddock);
         for (Visitor visitor : visitors){
             removeVisitorFromPaddock(visitor, paddock);
         }
-
     }
 
 
