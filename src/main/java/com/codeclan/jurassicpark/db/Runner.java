@@ -15,7 +15,7 @@ public class Runner {
     public static void main(String[] args) {
 
 
-        Paddock nurseryPaddock= new Paddock("Nursery", 50);
+        Paddock nurseryPaddock = new Paddock("Nursery", 50);
         DBHelper.saveOrUpdate(nurseryPaddock);
         Paddock containmentPaddock = new Paddock("Containment", 100);
         DBHelper.saveOrUpdate(containmentPaddock);
@@ -182,7 +182,19 @@ public class Runner {
 
         //TEST Status Messages
         List<String> messages = DBHelper.getStatusMsgs();
+
+
+//        test LockDown closes Paddock
+        Paddock paddockToLockdown = DBHelper.find(Paddock.class, paddock4.getId());
+        DBPaddock.lockDownPaddock(paddockToLockdown);
+        Paddock lockedDownPaddock = DBHelper.find(Paddock.class, paddock4.getId());
+        boolean paddockOpenIsFalse = lockedDownPaddock.isOpen();
+        DBPaddock.openPaddock(lockedDownPaddock);
+        Paddock openedPaddock = DBHelper.find(Paddock.class, paddock4.getId());
+        boolean paddockOpenIsTrue = openedPaddock.isOpen();
     }
+
+
 
 
 

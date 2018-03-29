@@ -125,7 +125,15 @@ public class DBPaddock {
         }
     }
 
+    public static void openPaddock(Paddock paddock){
+        paddock.setOpen(true);
+        DBHelper.saveOrUpdate(paddock);
+    }
 
+    public static void closePaddock(Paddock paddock){
+        paddock.setOpen(false);
+        DBHelper.saveOrUpdate(paddock);
+    }
 
     public static void removeVisitorFromPaddock(Visitor visitor, Paddock paddock){
         paddock.removeVisitor(visitor);
@@ -135,11 +143,11 @@ public class DBPaddock {
     }
 
     public static void lockDownPaddock(Paddock paddock){
-        paddock.setOpen(false);
         List<Visitor> visitors = DBHelper.getPaddocksVisitors(paddock);
         for (Visitor visitor : visitors){
             removeVisitorFromPaddock(visitor, paddock);
         }
+        closePaddock(paddock);
     }
 
 
