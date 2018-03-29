@@ -33,26 +33,25 @@ public class DBVisitor {
     }
 
     public static void moveVisitors(){
+
         Random rand = new Random();
-        int num = rand.nextInt(6) + 1;
-        for (int i = 0; i < num; i++) {
-            List<Paddock> paddocks = DBPaddock.getParkPaddocks();
-            Collections.shuffle(paddocks);
-            Paddock paddock = paddocks.get(0);
+        int num = rand.nextInt(4);
 
-            List<Visitor> paddocksVisitors = DBHelper.getPaddocksVisitors(paddock);
-            for (Visitor visitor : paddocksVisitors){
-                DBPaddock.removeVisitorFromPaddock(visitor, paddock);
+        List<Paddock> paddocks = DBPaddock.getParkPaddocks();
+        Collections.shuffle(paddocks);
+        List<Visitor> visitors = DBHelper.getAll(Visitor.class);
+        Collections.shuffle(visitors);
+
+        for (int i = 0; i <= num; i++) {
+
+            Visitor visitor = visitors.get(i);
+            Paddock paddock = paddocks.get(i);
+
+            if (visitor.getPaddock() != null){
+                DBPaddock.removeVisitorFromPaddock(visitor, visitor.getPaddock());
             }
 
-            List<Visitor> visitors = DBHelper.getAll(Visitor.class);
-            Collections.shuffle(visitors);
-            Visitor visitor = visitors.get(0);
-            if (paddock.getAlert() == AlertType.NONE) {
-                DBPaddock.addVisitorToPaddock(visitor, paddock);
-                DBHelper.saveOrUpdate(visitor);
-                DBHelper.saveOrUpdate(paddock);
-            }
+            DBPaddock.addVisitorToPaddock(visitor, paddock);
         }
     }
 }

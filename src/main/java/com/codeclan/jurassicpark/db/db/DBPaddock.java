@@ -116,7 +116,7 @@ public class DBPaddock {
     }
 
     public static void addVisitorToPaddock(Visitor visitor, Paddock paddock){
-        if (paddock.isOpen()) {
+        if (paddock.isOpen() && paddock.alertMessage() != "ESCAPE") {
             paddock.addVisitor(visitor);
             visitor.setPaddock(paddock);
             DBHelper.saveOrUpdate(visitor);
