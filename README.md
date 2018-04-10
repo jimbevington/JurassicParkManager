@@ -1,6 +1,6 @@
 # Jurassic Park Manager
 
-Paired project with Christie Lester according to a brief provided by Codeclan.
+Paired project with [Christie Lester](https://github.com/christiebelle) according to a brief provided by Codeclan.
 
 Built in Java, the system incorporates the Hibernate ORM framework for database interaction.
 The web app is implemented using Spark, HTML and CSS.
