@@ -14,16 +14,17 @@ Simulates a Park Manager web app for Jurassic Park. Users can:
 * *monitor key Park information from the Dashboard*
 * *view further information on Paddocks, Dinosaurs and Visitors*
 * *move Dinosaurs between Paddocks (where appropriate)*
-* *add newly born Dinosaurs to the Nursery paddock*
+* *add newly born Dinosaurs to the Nursery Paddock*
 * *feed hungry Carnivores*
 * *deal with escaped Dinosaurs (lock down Paddock and capture escapee)*
 
 
-To prevent carnage/loss of valuable assets, the app only allows carnivorous Dinos to be moved into paddocks with others of the same species.
+To prevent carnage/loss of valuable assets, carnivorous Dinos may only be moved into Paddocks with others of the same species.
 
 Given that safety is Jurassic Parks No. 1 priority, the front-end dynamically updates to alert the user that action should be taken.
 
 Hint: for a bit of nefarious fun, try logging in as dennisnedry!
+
 
 ## Using the App
 
