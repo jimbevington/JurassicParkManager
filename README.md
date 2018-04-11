@@ -21,11 +21,16 @@ To prevent carnage/loss of valuable assets, the app only allows carnivorous Dino
 
 Given that safety is Jurassic Parks No. 1 priority, the front-end dynamically updates to alert the user that action should be taken.
 
+Hint: for a bit of nefarious fun, try logging in as dennisnedry!
+
 ## Using the App
 
 Clone the project onto your own machine.
 
-In Terminal, create a database to store the Park information (AND TO TEST?)
+In Terminal, create the Park database
 ```
 createdb jurassicparkdb
 ```
+Run the Park Controller: *main/java/com.codeclan.jurassicpark.db/controllers/ParkController.class*
+
+In your browser, navigate to *
