@@ -22,6 +22,6 @@ public class TestPaddock {
     @Test
     public void canGetAlertMessage__ESCAPE() {
         paddock.setAlert(AlertType.ESCAPE);
-        assertEquals("ESCAPE!", paddock.alertMessage());
+        assertEquals("ESCAPE", paddock.alertMessage());
     }
 }
