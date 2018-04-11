@@ -25,12 +25,12 @@ Hint: for a bit of nefarious fun, try logging in as dennisnedry!
 
 ## Using the App
 
-Clone the project onto your own machine.
+1. Clone the project onto your own machine.
 
-In Terminal, create the Park database
-```
-createdb jurassicparkdb
-```
-Run the Park Controller: *main/java/com.codeclan.jurassicpark.db/controllers/ParkController.class*
+2. In Terminal, create the Park database
+  ```
+  createdb jurassicparkdb
+  ```
+3. Run the Park Controller: *main/java/com.codeclan.jurassicpark.db/controllers/ParkController.class*
 
-In your browser, navigate to *
+4. In your browser, navigate to [https://localhost:4567/](https://localhost:4567/)
