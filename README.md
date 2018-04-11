@@ -10,12 +10,14 @@ Strictly NO Javascript or additional web frameworks permitted.
 
 Simulates a Park Manager web app for Jurassic Park. Users can:
 
-* monitor key Park information from the Dashboard
-* view further information on Paddocks, Dinosaurs and Visitors
-* move Dinosaurs between Paddocks (where appropriate)
-* add newly born Dinosaurs to the Nursery paddock
-* feed hungry Carnivores
-* deal with escaped Dinosaurs (lock down Paddock and capture escapee)
+
+* *monitor key Park information from the Dashboard*
+* *view further information on Paddocks, Dinosaurs and Visitors*
+* *move Dinosaurs between Paddocks (where appropriate)*
+* *add newly born Dinosaurs to the Nursery paddock*
+* *feed hungry Carnivores*
+* *deal with escaped Dinosaurs (lock down Paddock and capture escapee)*
+
 
 To prevent carnage/loss of valuable assets, the app only allows carnivorous Dinos to be moved into paddocks with others of the same species.
 
@@ -34,3 +36,5 @@ Hint: for a bit of nefarious fun, try logging in as dennisnedry!
 3. Run the Park Controller: *main/java/com.codeclan.jurassicpark.db/controllers/ParkController.class*
 
 4. In your browser, navigate to [https://localhost:4567/](https://localhost:4567/)
+
+5. Start managing Dinosaurs!
