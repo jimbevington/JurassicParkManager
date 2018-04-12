@@ -1,34 +1,33 @@
 # Jurassic Park Manager
 
-Paired project with [Christie Lester](https://github.com/christiebelle) according to a brief provided by Codeclan.
+Paired project with [Christie Lester](https://github.com/christiebelle). Brief provided by Codeclan.
 
-Built in Java, the system incorporates the Hibernate ORM framework for database interaction.
-The web app is implemented using Spark, HTML and CSS.
-Strictly NO Javascript or additional web frameworks permitted.
+This Java app incorporates the Spark web framework and Hibernate ORM framework for database interaction.
+
+**Strictly NO Javascript or additional web frameworks permitted.**
 
 ## Overview
 
 Simulates a Park Manager web app for Jurassic Park. Users can:
 
-
 * *monitor key Park information from the Dashboard*
-* *view further information on Paddocks, Dinosaurs and Visitors*
+* *view further info on Paddocks, Dinosaurs and Visitors*
 * *move Dinosaurs between Paddocks (where appropriate)*
-* *add newly born Dinosaurs to the Nursery Paddock*
+* *add newborn Dinosaurs to the Nursery Paddock*
 * *feed hungry Carnivores*
 * *deal with escaped Dinosaurs (lock down Paddock and capture escapee)*
 
 
 To prevent carnage/loss of valuable assets, carnivorous Dinos may only be moved into Paddocks with others of the same species.
 
-Given that safety is Jurassic Parks No. 1 priority, the front-end dynamically updates to alert the user that action should be taken.
+Given that safety is Jurassic Parks No. 1 priority, the front-end dynamically updates to alert the user of important issues.
 
-Hint: for a bit of nefarious fun, try logging in as dennisnedry!
+Hint: for a bit of nefarious fun, try logging in as *dennisnedry*!
 
 
 ## Using the App
 
-1. Clone the project onto your own machine.
+1. Clone the project onto your machine.
 
 2. In Terminal, create the Park database
   ```
@@ -36,6 +35,6 @@ Hint: for a bit of nefarious fun, try logging in as dennisnedry!
   ```
 3. Run the Park Controller: *main/java/com.codeclan.jurassicpark.db/controllers/ParkController.class*
 
-4. In your browser, navigate to [https://localhost:4567/](https://localhost:4567/)
+4. Navigate to [https://localhost:4567/](https://localhost:4567/)
 
 5. Start managing Dinosaurs!
