@@ -100,10 +100,10 @@ header {
 .nav_button {
     background-color: #FFAF70;
     display: inline-block;
-    padding:1em;
+    padding:0.8em;
     border: inset black 3px;
     height:100%;
-    font-size: 1.5em;
+    font-size: 1.3em;
     text-decoration:none;
     font-style:italic;
     margin:0px;
@@ -124,11 +124,12 @@ table {
     background-color: #edf1f7;
     border: inset black 3px;
     border-collapse: collapse;
+    font-size: 0.8em;
 }
 
 table.small_table {
-    min-width: 600px;
-    max-width: 600px;
+    min-width: 500px;
+    max-width: 500px;
 }
 
 td, th {
